@@ -4,7 +4,7 @@ import { FaArrowRight } from "react-icons/fa";
 import './home.css'
 import HilightedText from "../components/core/home/hilightedText";
 import ButtonComponent from "../components/core/home/buttonComponent";
-
+import autoPlayVideo from '../assets/production_id_3969453 (2160p).mp4'
 
 const Home = (props) => {
 return (
@@ -28,6 +28,12 @@ return (
             <div className="buttonContainer">
             <ButtonComponent text={"Learn More"} linkTo={"signUp"} active={true}></ButtonComponent>
             <ButtonComponent text={"Book a Demo"} linkTo={"logIn"} active={false}></ButtonComponent>
+            </div>
+
+            <div>
+                <video muted autoPlay loop className="video">
+                    <source ></source>
+                </video>
             </div>
 
         </div>
