@@ -6,6 +6,7 @@ import HilightedText from "../components/core/home/hilightedText";
 import ButtonComponent from "../components/core/home/buttonComponent";
 // import autoPlayVideo from '../assets/production_id_3969453 (2160p).mp4'
 import HomePageTextBlock from "../components/core/home/HomePageTextBlock";
+import HomepageCodeBlock from '../components/core/home/HomepageCodeBlock';
 
 const Home = (props) => {
 return (
@@ -57,7 +58,7 @@ return (
                     </div>
                 </HomePageTextBlock>  
 
-                {/* <HomepageCodeBlock></HomepageCodeBlock> */}
+                <HomepageCodeBlock></HomepageCodeBlock>
             </div>
         </div>
     {/**section 2 white background */}
