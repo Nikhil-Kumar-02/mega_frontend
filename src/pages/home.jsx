@@ -26,16 +26,20 @@ return (
             </div>
 
             <div className="buttonContainer">
-            <ButtonComponent linkTo={"signUp"} active={true}>Learn More</ButtonComponent>
-            <ButtonComponent linkTo={"logIn"} active={false}>Book a Demo</ButtonComponent>
+                <ButtonComponent linkTo={"signUp"} active={true}>Learn More</ButtonComponent>
+                <ButtonComponent linkTo={"logIn"} active={false}>Book a Demo</ButtonComponent>
             </div>
 
             <div>
-                <video muted autoPlay loop className="video">
-                    <source ></source>
-                </video>
+                {/* <video muted autoPlay loop className="video">
+                    <source src={autoPlayVideo}></source>
+                </video> */}
             </div>
 
+            <div>
+                {/* <HomePageTextBlock></HomePageTextBlock>
+                <HomepageCodeBlock></HomepageCodeBlock> */}
+            </div>
         </div>
     {/**section 2 white background */}
 

@@ -5,9 +5,9 @@ import './buttonComponent.css'
 const ButtonComponent = ({children , active , linkTo}) => {
   return (
     <div>
-      <Link to={linkTo} className="link">
+      <Link to={linkTo} className="button_Link">
         {
-            active ? <div className="yellow">{children}</div> : <div className="black">{children}</div>
+            active ? <div className="yellow_btn">{children}</div> : <div className="black_btn">{children}</div>
         }
       </Link>
     </div>

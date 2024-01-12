@@ -3,7 +3,7 @@ import './hilightedText.css'
 
 const HilightedText = ({text}) => {
   return (
-    <span className="text">
+    <span className="hilightedText">
       {text}
     </span>
   )
