@@ -56,7 +56,7 @@
     width: 80%;
     display: flex;
     justify-content: space-between ;
-    height: max-content;
+    height: 14rem;
     & .homepage_button_arrow{
         display: flex;
         align-items: center;

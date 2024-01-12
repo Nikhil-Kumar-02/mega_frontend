@@ -60,6 +60,30 @@ return (
 
                 <HomepageCodeBlock></HomepageCodeBlock>
             </div>
+
+            <div className="code_and_text_block">
+
+                <HomepageCodeBlock></HomepageCodeBlock>
+
+                <HomePageTextBlock text1={"Start"} hilightedText={"coding in seconds"} text2={""}>
+                    Go ahead, give it a try. Our hands-on learning environment means you'll be writing real code from your very first lesson.
+
+                    <div className="HomePageTextBlock_buttonContainer">
+
+                        <ButtonComponent active={true} linkTo={"/signUp"}>
+                            <div className="homepage_button_arrow">
+                                <div>Continue Lesson</div>
+                                <FaArrowRight></FaArrowRight>
+                            </div>
+                        </ButtonComponent>
+
+                        <ButtonComponent active={false} linkTo={"/logIn"}>Learn More</ButtonComponent>
+
+                    </div>
+
+                </HomePageTextBlock>
+
+            </div>
         </div>
     {/**section 2 white background */}
 
