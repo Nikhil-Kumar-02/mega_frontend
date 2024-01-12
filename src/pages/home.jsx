@@ -40,7 +40,7 @@ return (
                 </video> */}
             </div>
 
-            <div className="HomePageTextBlock">
+            <div className="code_and_text_block">
 
                 <HomePageTextBlock text1={"Unlock your"} hilightedText={"coding potential"} text2={"with our online courses."}>
                     Our courses are designed and taught by industry experts who have years of experience in coding and are passionate about sharing their knowledge with you.

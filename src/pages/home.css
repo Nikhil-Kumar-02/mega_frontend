@@ -51,10 +51,12 @@
 
 }
 
-.HomePageTextBlock{
+.code_and_text_block{
     margin: 2rem 0;
-    width: 35rem;
-    background-color: green;
+    width: 80%;
+    display: flex;
+    justify-content: space-between ;
+    height: max-content;
     & .homepage_button_arrow{
         display: flex;
         align-items: center;

@@ -1,8 +1,12 @@
-.HomePageTextBlock > h2{
+.HomePageTextBlock_wrapper{
+    width: 40%;
+}
+
+.HomePageTextBlock_wrapper > h2{
     color: white;
 }
 
-.HomePageTextBlock > p{
+.HomePageTextBlock_wrapper > p{
     color: grey;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }

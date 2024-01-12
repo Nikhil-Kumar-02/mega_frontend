@@ -4,7 +4,7 @@ import './HomePageTextBlock.css'
 
 const HomePageTextBlock = ({text1 , text2 , hilightedText , children}) => {
   return (
-    <div className="HomePageTextBlock">
+    <div className="HomePageTextBlock_wrapper">
       <h2>
         {text1}
         <HilightedText>{hilightedText}</HilightedText>
