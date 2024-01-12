@@ -26,8 +26,8 @@ return (
             </div>
 
             <div className="buttonContainer">
-            <ButtonComponent text={"Learn More"} linkTo={"signUp"} active={true}></ButtonComponent>
-            <ButtonComponent text={"Book a Demo"} linkTo={"logIn"} active={false}></ButtonComponent>
+            <ButtonComponent linkTo={"signUp"} active={true}>Learn More</ButtonComponent>
+            <ButtonComponent linkTo={"logIn"} active={false}>Book a Demo</ButtonComponent>
             </div>
 
             <div>
