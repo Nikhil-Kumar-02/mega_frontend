@@ -1,5 +1,7 @@
 .hilightedText {
     font-size: 1.8rem;
-    color: aqua;
+    background: linear-gradient(to right,  #06adad ,#75dede, #a3f1f1);
+    -webkit-background-clip: text;
+    color: transparent;
     font-weight: 700;
 }

@@ -1,0 +1,45 @@
+.HomePageThreeCard_whitebg{
+    background-color: white;
+    width: 30%;
+    color: gray;
+    padding: 1rem;
+    > h4{
+        color: black;
+    }
+    & .HomePageThreeCard_footer{
+        color: rgb(61, 61, 185);
+    }
+}
+
+h4 {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin: 0.5rem 0;
+}
+
+.HomePageThreeCard_darkbg{
+    background-color: rgb(22, 29, 41);
+    color: gray;
+    width: 30%;
+    padding: 1.5rem 1rem 0.5rem 1rem;
+    > h4 {
+        color: white;
+    }
+}
+
+.horizontal_line{
+    border: 1px  rgb(129, 126, 126);
+    border-style: dashed;
+    border-spacing: 2rem;
+    margin: 2rem 0 0.3rem 0;
+}
+
+.HomePageThreeCard_footer{
+    display: flex;
+    justify-content: space-between;
+    & *{
+        display: flex;
+        align-items: center;
+        margin-top: 0.3rem;
+        margin-right: 0.4rem;
+    }
+}
