@@ -1,8 +1,8 @@
 .HomepageCodeBlock_wrapper{
     width: 40%;
-    background-color: pink;
     height: fit-content;
     margin: 0;
-    background: radial-gradient(#353535, rgba(48, 45, 45, 0.995));
+    background-color: #000814;
+    box-shadow: rgba(97, 232, 250, 0.2) -50px -10px 50px 2px;
     background-repeat: no-repeat;
 }

@@ -57,17 +57,17 @@
     display: flex;
     justify-content: space-between ;
     height: 14rem;
-    & .homepage_button_arrow{
-        display: flex;
-        align-items: center;
-        & div{
-            margin-right: 0.2rem;
-        }
-    }
     & .HomePageTextBlock_buttonContainer{
         display: flex;
-        & *{
-            margin-right: auto;
+        justify-content: space-between;
+        margin-top: 2rem;
+        width: 70%;
+        & .homepage_button_arrow{
+            display: flex;
+            align-items: center;
+            & div{
+                margin-right: 0.2rem;
+            }
         }
     }
 }
