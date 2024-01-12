@@ -1,10 +1,12 @@
 import React from "react"
 import './hilightedText.css'
 
-const HilightedText = ({text}) => {
+const HilightedText = ({children}) => {
   return (
     <span className="hilightedText">
-      {text}
+      {" "}
+      {children}
+      {" "}
     </span>
   )
 };

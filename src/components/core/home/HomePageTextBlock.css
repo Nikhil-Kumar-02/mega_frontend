@@ -1,0 +1,8 @@
+.HomePageTextBlock > h2{
+    color: white;
+}
+
+.HomePageTextBlock > p{
+    color: grey;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}

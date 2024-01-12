@@ -1,7 +1,13 @@
 .button_Link{
     text-decoration: none;
+    font-family: 'Times New Roman', Times, serif;
+    width: max-content;
+    display: flex;
     & div{
         border-radius: 0.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         padding: 0.5rem;
     }:hover{
         scale: 1.1;
