@@ -1,19 +1,17 @@
 import React from "react"
 import { Link } from "react-router-dom";
 import './buttonComponent.css'
-import { FaArrowRight } from "react-icons/fa";
 
 
-const ButtonComponent = ({children , active , linkTo , arrow}) => {
-  console.log(arrow);
+const ButtonComponent = ({children , active , linkTo}) => {
   return (
     <div>
       <Link to={linkTo} className="button_Link">
         {
           active ? 
-          <div className="yellow_btn">{children} {arrow&&<FaArrowRight/>}</div> 
+          <div className="yellow_btn">{children}</div> 
           :
-         <div className="black_btn">{children} {arrow&&<FaArrowRight/>}</div>
+         <div className="black_btn">{children}</div>
         }
       </Link>
     </div>
