@@ -112,16 +112,18 @@ return (
         {/**section 2 white background */}
             
         <div className="section2">
-            <div className="section2_two_button">
-                <ButtonComponent active={true} linkTo={"signUp"}>
-                    <div className="homepage_button_arrow">
-                        <div>Explore Full Catelog</div>
-                        <FaArrowRight/>
-                    </div>
-                </ButtonComponent>
-                <ButtonComponent active={false} linkTo={"logIn"}>
-                    Learn More
-                </ButtonComponent>
+            <div className="waterMark">
+                <div className="section2_two_button">
+                    <ButtonComponent active={true} linkTo={"signUp"}>
+                        <div className="homepage_button_arrow">
+                            <div>Explore Full Catelog</div>
+                            <FaArrowRight/>
+                        </div>
+                    </ButtonComponent>
+                    <ButtonComponent active={false} linkTo={"logIn"}>
+                        Learn More
+                    </ButtonComponent>
+                </div>
             </div>
 
             <div className="section2_heading_para">
@@ -137,10 +139,12 @@ return (
             </div>
 
             <ButtonComponent active={true} linkTo={"signUp"}>Learn More</ButtonComponent>
+            
         </div>
         {/**section 3 black background */}
 
         {/**section 4 footer */}
+        
 
     </div>
 )
