@@ -12,6 +12,7 @@ import { PiMedalFill } from "react-icons/pi";
 import { RiGraduationCapFill } from "react-icons/ri";
 import { FaGem } from "react-icons/fa";
 import { RiCodeBoxFill } from "react-icons/ri";
+import photo from "../assets/girl.jpg"
 
 const Home = (props) => {
 return (
@@ -184,8 +185,33 @@ return (
                     </div>
                 </div>
 
-                <div className="section2_photo">
+                <div className="section2_photo_container">
 
+                    <div>
+                        <img src={photo} height={350}></img>
+                    </div>
+                
+                    <div className="section2_greenBlock_container">
+
+                        <div className="greenBlock_ele">
+                            <div className="greenBlock_ele1">10</div>
+                            <div className="greenBlock_ele2">
+                                <div>YEARS</div>
+                                <div>EXPERIENCES</div>
+                            </div>
+                        </div>
+
+                        <div className="greenBlock_line"></div>
+
+                        <div className="greenBlock_ele">
+                            <div className="greenBlock_ele1">250</div>
+                            <div className="greenBlock_ele2">
+                                <div>TYPES OF</div>
+                                <div>COURSES</div>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
             </div>
             
