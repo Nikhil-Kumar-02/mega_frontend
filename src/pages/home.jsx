@@ -12,7 +12,8 @@ import { PiMedalFill } from "react-icons/pi";
 import { RiGraduationCapFill } from "react-icons/ri";
 import { FaGem } from "react-icons/fa";
 import { RiCodeBoxFill } from "react-icons/ri";
-import photo from "../assets/girl.jpg"
+import photo from "../assets/girl.jpg";
+import cheat from '../assets/cheat.png';
 
 const Home = (props) => {
 return (
@@ -218,8 +219,13 @@ return (
             
             <h1 className="section2_heading">Your swiss knife for <HilightedText>for learning any language</HilightedText></ h1>
             <p className="section2_para">Using spin making learning multiple languages easy. with 20+ languages realistic voice-over, progress tracking, custom schedule and more.</p>
-            
-            <ButtonComponent active={true} linkTo={"/signUp"}>Learn More</ButtonComponent>
+
+            <div className="section2_threePhotos">
+                <img src={cheat} height={400}></img>
+            </div>
+            <div className="section2_end">
+                <ButtonComponent active={true} linkTo={"/signUp"}>Learn More</ButtonComponent>
+            </div>
             
         </div>
         {/**section 3 black background */}

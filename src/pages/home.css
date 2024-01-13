@@ -96,7 +96,7 @@
 }
 
 .section2{
-    background-color: #F9F9F9;
+    background-color: #F8F8F8;
     width: 100%;  
 }
 
@@ -241,4 +241,10 @@
     font-family: cursive;
     font-size: 0.8rem;
     margin: 1rem 0;
+    margin-bottom: 5rem;
+}
+
+.section2_end{
+    margin-bottom: 5rem;
+    margin-top: 3rem;
 }
