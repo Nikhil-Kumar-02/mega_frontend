@@ -11,7 +11,7 @@ import HomePageThreeCard from '../components/core/home/HomePageThreeCard';
 import { PiMedalFill } from "react-icons/pi";
 import { RiGraduationCapFill } from "react-icons/ri";
 import { FaGem } from "react-icons/fa";
-import { BsFillFileCodeFill } from "react-icons/bs";
+import { RiCodeBoxFill } from "react-icons/ri";
 
 const Home = (props) => {
 return (
@@ -151,9 +151,12 @@ return (
 
                     <div className="section2_roadmap_logos">
                         <div><PiMedalFill /></div>
+                        <div className="section2_roadmap_logos_vertical_line"></div>
                         <div><RiGraduationCapFill /></div>
+                        <div className="section2_roadmap_logos_vertical_line"></div>
                         <div> <FaGem /></div>
-                        <div><BsFillFileCodeFill /></div>
+                        <div className="section2_roadmap_logos_vertical_line"></div>
+                        <div><RiCodeBoxFill /></div>
                     </div>
                     
                     <div className="section2_roadmap_logo_text">
