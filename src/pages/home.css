@@ -96,7 +96,7 @@
 }
 
 .section2{
-    background-color: whitesmoke;
+    background-color: #F9F9F9;
     width: 100%;  
 }
 
@@ -130,4 +130,46 @@
 .section2_heading_para :nth-child(2n){
     font-family: cursive;
     font-size: 0.8rem;
+}
+
+.section2_roadmap{
+    display: flex;
+    justify-content: space-evenly;
+
+    > .section2_roadmap_logos{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        font-size: 1.5rem;
+        > div{
+            width: 2rem;
+            height: 2rem;
+            background-color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 1.5rem 0;
+        }
+        > div:nth-child(1) {
+            color: blue;
+        }
+        > div:nth-child(2) {
+            color: pink;
+        }
+        > div:nth-child(3) {
+            color: green;
+        }
+        > div:nth-child(4) {
+            color: yellow;
+        }
+    }
+}
+
+.section2_roadmap_logo_text{
+    display: flex;
+    flex-direction: column;
+    > div{
+        margin: 1.5rem 2rem;
+    }
 }

@@ -7,7 +7,11 @@ import ButtonComponent from "../components/core/home/buttonComponent";
 // import autoPlayVideo from '../assets/production_id_3969453 (2160p).mp4'
 import HomePageTextBlock from "../components/core/home/HomePageTextBlock";
 import HomepageCodeBlock from '../components/core/home/HomepageCodeBlock';
-import HomePageThreeCard from '../components/core/home/HomePageThreeCard'
+import HomePageThreeCard from '../components/core/home/HomePageThreeCard';
+import { PiMedalFill } from "react-icons/pi";
+import { RiGraduationCapFill } from "react-icons/ri";
+import { FaGem } from "react-icons/fa";
+import { BsFillFileCodeFill } from "react-icons/bs";
 
 const Home = (props) => {
 return (
@@ -112,6 +116,7 @@ return (
         {/**section 2 white background */}
             
         <div className="section2">
+
             <div className="waterMark">
                 <div className="section2_two_button">
                     <ButtonComponent active={true} linkTo={"signUp"}>
@@ -139,6 +144,47 @@ return (
             </div>
 
             <ButtonComponent active={true} linkTo={"signUp"}>Learn More</ButtonComponent>
+
+            <div className="section2_roadmap_photo">
+
+                <div className="section2_roadmap">
+
+                    <div className="section2_roadmap_logos">
+                        <div><PiMedalFill /></div>
+                        <div><RiGraduationCapFill /></div>
+                        <div> <FaGem /></div>
+                        <div><BsFillFileCodeFill /></div>
+                    </div>
+                    
+                    <div className="section2_roadmap_logo_text">
+
+                        <div>
+                            <h4>Leadership</h4>
+                            <p>Fully committed to the success company</p>
+                        </div>
+
+                        <div>
+                            <h4>Responsibility</h4>
+                            <p>Students will always be our top priority</p>
+                        </div>
+
+                        <div>
+                            <h4>Flexibility</h4>
+                            <p>The ability to switch is an important skills</p>
+                        </div>
+
+                        <div>
+                            <h4>Solve the problem</h4>
+                            <p>Code your way to a solution</p>
+                        </div>
+                        
+                    </div>
+                </div>
+
+                <div className="section2_photo">
+
+                </div>
+            </div>
             
         </div>
         {/**section 3 black background */}
