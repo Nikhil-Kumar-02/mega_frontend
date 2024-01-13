@@ -28,9 +28,9 @@ return (
                 </div>
             </Link>
 
-            <h2 className="Homepage_heading_section1">Empower Your Future with 
+            <h1 className="Homepage_heading_section1">Empower Your Future with 
                 <HilightedText>Coding Skills</HilightedText>
-            </h2>
+            </h1>
 
             <div className="section1Description">With our online coding courses, you can learn at your own pace, from anywhere around the world, and get access to a wealth of resourses, including hands-on-project, quizzes, and personalized feedback from Instructors.
             </div>
@@ -214,6 +214,12 @@ return (
                     </div>
                 </div>
             </div>
+
+            
+            <h1 className="section2_heading">Your swiss knife for <HilightedText>for learning any language</HilightedText></ h1>
+            <p className="section2_para">Using spin making learning multiple languages easy. with 20+ languages realistic voice-over, progress tracking, custom schedule and more.</p>
+            
+            <ButtonComponent active={true} linkTo={"/signUp"}>Learn More</ButtonComponent>
             
         </div>
         {/**section 3 black background */}
