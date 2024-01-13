@@ -14,6 +14,7 @@ import { FaGem } from "react-icons/fa";
 import { RiCodeBoxFill } from "react-icons/ri";
 import photo from "../assets/girl.jpg";
 import cheat from '../assets/cheat.png';
+import instructor from '../assets/instructor.png'
 
 const Home = (props) => {
 return (
@@ -229,7 +230,30 @@ return (
             
         </div>
         {/**section 3 black background */}
+        <div className="section3">
 
+                <div className="section3_instructor">
+                    <div>
+                        <img src={instructor} height={450}></img>
+                    </div>
+                    <div>
+                        <h1>Become an</h1>
+                        <HilightedText>instructor</HilightedText>
+                        <p>Instructor from around the world teach millions of student around on StudyNotion. We provide the tools and skills to teach what you love.</p>
+                        <ButtonComponent active={true} linkTo={"/signUp"}>
+                            <div className="homepage_button_arrow">
+                                <div>Start Teaching Today</div>
+                                <FaArrowRight/>
+                            </div>
+                        </ButtonComponent>
+                    </div>
+                </div>
+
+                <div>
+                    Reviews from other learners
+                </div>
+
+        </div>
         {/**section 4 footer */}
         
 
