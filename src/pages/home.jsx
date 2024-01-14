@@ -15,10 +15,12 @@ import { RiCodeBoxFill } from "react-icons/ri";
 import photo from "../assets/girl.jpg";
 import cheat from '../assets/cheat.png';
 import instructor from '../assets/instructor.png'
+import Footer from "../components/core/home/Footer";
 
 const Home = (props) => {
 return (
     <div className="homeWrapper">
+        
         {/**section 1 black background */}
         <div className="section1">   
             <Link to={"/signup"} className="becomeInstructorButton">
@@ -114,7 +116,6 @@ return (
 
             </div>
         </div>
-
 
         {/**section 2 white background */}
             
@@ -229,6 +230,7 @@ return (
             </div>
             
         </div>
+
         {/**section 3 black background */}
         <div className="section3">
 
@@ -254,8 +256,11 @@ return (
                 </div>
 
         </div>
-        {/**section 4 footer */}
         
+        {/**section 4 footer */}
+        <div className="footer">
+            <Footer ></Footer>
+        </div>
 
     </div>
 )
