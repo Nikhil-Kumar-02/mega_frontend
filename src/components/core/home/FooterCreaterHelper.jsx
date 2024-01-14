@@ -10,7 +10,7 @@ const FooterCreaterHelper = ({elements}) => {
                 return null; 
                 }
                 return (
-                    <div key={index}>{ele}</div>
+                  <div key={index}>{ele}</div>
                 )
             })
         }
