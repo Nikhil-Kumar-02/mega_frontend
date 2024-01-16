@@ -16,6 +16,7 @@ import photo from "../assets/girl.jpg";
 import cheat from '../assets/cheat.png';
 import instructor from '../assets/instructor.png'
 import Footer from "../components/core/home/Footer";
+import ToggleCourse from "../components/core/home/ToggleCourse";
 
 const Home = (props) => {
 return (
@@ -98,6 +99,8 @@ return (
             <h2 className="section1_heading">Unlock the <HilightedText>Power of Code</HilightedText></h2>
 
             <p className="section1_para">Learn to Build Anything You Can Imagine</p>
+
+            <ToggleCourse></ToggleCourse>
                 
             <div className="section1_three_card">
 
