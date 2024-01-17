@@ -1,18 +1,17 @@
-import React, { useState } from "react"
+import React, { useState  } from "react"
 import './ToggleCourse.css';
 import { HomePageExplore } from '../../../data/HomePageExplore'
 import HomePageThreeCard from "./HomePageThreeCard";
 
 const ToggleCourse = (props) => {
-    // const [currTag , setCurrTag] = useState("Free");
     const [courseData , setCourseData] = useState(HomePageExplore[0].courses);
-    const [currSelect , setCurrSelct] = useState(HomePageExplore[0].courses[0].heading);
-    const [currTag , setCurrTag] = useState(courseData[0].heading);
+    const [currSelect , setCurrSelct] = useState(courseData[0].heading);
+    const [currTag , setCurrTag] = useState(HomePageExplore[0].tag);
 
     function tagClickHandler(tag){
         setCurrTag(tag);
         let newCourseData = HomePageExplore.find((eachCourse) =>{
-            return (eachCourse.tag == tag)
+            return (eachCourse.tag === tag)
         });
         newCourseData = newCourseData.courses;
         setCourseData(newCourseData);

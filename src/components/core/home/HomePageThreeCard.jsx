@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React from "react"
 import './HomePageThreeCard.css'
 import { FaUserGroup } from "react-icons/fa6";
 import { ImTree } from "react-icons/im";
@@ -10,7 +10,6 @@ const HomePageThreeCard = (props) => {
   const setCurrSelctHandler = props.changeSelectedCard;
 
   function toggleSelectedCard(){
-    console.log(heading)
     setCurrSelctHandler(heading);
   }
 
