@@ -17,11 +17,14 @@ import cheat from '../assets/cheat.png';
 import instructor from '../assets/instructor.png'
 import Footer from "../components/core/home/Footer";
 import ToggleCourse from "../components/core/home/ToggleCourse";
+import Navbar from "../components/core/home/Navbar";
 
 const Home = (props) => {
 return (
     <div className="homeWrapper">
         
+        <Navbar></Navbar>
+
         {/**section 1 black background */}
         <div className="section1">   
             <Link to={"/signup"} className="becomeInstructorButton">

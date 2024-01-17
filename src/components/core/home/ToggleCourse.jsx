@@ -26,10 +26,10 @@ const ToggleCourse = (props) => {
     <div className="toggleCourse_wrapper">
         <div className="toggleCourse_bars">
             {
-                HomePageExplore.map((eachObj) => {
+                HomePageExplore.map((eachObj , index) => {
                     return (
                         <div className={eachObj.tag === currTag ? "selected_tag" : ""} 
-                        onClick={()=>{tagClickHandler(eachObj.tag)}}>{eachObj.tag}</div>
+                        onClick={()=>{tagClickHandler(eachObj.tag)}} key={index}>{eachObj.tag}</div>
                     )
                 })
             }
