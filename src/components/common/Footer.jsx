@@ -1,7 +1,7 @@
 import React from "react"
-import {Company , Resourses , Support , Plans , Community ,S_L_C} from '../../../data/footerData';
+import {Company , Resourses , Support , Plans , Community ,S_L_C} from '../../data/footerData';
 import './Footer.css'
-import FooterCreaterHelper from "./FooterCreaterHelper";
+import FooterCreaterHelper from "../core/home/FooterCreaterHelper";
 import { TbLetterS } from "react-icons/tb";
 import { FaFacebook } from "react-icons/fa6";
 import { PiGoogleLogoFill } from "react-icons/pi";

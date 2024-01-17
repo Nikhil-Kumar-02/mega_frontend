@@ -1,0 +1,28 @@
+.navbar_wrapper{
+    background-color:  #131417;
+    width: 100%;
+    font-size: 0.9rem;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    display: flex;
+    border-bottom: 1px solid rgb(94, 92, 92);
+    justify-content: space-evenly;
+    align-items: center;
+    color: white ;
+    padding: 0.5rem 0;
+    & *{
+        text-decoration: none;
+        display: flex;
+        cursor: pointer;
+    }
+    .navbar_links_wrapper > div{
+        margin: 0.2rem 1rem;
+    }
+}
+
+.yellowLink > *{
+    color: yellow;
+}
+
+.whiteLink > * {
+    color: white;
+}

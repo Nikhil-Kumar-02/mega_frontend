@@ -7,7 +7,6 @@ import ButtonComponent from "../components/core/home/buttonComponent";
 // import autoPlayVideo from '../assets/production_id_3969453 (2160p).mp4'
 import HomePageTextBlock from "../components/core/home/HomePageTextBlock";
 import HomepageCodeBlock from '../components/core/home/HomepageCodeBlock';
-import HomePageThreeCard from '../components/core/home/HomePageThreeCard';
 import { PiMedalFill } from "react-icons/pi";
 import { RiGraduationCapFill } from "react-icons/ri";
 import { FaGem } from "react-icons/fa";
@@ -15,16 +14,13 @@ import { RiCodeBoxFill } from "react-icons/ri";
 import photo from "../assets/girl.jpg";
 import cheat from '../assets/cheat.png';
 import instructor from '../assets/instructor.png'
-import Footer from "../components/core/home/Footer";
+import Footer from "../components/common/Footer";
 import ToggleCourse from "../components/core/home/ToggleCourse";
-import Navbar from "../components/core/home/Navbar";
 
 const Home = (props) => {
 return (
     <div className="homeWrapper">
         
-        <Navbar></Navbar>
-
         {/**section 1 black background */}
         <div className="section1">   
             <Link to={"/signup"} className="becomeInstructorButton">
@@ -181,7 +177,7 @@ return (
                 <div className="section2_photo_container">
 
                     <div>
-                        <img src={photo} height={350}></img>
+                        <img src={photo} height={350} loading="lazy" alt=""></img>
                     </div>
                 
                     <div className="section2_greenBlock_container">
@@ -213,7 +209,7 @@ return (
             <p className="section2_para">Using spin making learning multiple languages easy. with 20+ languages realistic voice-over, progress tracking, custom schedule and more.</p>
 
             <div className="section2_threePhotos">
-                <img src={cheat} height={400}></img>
+                <img src={cheat} height={400} loading="lazy" alt=""></img>
             </div>
             <div className="section2_end">
                 <ButtonComponent active={true} linkTo={"/signUp"}>Learn More</ButtonComponent>
@@ -226,7 +222,7 @@ return (
 
                 <div className="section3_instructor">
                     <div>
-                        <img src={instructor} height={450}></img>
+                        <img src={instructor} height={450} loading="lazy" alt=""></img>
                     </div>
                     <div>
                         <h1>Become an</h1>
