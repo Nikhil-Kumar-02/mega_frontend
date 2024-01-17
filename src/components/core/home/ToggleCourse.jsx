@@ -7,14 +7,19 @@ const ToggleCourse = (props) => {
     // const [currTag , setCurrTag] = useState("Free");
     const [courseData , setCourseData] = useState(HomePageExplore[0].courses);
     const [currSelect , setCurrSelct] = useState(HomePageExplore[0].courses[0].heading);
+    const [currTag , setCurrTag] = useState(courseData[0].heading);
 
-    function tagClickHandler(e){
-        console.log(e.target.innerText);
-
+    function tagClickHandler(tag){
+        setCurrTag(tag);
+        let newCourseData = HomePageExplore.find((eachCourse) =>{
+            return (eachCourse.tag == tag)
+        });
+        newCourseData = newCourseData.courses;
+        setCourseData(newCourseData);
+        setCurrSelct(newCourseData[0].heading)
     }
 
     function setCurrSelctHandler(input){
-        console.log('the input recieved in the setcurr handler is : ' , input);
         setCurrSelct(input);
     }
 
@@ -24,7 +29,8 @@ const ToggleCourse = (props) => {
             {
                 HomePageExplore.map((eachObj) => {
                     return (
-                        <div onClick={tagClickHandler}>{eachObj.tag}</div>
+                        <div className={eachObj.tag === currTag ? "selected_tag" : ""} 
+                        onClick={()=>{tagClickHandler(eachObj.tag)}}>{eachObj.tag}</div>
                     )
                 })
             }
