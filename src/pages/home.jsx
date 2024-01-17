@@ -102,22 +102,6 @@ return (
 
             <ToggleCourse></ToggleCourse>
                 
-            <div className="section1_three_card">
-
-                <HomePageThreeCard heading={"Learn HTML"} active={false}>
-                This course covers the basic concepts of HTML including creating and structuring web pages, adding text, links, images, and more.
-                </HomePageThreeCard>
-
-                <HomePageThreeCard heading={"Learn CSS"} active={true}>
-                This course explores advanced topics in HTML5 and CSS3, including
-                animations, transitions, and layout techniques
-                </HomePageThreeCard>
-
-                <HomePageThreeCard heading={"Responsive Web Design"} active={true}>
-                This course teaches responsive web design techniques, allowing web pages to adapt to different devices and screen sizes
-                </HomePageThreeCard>
-
-            </div>
         </div>
 
         {/**section 2 white background */}

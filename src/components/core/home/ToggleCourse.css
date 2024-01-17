@@ -1,20 +1,31 @@
 .toggleCourse_wrapper{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.toggleCourse_bars{
   background-color:  rgb(22, 29, 41);
   color: white;
   font-size: 0.8rem;
   border-radius: 3rem;
   width: 35%;
-  margin-top: 2rem;
+  margin: 2rem 0;
   padding: 0.2rem 0.8rem;
-  > div {
-    display: flex;
-    justify-content: space-between;
-    > div{
-      padding: 0.2rem 0.4rem;
-    }:hover{
-      background-color: black;
-      border-radius: 3rem;
-      cursor: pointer;
-    }
+  display: flex;
+  justify-content: space-between;
+  > div{
+    padding: 0.2rem 0.4rem;
+  }:hover{
+    background-color: black;
+    border-radius: 3rem;
+    cursor: pointer;
   }
+}
+
+.toggleCourse_courses{
+  width: 70%;
+  display: flex;
+  justify-content: space-between;
+  z-index: 3;
 }

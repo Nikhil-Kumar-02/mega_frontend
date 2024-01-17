@@ -86,15 +86,6 @@
     font-family: cursive;
 }
 
-.section1_three_card{
-    width: 70%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    margin-top: 3rem;
-    z-index: 3;
-}
-
 .section2{
     background-color: #F8F8F8;
     width: 100%;  

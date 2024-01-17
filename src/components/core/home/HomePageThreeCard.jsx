@@ -1,17 +1,27 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import './HomePageThreeCard.css'
 import { FaUserGroup } from "react-icons/fa6";
 import { ImTree } from "react-icons/im";
 
-const HomePageThreeCard = ({heading , children , active}) => {
+const HomePageThreeCard = (props) => {
+
+  const {heading , description , lessionNumber , level} = props.data;
+  const selectedCard = props.selectedCard;
+  const setCurrSelctHandler = props.changeSelectedCard;
+
+  function toggleSelectedCard(){
+    console.log(heading)
+    setCurrSelctHandler(heading);
+  }
+
   return (
-    <div className={active ? "HomePageThreeCard_darkbg" : "HomePageThreeCard_whitebg"}>
+    <div className={heading !== selectedCard ? "HomePageThreeCard_darkbg" : "HomePageThreeCard_whitebg"} onClick={toggleSelectedCard}>
         <h4>{heading}</h4>
-        <div>{children}</div>
+        <div>{description}</div>
         <hr className="horizontal_line"></hr>
         <div className="HomePageThreeCard_footer">
-            <div><FaUserGroup /> Beginner</div>
-            <div><ImTree /> 6 Lessons</div>
+            <div><FaUserGroup />{level}</div>
+            <div><ImTree />{lessionNumber} Lessons</div>
         </div>       
     </div>
   )
