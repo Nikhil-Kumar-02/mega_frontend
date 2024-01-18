@@ -11,13 +11,16 @@ const Navbar = (props) => {
   const location = useLocation();
 
   function matchRoute(currPath){
+    console.log('location is ' ,location.pathname ,'curr path is ' , currPath);
     return matchPath(currPath , location.pathname);
   }
 
   return (
     <div className="navbar_wrapper">
       <div>
-        <img src={logo} height={25}></img>
+        <Link to={"/"}>
+          <img src={logo} height={25} alt=""></img>
+        </Link>
       </div>
       <div className="navbar_links_wrapper">
         {
