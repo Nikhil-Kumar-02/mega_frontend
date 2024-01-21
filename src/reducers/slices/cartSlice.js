@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import toast from 'react-hot-toast'
+// import toast from 'react-hot-toast'
 //remember to add toast when something is added or removed or resetted
 
 export const cartSlice = createSlice({
@@ -18,7 +18,7 @@ export const cartSlice = createSlice({
     },
     //remove from cart
     removeFromCart(state,action){
-        state.cartItems = state.cartItems.filter(item => item != action.payload) 
+        state.cartItems = state.cartItems.filter(item => item !== action.payload) 
     },
     //resetcart
     resetCart(state,action){
