@@ -3,6 +3,7 @@ import loginImage from '../../../assets/loginImage.jpg'
 import { FcGoogle } from 'react-icons/fc';
 import { AiFillEyeInvisible , AiFillEye} from 'react-icons/ai';
 import './LogInAndSignUp.css'
+import { CgAsterisk } from "react-icons/cg";
 
 const LogInPage = (props) => {
 
@@ -34,7 +35,7 @@ function submitHandler(e){
   console.log(loginData);
   props.fun();
 }
-
+ 
   return (
     <div className="LogInPage">
       <div>
@@ -43,13 +44,11 @@ function submitHandler(e){
             <div>Build skills for today / tomorrow and beyond </div>
             <div className="signBluetxt">Education to future proof your career</div>
             <div>
-                <label htmlFor="email">Email Address</label>
-                <br></br>
+                <label htmlFor="email">Email Address <div><CgAsterisk/></div></label>
                 <input required type="email" id="email" placeholder="Enter email address" name="Email" onChange={changeHandler} value={loginData.Email}></input>
             </div>
-            <br></br>
             <div className="password">
-                <label htmlFor="password">Enter Password</label>
+                <label htmlFor="password">Enter Password <div><CgAsterisk/></div></label>
                 <input type="password" id="password" placeholder="Enter Password" name="Password" onChange={changeHandler} value={loginData.Password}></input>
                 {
                   !showPassword ? (
@@ -60,17 +59,14 @@ function submitHandler(e){
                 }
                 <span className="forgotPassword">Forgot Password ?</span>
             </div>
-            <br></br>
             <div>
                 <button type="submit" className="signInButton">Sign In</button>
             </div>
-            <br></br>
-            <br></br>
             <div>
                 <button type="submit" ><FcGoogle className="googleLogo"></FcGoogle>Sign In With Google</button>
             </div>
         </form>
-        <img src={loginImage} alt="the teacher is teaching" width={400} height={300} className="teachingImage"></img>
+        <img src={loginImage} alt="the teacher is teaching" width={400} className="teachingImage"></img>
       </div>
     </div>
   )

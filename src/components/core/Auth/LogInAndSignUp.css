@@ -52,23 +52,22 @@
 
 
 /* below css for log in page */
-.LogInPage{
-    height: 92vh;
-    width: 100%;
-    /* display: flex;
-    flex-direction: row;
-    justify-content: center; */
-    background-color: pink;
-}
 
-.LogInPage > * {
-    height: 92vh;
-    width: 100%;
+
+.LogInPage > div {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    padding: 3.5rem 0;
     display: flex;
     justify-content: space-evenly;
-    background-color: gray;
+    background-color: 000814;
     color: white;
+    padding: auto auto;
 }
+
+form > div {
+    margin: 0.8rem 0;
+}
+
 
 .teachingImage{
     border-radius: 9px;
