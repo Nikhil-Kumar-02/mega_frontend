@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { Link, matchPath, useLocation } from "react-router-dom";
 import './Navbar.css'
 import { IoIosArrowDown } from "react-icons/io";
@@ -8,6 +8,9 @@ import SignUpLogIn from "./signUpLogIn";
 import { useSelector } from "react-redux";
 import { FaShoppingCart } from "react-icons/fa";
 import UserProfileDropDown from "../core/Auth/UserProfileDropDown";
+import {requestBackend}  from '../../services/apiConnector';
+import {courseAllRoutes} from '../../services/apiRoutes';
+
 
 const Navbar = (props) => {
 
@@ -17,8 +20,19 @@ const Navbar = (props) => {
   const {totalItems} = useSelector((state) => state.cart);
   const user = useSelector((state) => state.profile.user);
 
+  const [allCategories , setAllCategories] = useState([]);
+
+  async function getCategories(){
+    const responseInNavbar = await requestBackend('get' , courseAllRoutes.getAllCategories);
+    console.log('the response in navbar is : ', responseInNavbar);
+    setAllCategories(responseInNavbar);
+  }
+
+  useEffect( () => {
+    getCategories();
+  } , [])
+
   function matchRoute(currPath){
-    console.log('location is ' ,location.pathname ,'curr path is ' , currPath);
     return matchPath(currPath , location.pathname);
   }
 
@@ -33,7 +47,23 @@ const Navbar = (props) => {
         {
           NavbarLinks.map((eachLink , index)=>(
             <div key={index}>{
-              eachLink.title === "Catalog" ? (<div>{eachLink.title}<IoIosArrowDown/></div>) 
+              eachLink.title === "Catalog" ? (
+                <div className="catelog_container">
+                  <div className="catelog_container_catelog">
+                    {eachLink.title}<IoIosArrowDown/>
+                  </div>
+                  <div className="onHover_elements_container">
+                    <div className="vertical_square"></div>
+                    <div className="visible_on_hover_text">
+                      {
+                        allCategories.length > 0 && 
+                          allCategories.map((categories) => (
+                            <div>{categories.name}</div>
+                        ))
+                      }
+                    </div>
+                  </div>
+                </div>) 
               :
               (<div className={ matchRoute(eachLink.path) ? "yellowLink" : "whiteLink"}>
                 <Link to={eachLink.path}>{eachLink.title}</Link>

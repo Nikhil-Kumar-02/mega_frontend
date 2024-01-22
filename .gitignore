@@ -4,6 +4,7 @@
 /node_modules
 /.pnp
 .pnp.js
+/dotenv.js
 
 # testing
 /coverage
