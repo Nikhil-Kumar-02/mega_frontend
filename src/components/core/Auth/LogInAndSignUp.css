@@ -1,0 +1,275 @@
+.wrapper{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    width: 100%;
+    background-color: gray;
+}
+
+.header{
+    display: flex;
+    height: 8vh;
+    justify-content: space-between;
+    & * {
+        display: flex;
+        margin: 0.3rem;
+        color: white;
+        font-weight: 600;
+        font-size: 1rem;
+        cursor: pointer;
+    }
+}
+
+.navigator > *{
+    margin: 0.5rem 1.5rem;
+}
+
+.auth > * {
+    width: 5rem;
+    background-color: rgb(141, 136, 136);
+    border: none;
+    border-radius: 5px;
+}
+
+.auth *{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.HomePageDesign{
+    height: 92vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-size: 3rem;
+    font-weight: 700;
+    color: white;
+}
+
+
+
+/* below css for log in page */
+.LogInPage{
+    height: 92vh;
+    width: 100%;
+    /* display: flex;
+    flex-direction: row;
+    justify-content: center; */
+    background-color: pink;
+}
+
+.LogInPage > * {
+    height: 92vh;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    background-color: gray;
+    color: white;
+}
+
+.teachingImage{
+    border-radius: 9px;
+    margin-top: 2rem;
+    border-right: 5px solid rgb(57, 55, 55);
+    border-bottom: 5px solid rgb(55, 54, 54);
+}
+
+.signBluetxt{
+    color: aqua;
+    margin-bottom: 2rem;
+}
+
+.signInform{
+    width: 25vw;
+    & button , input{
+        width: 25vw;
+        height: 6vh;
+        border: none;
+        border-radius: 5px;
+        position: relative;
+    }
+}
+
+.signInButton{
+    background-color: rgb(244, 244, 4);
+    color: rgb(87, 85, 85);
+    cursor: pointer;
+}
+
+.forgotPassword{
+    color: aqua;
+    font-size: 0.7rem;
+    margin-left: 14rem;
+    cursor: pointer;
+}
+
+.forgotPassword:hover{
+    text-decoration: underline;
+}
+
+.googleLogo{
+    position: absolute;
+    left: 5rem;
+}
+
+.password{
+    position: relative;
+}
+
+.eyeLogo{
+    position: absolute;
+    left: 18rem;
+    top: 1.8rem;
+    color: black;
+    font-size: 1.4rem;
+    cursor: pointer;
+}
+
+button:hover{
+    cursor: pointer;
+}
+
+/* below css for sign up page */
+
+.signup-wrapper{
+    height: 92vh;
+    /* background-color: pink; */
+    display: flex;
+    justify-content: center ;
+}
+
+.signup-container{
+    display: flex;
+    width: 70vw;
+    /* background-color: gray; */
+    justify-content: space-between;
+}
+
+.signup-form{
+    width: 30vw;
+    /* background-color: yellow; */
+    color: white;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.signup-text{
+    font-weight: 200;
+}
+
+.signup-bluetxt{
+    color: aqua;
+}
+
+.selectUser{
+    background-color: rgb(81, 79, 79);
+    border-radius: 1rem;
+    width: max-content;
+    margin: 0.7rem 0rem;
+}
+
+.selectUser > * {
+    margin: 0.5rem 1rem;
+    background-color: rgb(81, 79, 79);
+    height: 1.8rem;
+    width: 4rem;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+
+.signupPersonalDetails{
+    display: flex;
+    justify-content: space-between;
+    & input{
+        background-color: rgb(211, 206, 206);
+    }
+    
+}
+
+.signup-form {
+    & input , button{
+        height: 1.8rem;
+        border: none;
+        border-radius: 5px;
+    }
+}
+
+.signupEmail {
+    margin: 0.8rem 0;
+    & input{
+        width: 30vw;
+        background-color: rgb(211, 206, 206);
+    }
+}
+
+.signup-password{
+    display: flex;
+    justify-content: space-between;
+    & input{
+        background-color: rgb(211, 206, 206);
+    }
+}
+
+.createAccount{
+    width: 30vw;
+    height: 12vh;
+    margin: 1rem 0;
+    background-color: rgb(202, 202, 31);
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.signup-google >*{ 
+    width: 30vw;
+    cursor: pointer;
+    font-weight: 700;
+    color: white;
+    background-color: rgb(101, 91, 91);
+    position: relative;
+}
+
+.signup-google-logo{
+    position: absolute;
+    left: 7rem;
+}
+
+.crePassword{
+    position: relative;
+    & .signupEyeLogo {
+        position: absolute;
+        font-size: 1.5rem;
+        left: 8.5rem;
+        top: 1.3rem;
+        cursor: pointer;
+        color: black;
+    }
+}
+
+.cnfPassword{
+    position: relative;
+    & .signupEyeLogo {
+        position: absolute;
+        font-size: 1.5rem;
+        left: 8.5rem;
+        top: 1.3rem;
+        cursor: pointer;
+        color: black;
+    }
+}
+
+.dashboard-wrapper{
+    height: 92vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 4rem;
+    font-family: cursive;
+    color: cornsilk;
+}
+

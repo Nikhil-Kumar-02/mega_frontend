@@ -54,11 +54,11 @@ const Navbar = (props) => {
                   </div>
                   <div className="onHover_elements_container">
                     <div className="vertical_square"></div>
-                    <div className="visible_on_hover_text">
-                      {
+                      <div className="visible_on_hover_text">
+                      { 
                         allCategories.length > 0 && 
-                          allCategories.map((categories) => (
-                            <div>{categories.name}</div>
+                        allCategories.map((categories) => (
+                          <div>{categories.name}</div>
                         ))
                       }
                     </div>
