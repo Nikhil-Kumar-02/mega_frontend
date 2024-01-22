@@ -19,7 +19,7 @@ const ResetPassword = (props) => {
             <ButtonComponent active={true} linkTo={"#"}>Reset Password</ButtonComponent>
         </div>
         <div>
-            <Link to={"/"}><FaLongArrowAltLeft /> Back to login</Link>
+            <Link to={"/logIn"}><FaLongArrowAltLeft /> Back to login</Link>
         </div>
       </div>
     </div>

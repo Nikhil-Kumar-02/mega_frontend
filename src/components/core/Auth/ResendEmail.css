@@ -1,0 +1,42 @@
+.resendEmail_container{
+    background-color: 000814;
+    height: 93vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.resendEmail {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    justify-content: left;
+    width: 25vw;
+}
+
+.resendEmail{
+    > div{
+        margin: 1rem 0;
+        text-align: center;  
+    }  
+    > p {
+        margin: 0.5rem 0;
+    }
+    >:last-child{
+        & *{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            margin: 0 0.3rem;
+        }
+        :hover{
+            text-decoration: underline;
+            cursor: pointer;
+        }
+    }
+}
