@@ -5,7 +5,9 @@ import Navbar from './components/common/Navbar';
 import LogInPage from './components/core/Auth/LogInPage'
 import SignUp from './components/core/Auth/SignUp'
 import ResetPassword from './components/core/Auth/ResetPassword';
-import ResendEmail from './components/core/Auth/ResendEmail'
+import ResendEmail from './components/core/Auth/ResendEmail';
+import ChooseNewPassword from './components/core/Auth/ChooseNewPassword';
+
 
 function App() {
   return (
@@ -17,6 +19,7 @@ function App() {
         <Route path='/logIn' element={<LogInPage/>}></Route>
         <Route path='/resetPassword' element={<ResetPassword/>}></Route>
         <Route path='/resendEmail' element={<ResendEmail/>}></Route>
+        <Route path='chooseNewPassword' element={<ChooseNewPassword></ChooseNewPassword>}></Route>
       </Routes>
     </div>
   );
