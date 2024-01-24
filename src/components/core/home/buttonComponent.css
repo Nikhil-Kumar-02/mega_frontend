@@ -1,5 +1,6 @@
 .button_Link{
     text-decoration: none;
+    text-align: center;
     font-family: 'Times New Roman', Times, serif;
     width: max-content;
     & div{

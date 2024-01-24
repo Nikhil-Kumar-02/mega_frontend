@@ -3,10 +3,11 @@ import { FaLongArrowAltLeft } from "react-icons/fa";
 import './ChooseNewPassword.css'
 import ButtonComponent from "../home/buttonComponent";
 import { Link } from "react-router-dom";
-import { CgAsterisk } from "react-icons/cg";
 import { FaCheckCircle } from "react-icons/fa";
+import PasswordInputComponent from '../../common/PasswordInputComponent'
 
 const ChooseNewPassword = (props) => {
+
   return (
     <div className="chooseNewPassword_wrapper">
       <div className="ChooseNewPassword">
@@ -14,10 +15,11 @@ const ChooseNewPassword = (props) => {
         <p>
             Almost done. Enter your new password and you are all set.
         </p>
-        <label for="newPassword">New Password<CgAsterisk></CgAsterisk></label>
-        <input id="newPassword" type="email" placeholder="Enter New Password"></input>
-        <label for="confirmPassword">Confirm New Password<CgAsterisk></CgAsterisk></label>
-        <input id="confirmPassword" type="email" placeholder="Confirm Above Password"></input>
+
+        <PasswordInputComponent title={"New Password"} placeholder={"Enter New Password"}>
+        </PasswordInputComponent>
+
+        <PasswordInputComponent title={"Confirm New Password"} placeholder={"Confirm Above Password"}></PasswordInputComponent>
 
         <div className="password_validator">
             <div>
