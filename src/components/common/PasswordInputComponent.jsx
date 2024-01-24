@@ -4,7 +4,7 @@ import { CgAsterisk } from "react-icons/cg";
 import { IoIosEye } from "react-icons/io";
 import { IoIosEyeOff } from "react-icons/io";
 
-const PasswordInputComponent = ({title , placeholder}) => {
+const PasswordInputComponent = ({title , placeholder , fetchPassword}) => {
 
   const [passwordVisiblity , setPasswordVisiblity] = useState(false);
 
@@ -12,11 +12,16 @@ const PasswordInputComponent = ({title , placeholder}) => {
     setPasswordVisiblity(prev => !prev);
   }
 
+  function passwordHandler(e){
+    const updatedPassword = e.target.value;
+    fetchPassword(updatedPassword);
+  }
+
   return (
     <div className="password_container">
         <label for="Password">{title}<CgAsterisk></CgAsterisk></label>
         <div>
-          <input id="Password" type={passwordVisiblity ? "text" : "password"} placeholder={placeholder}></input>
+          <input id="Password" onChange={passwordHandler} type={passwordVisiblity ? "text" : "password"} placeholder={placeholder}></input>
           <div onClick={passwordVisiblityToggler}>
             {
               passwordVisiblity ? <IoIosEye></IoIosEye> : <IoIosEyeOff></IoIosEyeOff> 

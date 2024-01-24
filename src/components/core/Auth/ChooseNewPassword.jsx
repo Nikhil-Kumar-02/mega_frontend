@@ -11,6 +11,9 @@ const ChooseNewPassword = (props) => {
   const [validity , setValidity] = useState({lowercase:false , uppercase:false , special:false , 
                                               number:false , size : false});
 
+  const [newPassword , setNewPassword] = useState(null);
+  const [confirmNewPassword , setConfirmNewPassword] = useState(null);
+
     function changeHandler(e){
       const currentPassword = e.target.value;
 
@@ -43,6 +46,22 @@ const ChooseNewPassword = (props) => {
 
     }
 
+    function submitHandler(e){
+      //e.preventDefault();
+
+      //now make sure that all password validity conditions are satisfied
+      if(!validity.lowercase||!validity.uppercase||!validity.size||!validity.special||!validity.number){
+        alert("All password valdation conditions not fulfilled");
+        window.location.reload();
+      }
+      
+      if(newPassword !== confirmNewPassword){
+        alert("Passwords do not match");
+        window.location.reload();
+      }
+      console.log(newPassword , confirmNewPassword);
+    }
+
   return (
     <div className="chooseNewPassword_wrapper">
       <div className="ChooseNewPassword">
@@ -51,11 +70,11 @@ const ChooseNewPassword = (props) => {
             Almost done. Enter your new password and you are all set.
         </p>
         <div onChange={changeHandler}>
-          <PasswordInputComponent title={"New Password"} placeholder={"Enter New Password"}>
+          <PasswordInputComponent fetchPassword={setNewPassword} title={"New Password"} placeholder={"Enter New Password"}>
           </PasswordInputComponent>
         </div>
 
-        <PasswordInputComponent title={"Confirm New Password"} placeholder={"Confirm Above Password"}></PasswordInputComponent>
+        <PasswordInputComponent fetchPassword={setConfirmNewPassword} title={"Confirm New Password"} placeholder={"Confirm Above Password"}></PasswordInputComponent>
 
         <div className="password_validator">
             <div>
@@ -79,7 +98,9 @@ const ChooseNewPassword = (props) => {
             </div>
         </div>
 
-        <ButtonComponent active={true} linkTo={"#"}>Reset Password</ButtonComponent>
+        <div onClick={submitHandler}>
+          <ButtonComponent active={true} >Reset Password</ButtonComponent>
+        </div>
 
         <div>
             <Link to={"/logIn"}><FaLongArrowAltLeft /> Back to login</Link>
