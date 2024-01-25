@@ -4,7 +4,7 @@ import Home from './pages/home';
 import Navbar from './components/common/Navbar';
 import LogInPage from './components/core/Auth/LogInPage'
 import SignUp from './components/core/Auth/SignUp'
-import ResetComplete from './components/core/Auth/ResetComplete';
+import EnterOtp from './components/core/Auth/EnterOtp';
 
 
 function App() {
@@ -15,7 +15,7 @@ function App() {
         <Route path='/' element={<Home/>}></Route>
         <Route path='/signUp' element={<SignUp/>}></Route>
         <Route path='/logIn' element={<LogInPage/>}></Route>
-        <Route path='/resetComplete' element={<ResetComplete/>}></Route>
+        <Route path='/enterOtp' element={<EnterOtp/>}></Route>
       </Routes>
     </div>
   );
