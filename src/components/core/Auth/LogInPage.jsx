@@ -1,39 +1,19 @@
 import React, { useState } from "react"
 import loginImage from '../../../assets/loginImage.jpg'
 import { FcGoogle } from 'react-icons/fc';
-import { AiFillEyeInvisible , AiFillEye} from 'react-icons/ai';
 import './LogInAndSignUp.css'
 import { CgAsterisk } from "react-icons/cg";
+import PasswordInputComponent from '../../common/PasswordInputComponent'
+import { Link } from "react-router-dom";
 
 const LogInPage = (props) => {
 
-const [loginData , setLoginData] = useState({Email : "" , Password : ""});
-const [showPassword , setShowPassword] = useState(false);
-
-function changeHandler(e){
-  setLoginData( (prevData) => ({
-    ...prevData , [e.target.name] : e.target.value
-  }))
-}
-
-function PasswordHandler(e){
-  // console.log(e.target.parentElement.children[1]);
-  // console.log(e.target.parentElement);
-  setShowPassword(!showPassword);
-  const tar = document.querySelector('#password');
-  // console.log(tar);
-  if(!showPassword){
-    tar.type = "text"
-  }
-  else{
-    tar.type = "password"
-  }
-}
+const [email , setEmail] =  useState("");
+const [password , setPassword] =  useState("");
 
 function submitHandler(e){
   e.preventDefault();
-  console.log(loginData);
-  props.fun();
+  console.log(email , password);
 }
  
   return (
@@ -43,21 +23,20 @@ function submitHandler(e){
             <h1>Welcome Back</h1>
             <div>Build skills for today / tomorrow and beyond </div>
             <div className="signBluetxt">Education to future proof your career</div>
-            <div>
+
+            <div className="login_email">
                 <label htmlFor="email">Email Address <div><CgAsterisk/></div></label>
-                <input required type="email" id="email" placeholder="Enter email address" name="Email" onChange={changeHandler} value={loginData.Email}></input>
+                <input required type="email" id="email" placeholder="Enter email address" name="Email" onChange={(e) => {
+                  setEmail(e.target.value)
+                }}></input>
             </div>
-            <div className="password">
-                <label htmlFor="password">Enter Password <div><CgAsterisk/></div></label>
-                <input type="password" id="password" placeholder="Enter Password" name="Password" onChange={changeHandler} value={loginData.Password}></input>
-                {
-                  !showPassword ? (
-                    <AiFillEyeInvisible className="eyeLogo" onClick={PasswordHandler}></AiFillEyeInvisible>
-                    ) : (
-                    <AiFillEye className="eyeLogo" onClick={PasswordHandler}></AiFillEye>
-                  )
-                }
-                <span className="forgotPassword">Forgot Password ?</span>
+
+            <div className="login_password">
+                <PasswordInputComponent title={"Password"} placeholder={"Enter your Password"}
+                fetchPassword={setPassword}></PasswordInputComponent>
+                <div className="forgotPassword">
+                  <Link to={"/resetPassword"}>Forgot Password ?</Link>
+                </div>
             </div>
             <div>
                 <button type="submit" className="signInButton">Sign In</button>
