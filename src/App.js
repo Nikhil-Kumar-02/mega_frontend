@@ -1,30 +1,39 @@
 import './App.css';
-import { Route , Routes } from 'react-router-dom';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import Home from './pages/home';
 import Navbar from './components/common/Navbar';
-import LogInPage from './components/core/Auth/LogInPage'
-import SignUp from './components/core/Auth/SignUp'
+import LogInPage from './components/core/Auth/LogInPage';
+import SignUp from './components/core/Auth/SignUp';
 import EnterOtp from './components/core/Auth/EnterOtp';
 import ResendEmail from './components/core/Auth/ResendEmail';
 import ResetPassword from './components/core/Auth/ResetPassword';
 import ResetComplete from './components/core/Auth/ResetComplete';
 import ChooseNewPassword from './components/core/Auth/ChooseNewPassword';
 import UserProfileDropDown from './components/core/Auth/UserProfileDropDown';
+import NotFound from './components/common/NotFound';
 
+const allPaths = ['/','/signUp','/logIn','/enterOtp','/resendEmail','/resetPassword','/resetComplete' , '/chooseNewPassword' , '/userProfileDropDown' , '/about' , '/contact']
+
+  
 function App() {
+  const location = useLocation();
+  const currPath = location.pathname;
   return (
-    <div className="App">
-      <Navbar></Navbar>
+    <div className='App'>
+      {
+        allPaths.includes(currPath) ? <Navbar></Navbar> : <></>
+      }
       <Routes>
-        <Route path='/' element={<Home/>}></Route>
-        <Route path='/signUp' element={<SignUp/>}></Route>
-        <Route path='/logIn' element={<LogInPage/>}></Route>
-        <Route path='/enterOtp' element={<EnterOtp/>}></Route>
-        <Route path='/resendEmail' element={<ResendEmail></ResendEmail>}></Route>
-        <Route path='/resetPassword' element={<ResetPassword></ResetPassword>}></Route>
-        <Route path='/resetComplete' element={<ResetComplete></ResetComplete>}></Route>
-        <Route path='/chooseNewPassword' element={<ChooseNewPassword></ChooseNewPassword>}></Route>
-        <Route path='/userProfileDropDown' element={<UserProfileDropDown></UserProfileDropDown>}></Route>
+        <Route path='/' element={<Home />} />
+        <Route path='/signUp' element={<SignUp />} />
+        <Route path='/logIn' element={<LogInPage />} />
+        <Route path='/enterOtp' element={<EnterOtp />} />
+        <Route path='/resendEmail' element={<ResendEmail />} />
+        <Route path='/resetPassword' element={<ResetPassword />} />
+        <Route path='/resetComplete' element={<ResetComplete />} />
+        <Route path='/chooseNewPassword' element={<ChooseNewPassword />} />
+        <Route path='/userProfileDropDown' element={<UserProfileDropDown />}></Route>
+        <Route path='/*' element={<NotFound />} />
       </Routes>
     </div>
   );
