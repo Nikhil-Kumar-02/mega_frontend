@@ -39,7 +39,7 @@ function submitHandler(e){
                 </div>
             </div>
             <div>
-                <button type="submit" className="signInButton">Sign In</button>
+                <button type="submit" className="signInButton">Log In</button>
             </div>
             <div>
                 <button type="submit" ><FcGoogle className="googleLogo"></FcGoogle>Sign In With Google</button>

@@ -4,59 +4,67 @@ import signupImage from '../../../assets/signupImage.png'
 import './LogInAndSignUp.css';
 import { CgAsterisk } from "react-icons/cg";
 import PasswordInputComponent from '../../common/PasswordInputComponent';
+import { HiInformationCircle } from "react-icons/hi";
 
 const SignUp = (props) => {
 
-    const [newUserData , setnewUserData] = useState({UserType : "Student" ,FirstName : "" , LastName : "" , Email : "" , CreatePassword : "" ,ConfirmPassword : ""});
+    const [newUserData , setnewUserData] = useState({UserType : "Student" ,FirstName : "" , LastName : "" , Email : "" , CreatePassword : "" ,ConfirmPassword : "" , PhoneNumber : "",
+    CountryCode : "+91"});
 
 
     function currentUserRole(e){
-        // e.preventDefault();
-        const val = e.target.value;
-        console.log(e.target);
-        console.log(val);
-        // setnewUserData( (prev) => ({
-        //     ...prev , UserType : e.target.name
-        // }))
+        const val = e.target.getAttribute("name");
+        setnewUserData( (prev) => ({
+            ...prev , UserType : val
+        }))
     }
     
+    // console.log(newUserData.CreatePassword , newUserData.ConfirmPassword)
     function submitHandler(e){
         e.preventDefault();
-        console.log(newUserData);
         if(newUserData.CreatePassword !== newUserData.ConfirmPassword){
-            alert("password not matching")
+            alert("Password not matching")
         }
-        else
-            props.fun();
+        let conditions = {
+            lowercase : false,
+            uppercase : false,
+            special : false,
+            number : false,
+            size : false
+        }
+        for(let i=0;i<newUserData.CreatePassword.length;i++){
+            if(newUserData.ConfirmPassword[i]>='a' && newUserData.ConfirmPassword[i]<='z'){
+                conditions.lowercase = true
+            }
+            else if(newUserData.ConfirmPassword[i]>='A' && newUserData.ConfirmPassword[i]<='Z'){
+                conditions.uppercase = true
+            }
+            else if(newUserData.ConfirmPassword[i]>='1' && newUserData.ConfirmPassword[i]<='9'){
+                conditions.number = true
+            }
+            else{
+                conditions.special = true
+            }
+        }
+        if(newUserData.ConfirmPassword.length>=8){
+            conditions.size = true
+        }
+        for(const cond in conditions){
+            if(!conditions[cond]){
+                console.log('condition not satisfied' , cond);
+                alert(`Password conditions not satisfied`);
+                break;
+            }
+        }
+        console.log(newUserData);
     }
 
     function changeHandler(e){
+        console.log(e.target.name , e.target.value);
         setnewUserData( (prevData) => ({
             ...prevData , [e.target.name] : e.target.value
         }))
     }
-
-    // function crePasswordHandler(e){
-    //     setcreShowPassword(!creshowPassword);
-    //     const tar = document.querySelector('#crePassword');
-    //     if(!creshowPassword){
-    //       tar.type = "text"
-    //     }
-    //     else{
-    //       tar.type = "password"
-    //     }
-    // }
-
-    // function cnfPasswordHandler(e){
-    //     setcnfShowPassword(!cnfshowPassword);
-    //     const tar = document.querySelector('#cnfPassword');
-    //     if(!cnfshowPassword){
-    //       tar.type = "text"
-    //     }
-    //     else{
-    //       tar.type = "password"
-    //     }
-    // }
 
   return (
     <div className="signup-wrapper">
@@ -101,39 +109,50 @@ const SignUp = (props) => {
                 <label htmlFor="phoneNumber">Phone Number<CgAsterisk></CgAsterisk></label>
                 <div className="phoneNumber">
                     <div>
-                        <select name="dog-names" id="dog-names"> 
-                            <option value="bangladesh">+880</option> 
-                            <option value="india">+91</option> 
-                            <option value="nepal">+977</option> 
-                            <option value="pakistan">+92</option> 
-                            <option value="sri lanka">+94</option> 
+                        <select name="CountryCode" onChange={changeHandler}> 
+                            <option name="CountryCode">+91</option> 
+                            <option name="CountryCode">+880</option> 
+                            <option name="CountryCode">+977</option> 
+                            <option name="CountryCode">+92</option> 
+                            <option name="CountryCode">+94</option> 
                         </select>
                     </div>
-                    <input type="text" placeholder="Enter phone number" id="phoneNumber" name="phoneNumber" onChange={changeHandler}></input>
+                    <input type="text" placeholder="Enter phone number" id="phoneNumber" name="PhoneNumber" value={newUserData.PhoneNumber} onChange={changeHandler}></input>
                 </div>
             </div>
 
             <div className="signup-password">
-                
-                <PasswordInputComponent title={"Create Password"} placeholder={"Enter Password"}
-                fetchPassword={(passwordRecieved) => {
-                    setnewUserData( (prev) => ({
-                        ...prev , CreatePassword : passwordRecieved
-                    } ) )
-                }}>
-                </PasswordInputComponent>
+                <div>
+                    <div className="information_icon">
+                        <span><HiInformationCircle /></span>
+                        <div className="information_data">
+                            <p>- one lowercase</p>
+                            <p>- one uppercase</p>
+                            <p>- one number</p>
+                            <p>- one special</p>
+                            <p>- 8 character minimum</p>
+                        </div>
+                    </div>
+                    <PasswordInputComponent title={"Create Password"} placeholder={"Enter Password"}
+                    fetchPassword={(passwordRecieved) => {
+                        setnewUserData( (prev) => ({
+                            ...prev , CreatePassword : passwordRecieved
+                        } ) )
+                    }}>
+                    </PasswordInputComponent>
+                </div>
 
                 <PasswordInputComponent placeholder={"Enter Password"} title={"Confirm Password"} 
                 fetchPassword={(passwordRecieved) => {
                     setnewUserData( (prev) => ({
-                        ...prev , confirmPassword : passwordRecieved
+                        ...prev , ConfirmPassword : passwordRecieved
                     } ) )
                 }}>
                 </PasswordInputComponent>
                 
             </div>
 
-            <div className="createAccount" >Create Account</div>
+            <div className="createAccount" onClick={submitHandler}>Create Account</div>
 
             {/* <div className="signup-google">
                 <button><FcGoogle className="signup-google-logo"></FcGoogle>Sign in with Google</button>

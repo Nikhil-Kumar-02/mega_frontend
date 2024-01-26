@@ -59,6 +59,7 @@ form > div {
         border: none;
         border-radius: 5px;
         position: relative;
+        font-weight: 500;
     }
 }
 
@@ -193,6 +194,7 @@ button:hover{
             border: none;
             border-radius: 3px;
             border-bottom: 1px solid grey;
+            font-weight: 600;
         }
     }
     >input{
@@ -200,13 +202,53 @@ button:hover{
     }
 }
 
-.signup-password{
+.signup-password {
     display: flex;
     justify-content: space-between;
-    >:nth-child(1){
+
+    > div {
+        position: relative;
+
+        > .information_icon {
+            display: flex;
+
+            > span {
+                color: white;
+                display: inline;
+                position: absolute;
+                right: 3.5rem;
+                font-size: 1rem;
+                cursor: pointer;
+
+                &:hover + .information_data {
+                    transform: scale(1);
+                }
+            }
+
+            > .information_data {
+                transform: scale(0);
+                position: absolute;
+                width: max-content;
+                left: 7.5rem;
+                bottom: 3.5rem;
+                background-color: rgba(255, 255, 255, 0.758);
+                font-family: cursive;
+                font-weight: 100;
+                font-size: 0.7rem;
+                padding: 0.1rem;
+                color:black;
+                z-index: 1;
+                border-radius: 0.5rem;
+                border-bottom-left-radius: 0px;
+            }
+        }
+    }
+
+    > :nth-child(1) {
         width: 48%;
     }
-    >:nth-child(2){
+
+    > :nth-child(2) {
         width: 48%;
     }
 }
