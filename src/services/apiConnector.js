@@ -1,10 +1,12 @@
 import axios from "axios";
 
-export const requestBackend = async (method , url , header , params) => {
+export const requestBackend = async (method , url , data , header , params) => {
     try {
+        console.log('in requrest backend try block')
         const response = await axios({
-            method : "get",
-            url : url
+            method : method,
+            url : url,
+            data : data
         })
         console.log('response from the axios : ' , response.data.data);
         return response.data.data;

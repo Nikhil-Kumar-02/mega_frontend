@@ -1,6 +1,7 @@
 import './App.css';
 import { Route, Routes, useLocation } from 'react-router-dom';
 import Home from './pages/home';
+import ForgotPassword from './pages/ForgotPassword';
 import Navbar from './components/common/Navbar';
 import LogInPage from './components/core/Auth/LogInPage';
 import SignUp from './components/core/Auth/SignUp';
@@ -20,9 +21,10 @@ function App() {
   const currPath = location.pathname;
   return (
     <div className='App'>
-      {
+      {/* {
         allPaths.includes(currPath) ? <Navbar></Navbar> : <></>
-      }
+      } */}
+      <Navbar></Navbar>
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/signUp' element={<SignUp />} />
@@ -33,6 +35,7 @@ function App() {
         <Route path='/resetComplete' element={<ResetComplete />} />
         <Route path='/chooseNewPassword' element={<ChooseNewPassword />} />
         <Route path='/userProfileDropDown' element={<UserProfileDropDown />}></Route>
+        <Route path='/forgotPassword' element={<ForgotPassword></ForgotPassword>}></Route>
         <Route path='/*' element={<NotFound />} />
       </Routes>
     </div>

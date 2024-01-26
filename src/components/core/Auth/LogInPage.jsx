@@ -35,7 +35,7 @@ function submitHandler(e){
                 <PasswordInputComponent title={"Password"} placeholder={"Enter your Password"}
                 fetchPassword={setPassword}></PasswordInputComponent>
                 <div className="forgotPassword">
-                  <Link to={"/resetPassword"}>Forgot Password ?</Link>
+                  <Link to={"/forgotPassword"}>Forgot Password ?</Link>
                 </div>
             </div>
             <div>
