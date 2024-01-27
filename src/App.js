@@ -33,7 +33,7 @@ function App() {
         <Route path='/resendEmail' element={<ResendEmail />} />
         <Route path='/resetPassword' element={<ResetPassword />} />
         <Route path='/resetComplete' element={<ResetComplete />} />
-        <Route path='/chooseNewPassword' element={<ChooseNewPassword />} />
+        <Route path='/update-password/:token' element={<ChooseNewPassword />} />
         <Route path='/userProfileDropDown' element={<UserProfileDropDown />}></Route>
         <Route path='/forgotPassword' element={<ForgotPassword></ForgotPassword>}></Route>
         <Route path='/*' element={<NotFound />} />

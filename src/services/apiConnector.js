@@ -8,8 +8,8 @@ export const requestBackend = async (method , url , data , header , params) => {
             url : url,
             data : data
         })
-        console.log('response from the axios : ' , response.data.data);
-        return response.data.data;
+        console.log('response from the axios : ' , response);
+        return response;
     } catch (error) {
         console.log('error i api connector' , error);
         return error;

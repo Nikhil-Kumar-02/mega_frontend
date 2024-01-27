@@ -12,7 +12,7 @@ export function getPasswordResetToken (email , setEmailSent){
             console.log('inside the try block')
             const responseFromBackend = await requestBackend("POST" , userAllRoutes.resetPasswordEmailSender , {email});
             setEmailSent(true);
-            console.log('response in auth : ' , responseFromBackend.response);
+            console.log('response in auth : ' , responseFromBackend.data);
         } catch (error) {
             console.log('error in services operations auth' , error);
         }
