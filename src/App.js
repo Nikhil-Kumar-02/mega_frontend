@@ -12,30 +12,23 @@ import ResetComplete from './components/core/Auth/ResetComplete';
 import ChooseNewPassword from './components/core/Auth/ChooseNewPassword';
 import UserProfileDropDown from './components/core/Auth/UserProfileDropDown';
 import NotFound from './components/common/NotFound';
-
-const allPaths = ['/','/signUp','/logIn','/enterOtp','/resendEmail','/resetPassword','/resetComplete' , '/chooseNewPassword' , '/userProfileDropDown' , '/about' , '/contact']
-
   
 function App() {
-  const location = useLocation();
-  const currPath = location.pathname;
   return (
     <div className='App'>
-      {/* {
-        allPaths.includes(currPath) ? <Navbar></Navbar> : <></>
-      } */}
-      <Navbar></Navbar>
       <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/signUp' element={<SignUp />} />
-        <Route path='/logIn' element={<LogInPage />} />
-        <Route path='/enterOtp' element={<EnterOtp />} />
-        <Route path='/resendEmail' element={<ResendEmail />} />
-        <Route path='/resetPassword' element={<ResetPassword />} />
-        <Route path='/resetComplete' element={<ResetComplete />} />
-        <Route path='/update-password/:token' element={<ChooseNewPassword />} />
-        <Route path='/userProfileDropDown' element={<UserProfileDropDown />}></Route>
-        <Route path='/forgotPassword' element={<ForgotPassword></ForgotPassword>}></Route>
+        <Route path='/' element={<Navbar></Navbar>}>
+          <Route index element={<Home />} />
+          <Route path='/signUp' element={<SignUp />} />
+          <Route path='/logIn' element={<LogInPage />} />
+          <Route path='/enterOtp' element={<EnterOtp />} />
+          <Route path='/resendEmail' element={<ResendEmail />} />
+          <Route path='/resetPassword' element={<ResetPassword />} />
+          <Route path='/resetComplete' element={<ResetComplete />} />
+          <Route path='/update-password/:token' element={<ChooseNewPassword />} />
+          <Route path='/userProfileDropDown' element={<UserProfileDropDown />}></Route>
+          <Route path='/forgotPassword' element={<ForgotPassword></ForgotPassword>}></Route>
+        </Route>
         <Route path='/*' element={<NotFound />} />
       </Routes>
     </div>

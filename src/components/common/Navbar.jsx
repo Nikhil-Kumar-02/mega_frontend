@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { Link, matchPath, useLocation } from "react-router-dom";
+import { Link, Outlet, matchPath, useLocation } from "react-router-dom";
 import './Navbar.css'
 import { IoIosArrowDown } from "react-icons/io";
 import { NavbarLinks } from "../../data/NavbarLinks";
@@ -37,6 +37,7 @@ const Navbar = (props) => {
   }
 
   return (
+    <>
     <div className="navbar_wrapper">
       <div>
         <Link to={"/"}>
@@ -98,6 +99,8 @@ const Navbar = (props) => {
         } 
       </div>
     </div>
+      <Outlet></Outlet>
+    </>
   )
 };
 
