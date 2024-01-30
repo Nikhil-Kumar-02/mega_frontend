@@ -20,12 +20,12 @@ const ResetPassword = ({setTheEmail , resetPasswordClicked}) => {
           your password. If you don't have access to your email we can try account recovery
         </p>
         <label for="emailAddress">Email Address <CgAsterisk/></label>
-        <input type="email" id="emailAddress" placeholder="Enter Your Email Address"
+        <input reauired type="email" id="emailAddress" placeholder="Enter Your Email Address"
         onChange={(e) => {
           setTheEmail(e.target.value);
         }}></input>
         <div onClick={submitHandler}>
-          <ButtonComponent active={true} linkTo={"#"}>Reset Password</ButtonComponent>
+          <ButtonComponent active={true}>Reset Password</ButtonComponent>
         </div>
         <div>
             <Link to={"/logIn"}><FaLongArrowAltLeft /> Back to login</Link>
