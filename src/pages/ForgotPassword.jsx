@@ -31,7 +31,7 @@ const ForgotPassword = (props) => {
     <div>
       {
         loading ? (
-            <div>loader ... </div>
+            <div className="custom-loader"></div>
         ) : (
             !emailSent ? (
                 <ResetPassword setTheEmail={setEmail} resetPasswordClicked={resetPassword}></ResetPassword>

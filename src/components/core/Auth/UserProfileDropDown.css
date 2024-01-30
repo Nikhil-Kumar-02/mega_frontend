@@ -3,7 +3,41 @@
 }
 
 .userProfileDropDown{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
     >img{
         border-radius: 1rem;
     }
+    
+}
+
+.userProfileDropDown_hover{
+    display: flex;
+    flex-direction: column;
+    z-index: 3;
+    transform: scale(0);
+    position: absolute;
+    top: 1.5rem;
+    right: -2rem;
+    background-color: #202226;
+    padding: 0.7rem 0.7rem;
+    border-radius: 0.3rem;
+    >div{
+        padding: 0.5rem 1rem;
+        margin : 0.4rem 0.3rem;
+        font-size: 1rem;
+        border-radius: 1rem;
+        cursor: pointer;
+        background-color: rgb(48, 46, 46);
+    }
+    >div:hover{
+        background-color: black;
+        text-decoration: underline;
+    }
+}
+
+.userProfileDropDown:hover .userProfileDropDown_hover{
+    transform: scale(1);
 }

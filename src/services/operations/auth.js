@@ -32,6 +32,7 @@ export function getPasswordResetToken (email , setEmailSent){
 
 
 export function backendLogInRequest(email , password){
+    const toastId = toast.loading("Loading ... ")
     return async (dispatch) => {
         try {
             const responseFromapiConnector = await requestBackend("POST" , userAllRoutes.userLogIn , {email , password});
@@ -42,16 +43,31 @@ export function backendLogInRequest(email , password){
             }
             else{
                 //got the positive response
-                toast.success("LogIn Sucessful");
                 const dataRecieved = responseFromapiConnector.data;
                 console.log(dataRecieved);
                 dispatch(setToken(dataRecieved.token));
                 dispatch(setUser(dataRecieved.foundUser));
                 localStorage.setItem("token" , dataRecieved.token);
-
+                localStorage.setItem("user" , dataRecieved.foundUser);
+                toast.success("LogIn Sucessful");
             }
         } catch (error) {
             console.log('error while trying to logging in : ',error)
         }
+        toast.dismiss(toastId);
+    }
+}
+
+export function userLogout(navigate){
+    const toastId = toast.loading("Logging Out ....")
+    return async (dispatch) => {
+        //remove the instance from the user global store and local storage
+        localStorage.removeItem("token");
+        localStorage.removeItem("user");
+        dispatch(setToken(null));
+        dispatch(setUser(null));
+        toast.dismiss(toastId);
+        toast.success("User Logged Out Sucessfully");
+        navigate("/");
     }
 }
