@@ -10,9 +10,9 @@ export function getPasswordResetToken (email , setEmailSent){
         dispatch(setLoading(true));
         try {
             console.log('inside the try block')
-            const responseFromBackend = await requestBackend("POST" , userAllRoutes.resetPasswordEmailSender , {email});
+            const responseFromapiConnector = await requestBackend("POST" , userAllRoutes.resetPasswordEmailSender , {email});
+            console.log('response in auth : ' , responseFromapiConnector.data);
             setEmailSent(true);
-            console.log('response in auth : ' , responseFromBackend.data);
         } catch (error) {
             console.log('error in services operations auth' , error);
         }

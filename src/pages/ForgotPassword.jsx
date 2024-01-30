@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import ResendEmail from '../components/core/Auth/ResendEmail'
 import ResetPassword from '../components/core/Auth/ResetPassword'
 import { getPasswordResetToken } from "../services/operations/auth";
+import toast from "react-hot-toast";
 
 const ForgotPassword = (props) => {
 
@@ -16,6 +17,7 @@ const ForgotPassword = (props) => {
     
     function resetPassword(){
         console.log('button clicked for email : ' , email);
+        toast.success("clicked")
         dispatch(getPasswordResetToken(email , setEmailSent));
     }
 

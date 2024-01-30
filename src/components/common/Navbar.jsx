@@ -20,10 +20,10 @@ const Navbar = (props) => {
   const {totalItems} = useSelector((state) => state.cart);
   const user = useSelector((state) => state.profile.user);
 
-  const [allCategories , setAllCategories] = useState([]);
+  const [allCategories , setAllCategories] = useState([""]);
 
   async function getCategories(){
-    const responseInNavbar = await requestBackend('get' , courseAllRoutes.getAllCategories);
+    const responseInNavbar = await requestBackend('GET' , courseAllRoutes.getAllCategories);
     console.log('the response in navbar is : ', responseInNavbar);
     setAllCategories(responseInNavbar);
   }
@@ -57,10 +57,17 @@ const Navbar = (props) => {
                     <div className="vertical_square"></div>
                       <div className="visible_on_hover_text">
                       { 
-                        allCategories.length > 0 && 
-                        allCategories.map((categories) => (
-                          <div>{categories.name}</div>
-                        ))
+                        !allCategories ? 
+                        (
+                          <div class="custom-loader"></div>
+                        )
+                        :
+                        (
+                          allCategories.length > 0 && 
+                          allCategories.map((categories) => (
+                            <div>{categories.name}</div>
+                          ))
+                        )
                       }
                     </div>
                   </div>
