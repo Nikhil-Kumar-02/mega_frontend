@@ -5,5 +5,6 @@ export const dotenv = {
     Reset_password_token : "/reset-password-token",
     Show_All_Categories : "/showAllCategories",
     Log_In : "/login",
-    
+    Sign_Up : "/signup",
+    OtpForEmailVerication : '/sendotp'
 }

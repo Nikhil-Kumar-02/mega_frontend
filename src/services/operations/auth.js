@@ -1,5 +1,5 @@
 import toast from "react-hot-toast";
-import { setLoading , setToken } from "../../reducers/slices/authSlice";
+import { setLoading , setToken , setSignupData } from "../../reducers/slices/authSlice";
 import { requestBackend } from "../apiConnector";
 import { userAllRoutes } from "../apiRoutes";
 import {setUser} from '../../reducers/slices/profileSlice'
@@ -31,7 +31,7 @@ export function getPasswordResetToken (email , setEmailSent){
 }
 
 
-export function backendLogInRequest(email , password){
+export function backendLogInRequest(email , password , navigate){
     const toastId = toast.loading("Loading ... ")
     return async (dispatch) => {
         try {
@@ -39,22 +39,23 @@ export function backendLogInRequest(email , password){
             console.log('response from login backend',responseFromapiConnector);
             if(!responseFromapiConnector?.data){
                 //means not got a sucess result
+                toast.dismiss(toastId);
                 toast.error(responseFromapiConnector.response.data.message)
             }
             else{
                 //got the positive response
                 const dataRecieved = responseFromapiConnector.data;
-                console.log(dataRecieved);
                 dispatch(setToken(dataRecieved.token));
                 dispatch(setUser(dataRecieved.foundUser));
                 localStorage.setItem("token" , dataRecieved.token);
                 localStorage.setItem("user" , dataRecieved.foundUser);
+                toast.dismiss(toastId);
                 toast.success("LogIn Sucessful");
+                navigate('/');
             }
         } catch (error) {
             console.log('error while trying to logging in : ',error)
         }
-        toast.dismiss(toastId);
     }
 }
 
@@ -69,5 +70,34 @@ export function userLogout(navigate){
         toast.dismiss(toastId);
         toast.success("User Logged Out Sucessfully");
         navigate("/");
+    }
+}
+
+
+export function userSignUpRequestForBackend(navigate , data){
+    return async (dispatch) => {
+        dispatch(setLoading(true));
+        try {
+            const toastId = toast.loading("Loading ... ");
+            //what ever data is recieved put it in the user global storage that is redux slice
+            const responseFromapiConnector = await requestBackend("POST" , userAllRoutes.sendOtpForEmailVerification , {email : data.email});
+            console.log('response from sign up backend',responseFromapiConnector);
+            if(!responseFromapiConnector?.data){
+                //means not got a sucess result
+                toast.dismiss(toastId);
+                toast.error(responseFromapiConnector.response.data.message)
+            }
+            else{
+                //got the positive response
+                dispatch(setSignupData(data));
+                toast.dismiss(toastId);
+                toast.success("Otp Sent For Email Verification");
+                navigate('/enterOtp');
+            }
+        } catch (error) {
+            console.log("error in the operations auth " , error);
+            toast.error("Error while Signing Up");
+        }
+        dispatch(setLoading(false));
     }
 }

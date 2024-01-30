@@ -5,24 +5,30 @@ import './LogInAndSignUp.css';
 import { CgAsterisk } from "react-icons/cg";
 import PasswordInputComponent from '../../common/PasswordInputComponent';
 import { HiInformationCircle } from "react-icons/hi";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { userSignUpRequestForBackend } from "../../../services/operations/auth";
 
 const SignUp = (props) => {
 
-    const [newUserData , setnewUserData] = useState({UserType : "Student" ,FirstName : "" , LastName : "" , Email : "" , CreatePassword : "" ,ConfirmPassword : "" , PhoneNumber : "",
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+    const [newUserData , setnewUserData] = useState({accountType : "Student" ,firstName : "" , lastName : "" , email : "" , password : "" ,confirmPassword : "" , phoneNumber : "",
     CountryCode : "+91"});
 
 
     function currentUserRole(e){
         const val = e.target.getAttribute("name");
         setnewUserData( (prev) => ({
-            ...prev , UserType : val
+            ...prev , accountType : val
         }))
     }
     
-    // console.log(newUserData.CreatePassword , newUserData.ConfirmPassword)
+    // console.log(newUserData.password , newUserData.ConfirmPassword)
     function submitHandler(e){
         e.preventDefault();
-        if(newUserData.CreatePassword !== newUserData.ConfirmPassword){
+        if(newUserData.password !== newUserData.confirmPassword){
             alert("Password not matching")
         }
         let conditions = {
@@ -32,21 +38,21 @@ const SignUp = (props) => {
             number : false,
             size : false
         }
-        for(let i=0;i<newUserData.CreatePassword.length;i++){
-            if(newUserData.ConfirmPassword[i]>='a' && newUserData.ConfirmPassword[i]<='z'){
+        for(let i=0;i<newUserData.password.length;i++){
+            if(newUserData.password[i]>='a' && newUserData.password[i]<='z'){
                 conditions.lowercase = true
             }
-            else if(newUserData.ConfirmPassword[i]>='A' && newUserData.ConfirmPassword[i]<='Z'){
+            else if(newUserData.password[i]>='A' && newUserData.password[i]<='Z'){
                 conditions.uppercase = true
             }
-            else if(newUserData.ConfirmPassword[i]>='1' && newUserData.ConfirmPassword[i]<='9'){
+            else if(newUserData.password[i]>='1' && newUserData.password[i]<='9'){
                 conditions.number = true
             }
             else{
                 conditions.special = true
             }
         }
-        if(newUserData.ConfirmPassword.length>=8){
+        if(newUserData.password.length>=8){
             conditions.size = true
         }
         for(const cond in conditions){
@@ -57,6 +63,7 @@ const SignUp = (props) => {
             }
         }
         console.log(newUserData);
+        dispatch(userSignUpRequestForBackend(navigate , newUserData));
     }
 
     function changeHandler(e){
@@ -79,10 +86,10 @@ const SignUp = (props) => {
 
             <div className="selectUser">
                 <div onClick={currentUserRole} name="Student" 
-                className={newUserData.UserType === "Student" ? "selectedUser" : ""}>Student</div>
+                className={newUserData.accountType === "Student" ? "selectedUser" : ""}>Student</div>
                 
                 <div onClick={currentUserRole} name="Instructor"
-                className={newUserData.UserType === "Instructor" ? "selectedUser" : ""}
+                className={newUserData.accountType === "Instructor" ? "selectedUser" : ""}
                 >Instructor</div>
             </div>
 
@@ -90,19 +97,19 @@ const SignUp = (props) => {
                 <div className="signupfName">
                     <label htmlFor="fname">First Name<CgAsterisk></CgAsterisk></label>
                     <br></br>
-                    <input placeholder="Enter First Name" id="fname" type="text" name="FirstName" onChange={changeHandler} value={newUserData.FirstName}></input>
+                    <input placeholder="Enter First Name" id="fname" type="text" name="firstName" onChange={changeHandler} value={newUserData.firstName}></input>
                 </div>
                 <div className="signuplName">
                     <label htmlFor="lname">Last Name<CgAsterisk></CgAsterisk></label>
                     <br></br>
-                    <input placeholder="Enter Last Name" id="lname" type="text" name="LastName" onChange={changeHandler} value={newUserData.LastName}></input>
+                    <input placeholder="Enter Last Name" id="lname" type="text" name="lastName" onChange={changeHandler} value={newUserData.lastName}></input>
                 </div>
             </div>
             
             <div className="signupEmail">
                 <label htmlFor="email">Email Address<CgAsterisk></CgAsterisk></label>
                 <br></br>
-                <input type="email" placeholder="Enter Email Address" id="email" name="Email" onChange={changeHandler} value={newUserData.Email}></input>
+                <input type="email" placeholder="Enter Email Address" id="email" name="email" onChange={changeHandler} value={newUserData.email}></input>
             </div>
 
             <div className="phoneNumber_wrapper">
@@ -117,7 +124,7 @@ const SignUp = (props) => {
                             <option name="CountryCode">+94</option> 
                         </select>
                     </div>
-                    <input type="text" placeholder="Enter phone number" id="phoneNumber" name="PhoneNumber" value={newUserData.PhoneNumber} onChange={changeHandler}></input>
+                    <input type="text" placeholder="Enter phone number" id="phoneNumber" name="phoneNumber" value={newUserData.phoneNumber} onChange={changeHandler}></input>
                 </div>
             </div>
 
@@ -136,7 +143,7 @@ const SignUp = (props) => {
                     <PasswordInputComponent title={"Create Password"} placeholder={"Enter Password"}
                     fetchPassword={(passwordRecieved) => {
                         setnewUserData( (prev) => ({
-                            ...prev , CreatePassword : passwordRecieved
+                            ...prev , password : passwordRecieved
                         } ) )
                     }}>
                     </PasswordInputComponent>
@@ -145,7 +152,7 @@ const SignUp = (props) => {
                 <PasswordInputComponent placeholder={"Enter Password"} title={"Confirm Password"} 
                 fetchPassword={(passwordRecieved) => {
                     setnewUserData( (prev) => ({
-                        ...prev , ConfirmPassword : passwordRecieved
+                        ...prev , confirmPassword : passwordRecieved
                     } ) )
                 }}>
                 </PasswordInputComponent>

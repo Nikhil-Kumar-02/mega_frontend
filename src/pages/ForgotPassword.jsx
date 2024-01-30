@@ -22,10 +22,6 @@ const ForgotPassword = (props) => {
       setEmailSent(false);
       setEmail("");
     }
-    console.log('page refreshed : ');
-    console.log('email status : ' , email);
-    console.log('email sent status : ' , emailSent);
-    console.log('loading status : ' , loading);
 
   return (
     <div>
