@@ -5,6 +5,7 @@ const courseRoute = dotenv.Courses_route;
 const userRoute = dotenv.User_route;
 
 
+
 const courseBaseUrl = baseUrl + courseRoute;
 const userBaseUrl = baseUrl + userRoute;
 
@@ -14,5 +15,6 @@ export const courseAllRoutes = {
 
 
 export const userAllRoutes = {
-    resetPasswordEmailSender : `${userBaseUrl}${dotenv.Reset_password_token}`
+    resetPasswordEmailSender : `${userBaseUrl}${dotenv.Reset_password_token}`,
+    userLogIn : `${userBaseUrl}${dotenv.Log_In}`
 }

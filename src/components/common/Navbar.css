@@ -5,10 +5,10 @@
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     display: flex;
     border-bottom: 1px solid rgb(94, 92, 92);
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
     color: white ;
-    padding: 0.5rem 0;
+    padding: 0.5rem 3rem;
     & *{
         text-decoration: none;
         display: flex;
@@ -98,3 +98,9 @@
   @keyframes s3 {
     100% {transform: rotate(1turn)}
   }
+
+.navbar_right_end_contents{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: baseline;
+}

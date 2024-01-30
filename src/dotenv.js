@@ -3,5 +3,7 @@ export const dotenv = {
     Courses_route : "/course",
     User_route : "/auth",
     Reset_password_token : "/reset-password-token",
-    Show_All_Categories : "/showAllCategories"
+    Show_All_Categories : "/showAllCategories",
+    Log_In : "/login",
+    
 }

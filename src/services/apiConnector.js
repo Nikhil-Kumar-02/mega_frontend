@@ -7,6 +7,7 @@ export const requestBackend = async (method , url , data , header , params) => {
             method : method,
             url : url,
             data : data
+        
         })
         console.log('response from the axios : ' , axiosResponse);
         return axiosResponse;

@@ -5,15 +5,20 @@ import './LogInAndSignUp.css'
 import { CgAsterisk } from "react-icons/cg";
 import PasswordInputComponent from '../../common/PasswordInputComponent'
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import {backendLogInRequest} from '../../../services/operations/auth'
 
 const LogInPage = (props) => {
 
 const [email , setEmail] =  useState("");
 const [password , setPassword] =  useState("");
 
+const dispatch = useDispatch();
+
 function submitHandler(e){
   e.preventDefault();
   console.log(email , password);
+  dispatch(backendLogInRequest(email , password));
 }
  
   return (

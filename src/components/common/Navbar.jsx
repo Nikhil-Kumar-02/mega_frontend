@@ -82,20 +82,22 @@ const Navbar = (props) => {
       </div>
 
       {/* login signup dashboard */}
-      <div>
+      <div className="navbar_right_end_contents">
         {/* if user is not logged in then value in user will be null  */}
+        <div className="cart_logo">
         {
           user && user.accountType !== "Instructor" && (
             <Link to={'/dashboard/cart'}>
-              <FaShoppingCart />
+              <FaShoppingCart color="white" fontSize={"1.1rem"} />
               {
-                totalItems > 0 && (
+                totalItems > -1 && (
                   <span>{totalItems}</span>
                 )
               }
             </Link>
           )
         }
+        </div>
         {/* if there is no token that is it is null so we have to show login button */}
         {
           token === null && (<SignUpLogIn></SignUpLogIn>)

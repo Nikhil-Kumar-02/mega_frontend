@@ -8,6 +8,7 @@ export const profileSlice = createSlice({
   },
   reducers: {
     setUser(state , action){
+      console.log('user data is : '  ,action)
       state.user = action.payload
     }
   }

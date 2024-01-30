@@ -1,0 +1,9 @@
+.userProfileDropDown_wrapper{
+    padding-left: 3rem;
+}
+
+.userProfileDropDown{
+    >img{
+        border-radius: 1rem;
+    }
+}
