@@ -132,3 +132,32 @@ export function createUser_SignUp_ForBackend(navigate , userDetails){
         dispatch(setLoading(false));
     }
 }
+
+export function resetExistingUserPassword(navigate , data){
+    return async (dispatch) => {
+        dispatch(setLoading(true));
+        try {
+            const toastId = toast.loading("Working on it ... ");
+
+            //send request to the backed reset password handler
+            const responseFromapiConnector = await requestBackend("POST" , userAllRoutes.Reset_user_forgotted_password , data);
+            console.log('response from reset password backend',responseFromapiConnector);
+            if(!responseFromapiConnector?.data){
+                //means not got a sucess result
+                toast.dismiss(toastId);
+                toast.error(responseFromapiConnector.response.data.message)
+            }
+            else{
+                //got the positive response
+                toast.dismiss(toastId);
+                toast.success(responseFromapiConnector.data.message);
+                navigate("/logIn");
+            }
+
+        } catch (error) {
+            console.log('error in reset existing user password operation auth' , error);
+            toast.error("Cannot Reset Password");
+        }
+        dispatch(setLoading(false));
+    }
+}

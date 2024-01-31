@@ -6,5 +6,6 @@ export const dotenv = {
     Show_All_Categories : "/showAllCategories",
     Log_In : "/login",
     Sign_Up : "/signup",
-    OtpForEmailVerication : '/sendotp'
+    OtpForEmailVerication : '/sendotp',
+    Reset_password : '/reset-password',
 }

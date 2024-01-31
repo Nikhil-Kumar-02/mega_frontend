@@ -2,9 +2,11 @@ import React, { useState } from "react"
 import { FaLongArrowAltLeft } from "react-icons/fa";
 import './ChooseNewPassword.css'
 import ButtonComponent from "../home/buttonComponent";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaCheckCircle } from "react-icons/fa";
 import PasswordInputComponent from '../../common/PasswordInputComponent'
+import { useDispatch } from "react-redux";
+import { resetExistingUserPassword } from "../../../services/operations/auth";
 
 const ChooseNewPassword = (props) => {
 
@@ -14,53 +16,74 @@ const ChooseNewPassword = (props) => {
   const [newPassword , setNewPassword] = useState(null);
   const [confirmNewPassword , setConfirmNewPassword] = useState(null);
 
-    function changeHandler(e){
-      const currentPassword = e.target.value;
+  const location = useLocation();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-      setValidity((prev) => {
-        const updatedValidity = {...prev};
-        for(let i=0;i<currentPassword.length;i++){
-          const newInput = currentPassword[i];
-          if(newInput>='0' && newInput<='9'){
-            updatedValidity.number = true    
-          }
-          else if(newInput>='a' && newInput<='z'){
-            updatedValidity.lowercase = true
-          }
-          else if(newInput>='A' && newInput<='Z'){
-            updatedValidity.uppercase = true
-          }
-          else{
-            updatedValidity.special = true
-          }
+  function changeHandler(e){
+    const currentPassword = e.target.value;
+
+    setValidity((prev) => {
+      // const updatedValidity = {...prev};
+      const updatedValidity = {};
+      for (const key in prev) {
+        if (prev.hasOwnProperty(key)) {
+          updatedValidity[key] = false;
         }
-       
-        if(currentPassword.length>=8){
-          updatedValidity.size = true
+      }
+      for(let i=0;i<currentPassword.length;i++){
+        const newInput = currentPassword[i];
+        if(newInput>='0' && newInput<='9'){
+          updatedValidity.number = true    
+        }
+        else if(newInput>='a' && newInput<='z'){
+          updatedValidity.lowercase = true
+        }
+        else if(newInput>='A' && newInput<='Z'){
+          updatedValidity.uppercase = true
         }
         else{
-          updatedValidity.size = false
+          updatedValidity.special = true
         }
-        return updatedValidity;
-      });
-
-    }
-
-    function submitHandler(e){
-      //e.preventDefault();
-
-      //now make sure that all password validity conditions are satisfied
-      if(!validity.lowercase||!validity.uppercase||!validity.size||!validity.special||!validity.number){
-        alert("All password valdation conditions not fulfilled");
-        window.location.reload();
       }
       
-      if(newPassword !== confirmNewPassword){
-        alert("Passwords do not match");
-        window.location.reload();
+      if(currentPassword.length>=8){
+        updatedValidity.size = true
       }
-      console.log(newPassword , confirmNewPassword);
+      else{
+        updatedValidity.size = false
+      }
+
+      return updatedValidity;
+
+    });
+
+  }
+
+  function submitHandler(e){
+    e.preventDefault();
+
+    //now make sure that all password validity conditions are satisfied
+    if(!validity.lowercase||!validity.uppercase||!validity.size||!validity.special||!validity.number){
+      alert("All password valdation conditions not fulfilled");
+      window.location.reload();
     }
+    
+    if(newPassword !== confirmNewPassword){
+      alert("Passwords do not match");
+      window.location.reload();
+    }
+    console.log(newPassword , confirmNewPassword);
+    const token = location.pathname.split('/').at(-1);
+
+    const dataPayload  = {
+      password : newPassword , 
+      confirmPassword : confirmNewPassword,
+      token
+    }
+
+    dispatch(resetExistingUserPassword(navigate , dataPayload))
+  }
 
   return (
     <div className="chooseNewPassword_wrapper">

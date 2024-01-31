@@ -18,5 +18,6 @@ export const userAllRoutes = {
     resetPasswordEmailSender : `${userBaseUrl}${dotenv.Reset_password_token}`,
     userLogIn : `${userBaseUrl}${dotenv.Log_In}`,
     sendOtpForEmailVerification : `${userBaseUrl}${dotenv.OtpForEmailVerication}`,
-    userSignUp : `${userBaseUrl}${dotenv.Sign_Up}`
+    userSignUp : `${userBaseUrl}${dotenv.Sign_Up}`,
+    Reset_user_forgotted_password : `${userBaseUrl}${dotenv.Reset_password}`
 }
