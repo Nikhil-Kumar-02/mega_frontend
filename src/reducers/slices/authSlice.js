@@ -16,6 +16,7 @@ export const authSlice = createSlice({
       state.loading = action.payload
     },
     setSignupData(state , action){
+      console.log("the stored user information : " , action.payload)
       state.signupData = action.payload
     }
   }

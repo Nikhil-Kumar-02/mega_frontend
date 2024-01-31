@@ -101,3 +101,34 @@ export function userSignUpRequestForBackend(navigate , data){
         dispatch(setLoading(false));
     }
 }
+
+export function createUser_SignUp_ForBackend(navigate , userDetails){
+    return async (dispatch) => {
+        dispatch(setLoading(true));
+        try {
+            const toastId = toast.loading("Verifying OTP ......");
+
+            //have to send all user data to the backend for verification and creation of account
+
+            const responseFromapiConnector = await requestBackend("POST" , userAllRoutes.userSignUp , userDetails);
+            console.log('response from sign up backend',responseFromapiConnector);
+            if(!responseFromapiConnector?.data){
+                //means not got a sucess result
+                toast.dismiss(toastId);
+                toast.error(responseFromapiConnector.response.data.message)
+            }
+            else{
+                //got the positive response
+                toast.dismiss(toastId);
+                toast.success("Account Created");
+                navigate("/logIn");
+            }
+
+            
+        } catch (error) {
+            console.log("error while trying to verify otp in operations auth");
+            toast.error("Error Verifying OTP")
+        }
+        dispatch(setLoading(false));
+    }
+}
