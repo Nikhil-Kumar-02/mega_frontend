@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import './EnterOtp.css'
 import ButtonComponent from "../home/buttonComponent";
 import { FaClockRotateLeft } from "react-icons/fa6";
@@ -10,20 +10,25 @@ const EnterOtp = (props) => {
     const [otp , setopt] = useState(["-","-","-","-","-","-"]);
     const [currFocus , setCurrFocus] = useState(0);
 
-    const setFocus = useRef();
-    // setFocus.current.focus();
+    const setFocus = useRef(null);
+
+    useEffect(() => {
+        if(setFocus.current){
+            setFocus.current.focus();
+        }
+    } , [otp])
 
     function otpHandler(e , index) {
         const boxElement = e.target.value;
         setopt((prevotp) => {
-        const newOtp = [...prevotp];
-        newOtp[index] = boxElement;
+            const newOtp = [...prevotp];
+            newOtp[index] = boxElement;
+            setCurrFocus(prev => (
+                boxElement === "" ? (index-1 > 0 ? index-1 : 0) : (index+1 < 6 ? index+1 : 5)
+            ))
 
-        setCurrFocus((prev) => (
-            prev+1
-        ))
-
-        return newOtp})
+            return newOtp
+        })
     }
 
   return (
@@ -36,14 +41,17 @@ const EnterOtp = (props) => {
                 otp.map((eachele , index) => {
                     return(
                             index === currFocus ? (
-                                <input type="text" placeholder={eachele} key={index} 
+                                <input type="text" placeholder="-" key={index} 
                                 onChange={(e)=> {
-                                    otpHandler(e,index)
+                                    otpHandler(e,index);
                                 }}
                                 className="yellow_focus_border" ref={setFocus} maxLength={1}
                                 ></input>
                             ) : (
-                                <input type="text" placeholder={eachele} key={index} maxLength={1}
+                                <input type="text" placeholder="-" key={index} maxLength={1}
+                                onClick={()=>{
+                                    setCurrFocus(index);
+                                }}
                                 ></input>
                             )
                     )

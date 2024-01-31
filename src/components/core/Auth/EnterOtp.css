@@ -48,6 +48,7 @@
             background-color: #161D29;
             width: 3rem;
             border-radius: 7px;
+            outline: none;
             box-shadow: grey 0 0.2px 0px;
             color: white;
             font-weight: 800;
