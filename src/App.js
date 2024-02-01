@@ -12,6 +12,7 @@ import ResetComplete from './components/core/Auth/ResetComplete';
 import ChooseNewPassword from './components/core/Auth/ChooseNewPassword';
 import UserProfileDropDown from './components/core/Auth/UserProfileDropDown';
 import NotFound from './components/common/NotFound';
+import AboutUs from './components/common/AboutUs';
   
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           <Route path='/update-password/:token' element={<ChooseNewPassword />} />
           <Route path='/userProfileDropDown' element={<UserProfileDropDown />}></Route>
           <Route path='/forgotPassword' element={<ForgotPassword></ForgotPassword>}></Route>
+          <Route path='/about' element={<AboutUs></AboutUs>}></Route>
         </Route>
         <Route path='/*' element={<NotFound />} />
       </Routes>
