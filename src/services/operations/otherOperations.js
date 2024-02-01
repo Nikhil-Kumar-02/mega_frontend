@@ -20,7 +20,10 @@ export const sendEmailFromUser = async (data) => {
         if(!responseFromapiConnector.data){
             //means some error as if it was a ok response then .data will be available directly
             toast.dismiss(toastId);
-            toast.error(responseFromapiConnector?.response?.data?.message);
+            if(responseFromapiConnector?.response?.data?.message)
+                toast.error(responseFromapiConnector?.response?.data?.message);
+            else
+                toast.error("Server is NOT Running ... ")
         }
         else{
             toast.dismiss(toastId);

@@ -106,7 +106,7 @@ const AboutUs = (props) => {
                     <h1>World-Class Learning for</h1>
                     <HilightedText>Anyone, Anywhere</HilightedText>
                     <p>Studynotion partners with more than 275+ leading universities and companies to bring flexible, affordable, job-relevant online learning to individuals and organizations worldwide.</p>
-                    <ButtonComponent linkTo={"signUp"} active={true}>Learn More</ButtonComponent>
+                    <ButtonComponent linkTo={"/signUp"} active={true}>Learn More</ButtonComponent>
                 </div>
                 <div>
                     <h3>Curriculum Based on Industry Needs</h3>
