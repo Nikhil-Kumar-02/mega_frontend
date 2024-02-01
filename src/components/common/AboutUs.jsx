@@ -7,6 +7,7 @@ import aboutUs3 from '../../assets/aboutUs3.png'
 import aboutUs4 from '../../assets/aboutUs4.png'
 import { RiDoubleQuotesL } from "react-icons/ri";
 import { RiDoubleQuotesR } from "react-icons/ri";
+import ButtonComponent from '../core/home/buttonComponent'
 
 const AboutUs = (props) => {
   return (
@@ -81,7 +82,41 @@ const AboutUs = (props) => {
                 <p>Awards</p>
             </div>
         </div>
-      
+
+        <div className="aboutUs_section5">
+            <div className="aboutUs_section5_firstBlock">
+                <div className="aboutUs_section5_firstBlock_unique_part">
+                    <h1>World-Class Learning for</h1>
+                    <HilightedText>Anyone, Anywhere</HilightedText>
+                    <p>Studynotion partners with more than 275+ leading universities and companies to bring flexible, affordable, job-relevant online learning to individuals and organizations worldwide.</p>
+                    <ButtonComponent linkTo={"signUp"} active={true}>Learn More</ButtonComponent>
+                </div>
+                <div>
+                    <h3>Curriculum Based on Industry Needs</h3>
+                    <p>Save time and money! The Belajar curriculum is made to be easier to understand and in line with industry needs.</p>   
+                </div>
+                <div>
+                    <h3>Our Learning Methods</h3>   
+                    <p>The learning process uses the namely online and offline.</p>   
+                </div>
+
+            </div>
+            <div className="aboutUs_section5_secondBlock">
+                <div>
+                    <h3>Certification</h3>
+                    <p>You will get a certificate that can be used as a certification during job hunting.</p>
+                </div>
+                <div>
+                    <h3>Rating "Auto-grading"</h3>
+                    <p>You will immediately get feedback during the learning process without having to wait for an answer or response from the mentor.</p>
+                </div>
+                <div>
+                    <h3>Ready to Work</h3>
+                    <p>Connected with over 150+ hiring partners, you will have the opportunity to find a job after graduating from our program.</p>
+                </div>
+            </div>
+        </div>
+
     </div>
   )
 };

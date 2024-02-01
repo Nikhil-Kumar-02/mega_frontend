@@ -128,3 +128,59 @@
         align-items: center;
     }
 }
+
+.aboutUs_section5{
+    background-color: #000814;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5rem;
+    .aboutUs_section5_firstBlock , .aboutUs_section5_secondBlock{
+        display: flex;
+        >div{
+            color: #AFB2BF;
+            padding: 2rem;
+            >h3{
+                margin-bottom: 2rem;
+                color: whitesmoke;
+            }
+        }
+    }
+    .aboutUs_section5_firstBlock{
+        justify-content: right;
+        >:nth-child(odd){
+            background-color: #161D29;
+            width: 25%;
+        }
+        >:nth-child(even){
+            background-color: #2C333F;
+            width: 25%;
+        }
+        >.aboutUs_section5_firstBlock_unique_part{
+            width: 50%;
+            background-color: #000814;
+            display: flex;
+            flex-direction: column;
+            justify-content: left;
+            align-items: start;
+            text-align: start;
+            color: whitesmoke;
+            >p{
+                margin: 1rem 0;
+                color: #838894;
+            }
+        }
+    }
+    .aboutUs_section5_secondBlock{
+        justify-content: right;
+        >:nth-child(even){
+            background-color: #161D29;
+            width: 25%;
+        }
+        >:nth-child(odd){
+            background-color: #2C333F;
+            width: 25%;
+        }
+    }
+}
