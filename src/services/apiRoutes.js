@@ -3,11 +3,13 @@ import {dotenv} from '../dotenv'
 const baseUrl = dotenv.Backend_Base_Url;
 const courseRoute = dotenv.Courses_route;
 const userRoute = dotenv.User_route;
+const otherRoute = dotenv.other_Route;
 
 
 
 const courseBaseUrl = baseUrl + courseRoute;
 const userBaseUrl = baseUrl + userRoute;
+const otherRoutesBaseUrl = baseUrl + otherRoute;
 
 export const courseAllRoutes = {
     getAllCategories : `${courseBaseUrl}${dotenv.Show_All_Categories}`,
@@ -20,4 +22,8 @@ export const userAllRoutes = {
     sendOtpForEmailVerification : `${userBaseUrl}${dotenv.OtpForEmailVerication}`,
     userSignUp : `${userBaseUrl}${dotenv.Sign_Up}`,
     Reset_user_forgotted_password : `${userBaseUrl}${dotenv.Reset_password}`
+}
+
+export const otherRoutes = {
+    sendMail : `${otherRoutesBaseUrl}${dotenv.send_Mail}`
 }

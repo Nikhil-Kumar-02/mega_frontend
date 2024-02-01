@@ -163,7 +163,7 @@
             display: flex;
             flex-direction: column;
             justify-content: left;
-            align-items: start;
+            align-items: flex-start;
             text-align: start;
             color: whitesmoke;
             >p{
@@ -182,5 +182,69 @@
             background-color: #2C333F;
             width: 25%;
         }
+    }
+}
+
+.aboutUs_section6{
+    padding-top: 8rem;
+    padding-bottom: 3rem;
+    background-color: #000814;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    >form {
+        margin-top: 3rem;
+        width: 30%;
+        & *{
+            margin: 0.4rem 0;
+        }
+        >:nth-child(1){
+            display: flex;
+            justify-content: space-between;
+            >div{
+                width: 49%;
+            }
+        }
+        >:nth-child(3){
+            >div{
+                display: flex;
+                >select{
+                    background-color: #161D29;
+                    border: none;
+                    border-bottom: 1px solid grey;
+                    margin-right: 1rem;
+                    color: white;
+                }
+            }
+        }
+        >:nth-child(4){
+            display: flex;
+            flex-direction: column;
+            >textarea{
+                width: 100%;
+                height: 5rem;
+                background-color: #161D29;
+            }
+        }
+        >:last-child{
+            margin: 1rem 0;
+        }
+    }
+}
+
+.aboutUs_section7{
+    background-color: #000814;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    padding: 4rem 0;
+
+    >div{
+        width: 80%;
+        display: flex;
+        justify-content: space-between;
     }
 }

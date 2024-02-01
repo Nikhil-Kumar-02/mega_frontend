@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import './AboutUs.css'
 import HilightedText from "../core/home/hilightedText";
 import aboutUs1 from '../../assets/aboutUs1.png'
@@ -7,9 +7,26 @@ import aboutUs3 from '../../assets/aboutUs3.png'
 import aboutUs4 from '../../assets/aboutUs4.png'
 import { RiDoubleQuotesL } from "react-icons/ri";
 import { RiDoubleQuotesR } from "react-icons/ri";
-import ButtonComponent from '../core/home/buttonComponent'
+import ButtonComponent from '../core/home/buttonComponent';
+import {sendEmailFromUser}  from '../../services/operations/otherOperations';
+import Footer from "./Footer";
 
 const AboutUs = (props) => {
+
+    const [formDetails , setFormDetails] = useState({});
+
+    function changeHandler(e){
+        setFormDetails((prev)=>(
+            {...prev , [e.target.name] : e.target.value}
+        ))
+    }
+
+    function submitHandler(e){
+        e.preventDefault();
+        console.log(formDetails)
+        sendEmailFromUser(formDetails);
+    }
+
   return (
     <div className="aboutUs_wrapper">
         <div className="aboutUs_section1">
@@ -115,6 +132,58 @@ const AboutUs = (props) => {
                     <p>Connected with over 150+ hiring partners, you will have the opportunity to find a job after graduating from our program.</p>
                 </div>
             </div>
+        </div>
+
+        <div className="aboutUs_section6">
+            <h1>Get in Touch</h1>
+            <p>We'd love to hear from you, Please fill out this form.</p>
+            <form onSubmit={submitHandler}>
+                <div>
+                    <div>
+                        <label htmlFor="firstName">First Name</label>
+                        <input id="firstName" type="text" placeholder="Enter First Name" name="firstName" onChange={changeHandler}></input>
+                    </div>
+                    <div>
+                        <label htmlFor="lastName">Last Name</label>
+                        <input id="lastName" type="text" placeholder="Enter Last Name" name="lastName" onChange={changeHandler}></input>
+                    </div>
+                </div>
+                <div>
+                    <label htmlFor="email">Email Address</label>
+                    <input id="email" type="text" placeholder="Enter Email Address" name="email" onChange={changeHandler}></input>
+                </div>
+                <div>
+                    <label htmlFor="phone">Phone Number</label>
+                    <div>
+                        <select name="countryCode" onChange={changeHandler}>
+                            <option>+91</option>
+                            <option>+880</option>
+                            <option>+997</option>
+                            <option>+92</option>
+                            <option>+94</option>
+                        </select>
+                        <input type="text" placeholder="12345 67890" id="phone" name="phoneNumber" onChange={changeHandler}></input>
+                    </div>
+                </div>
+                <div>
+                    <label htmlFor="message">Message</label>
+                    <textarea id="message" placeholder="Enter Your message" name="userMessage" onChange={changeHandler}></textarea>
+                </div>
+                <div onClick={submitHandler}>
+                    <ButtonComponent active={true}>Send Message</ButtonComponent>
+                </div>
+            </form>
+        </div>
+
+        <div className="aboutUs_section7">
+            <h1>Review from other learners</h1>
+            <div>
+
+            </div>
+        </div>
+
+        <div>
+            <Footer></Footer>
         </div>
 
     </div>
