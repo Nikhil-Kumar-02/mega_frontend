@@ -20,10 +20,15 @@ const UserProfileDropDown = (props) => {
         }
         <IoMdArrowDropdown />
         <div className="userProfileDropDown_hover">
-          <div>Profile</div>
+
+          <div onClick={() => {
+            navigate('/userProfile')
+          }}>Profile</div>
+
           <div onClick={()=>{
             dispatch(userLogout(navigate));
           }}>LogOut</div>
+
         </div>
       </div>
     </div>

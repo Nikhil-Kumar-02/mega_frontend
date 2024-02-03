@@ -14,7 +14,7 @@ import UserProfileDropDown from './components/core/Auth/UserProfileDropDown';
 import NotFound from './components/common/NotFound';
 import AboutUs from './components/common/AboutUs';
 import ContactUs from './pages/ContactUs';
-
+import UserProfile from './components/core/Dashboard/UserProfile';
 
 function App() {
   return (
@@ -33,6 +33,7 @@ function App() {
           <Route path='/forgotPassword' element={<ForgotPassword></ForgotPassword>}></Route>
           <Route path='/about' element={<AboutUs></AboutUs>}></Route>
           <Route path='/contact' element={<ContactUs></ContactUs>}></Route>
+          <Route path='/userProfile' element={<UserProfile></UserProfile>}></Route>
         </Route>
         <Route path='/*' element={<NotFound />} />
       </Routes>

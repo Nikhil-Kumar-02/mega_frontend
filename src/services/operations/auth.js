@@ -48,7 +48,7 @@ export function backendLogInRequest(email , password , navigate){
                 dispatch(setToken(dataRecieved.token));
                 dispatch(setUser(dataRecieved.foundUser));
                 localStorage.setItem("token" , dataRecieved.token);
-                localStorage.setItem("user" , dataRecieved.foundUser);
+                localStorage.setItem("user" , JSON.stringify(dataRecieved.foundUser));
                 toast.dismiss(toastId);
                 toast.success("LogIn Sucessful");
                 navigate('/');

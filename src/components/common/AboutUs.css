@@ -86,6 +86,9 @@
             >p{
                 color: grey;
             }
+            >img{
+                box-shadow: rgb(253, 67, 67) 0px 5px 15px, rgb(253, 67, 67) 0px -2px 13px, rgb(253, 67, 67) 0px 4px 16px;
+            }
         }
     }
     >.aboutUs_section3_secondBlock{
