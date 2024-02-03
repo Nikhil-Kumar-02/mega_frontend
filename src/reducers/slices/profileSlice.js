@@ -5,12 +5,16 @@ export const profileSlice = createSlice({
   name: 'profile',
   initialState: {
     user : localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null,
+    loading : false,
   },
   reducers: {
     setUser(state , action){
       console.log('user data is : '  ,action)
       state.user = action.payload
-    }
+    },
+    setLoading(state , action){
+      state.loading = action.payload
+    },
   }
 })
 

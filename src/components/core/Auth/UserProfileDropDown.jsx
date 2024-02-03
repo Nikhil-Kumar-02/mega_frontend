@@ -11,7 +11,7 @@ const UserProfileDropDown = (props) => {
   const dispatch = useDispatch();
 
   const userData = useSelector((state) => state.profile.user);
-  console.log('user data in dropdown : ' , userData);
+  // console.log('user data in dropdown : ' , userData);
   return (
     <div className="userProfileDropDown_wrapper">
       <div className="userProfileDropDown">
@@ -22,7 +22,7 @@ const UserProfileDropDown = (props) => {
         <div className="userProfileDropDown_hover">
 
           <div onClick={() => {
-            navigate('/userProfile')
+            navigate('/dashboard/my-profile')
           }}>Profile</div>
 
           <div onClick={()=>{

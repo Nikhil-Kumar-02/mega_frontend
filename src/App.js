@@ -14,7 +14,12 @@ import UserProfileDropDown from './components/core/Auth/UserProfileDropDown';
 import NotFound from './components/common/NotFound';
 import AboutUs from './components/common/AboutUs';
 import ContactUs from './pages/ContactUs';
-import UserProfile from './components/core/Dashboard/UserProfile';
+import SideBar from './components/core/Dashboard/SideBar'
+import MyProfile from './components/core/Dashboard/SideBarElements/MyProfile';
+import Dashboard from './components/core/Dashboard/SideBarElements/DashBoard';
+import MyCourses from './components/core/Dashboard/SideBarElements/MyCourses';
+import Settings from './components/core/Dashboard/SideBarElements/Settings';
+import AddCourse from './components/core/Dashboard/SideBarElements/AddCourse';
 
 function App() {
   return (
@@ -33,7 +38,13 @@ function App() {
           <Route path='/forgotPassword' element={<ForgotPassword></ForgotPassword>}></Route>
           <Route path='/about' element={<AboutUs></AboutUs>}></Route>
           <Route path='/contact' element={<ContactUs></ContactUs>}></Route>
-          <Route path='/userProfile' element={<UserProfile></UserProfile>}></Route>
+          <Route path='/setting' element={<Settings></Settings>}></Route>
+          <Route path='/dashboard' element={<SideBar></SideBar>}>
+            <Route path='/dashboard/my-profile' element={<MyProfile></MyProfile>}></Route>
+            <Route path='/dashboard/instructor' element={<Dashboard></Dashboard>}></Route>
+            <Route path='/dashboard/my-courses' element={<MyCourses></MyCourses>}></Route>
+            <Route path='/dashboard/add-course' element={<AddCourse></AddCourse>}></Route>
+          </Route>
         </Route>
         <Route path='/*' element={<NotFound />} />
       </Routes>

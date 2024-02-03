@@ -1,0 +1,13 @@
+.whole_dashboard_wrapper{
+    color: white;
+    display: flex;
+}
+
+.sideBar_wrapper{
+    background-color: #161D29;
+    justify-content: left;
+    width: 20%;
+    padding-top: 2rem;
+    color: white;
+    min-height: 93vh;
+}
