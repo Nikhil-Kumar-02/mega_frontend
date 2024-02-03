@@ -14,7 +14,8 @@ const PasswordInputComponent = ({title , placeholder , fetchPassword}) => {
 
   function passwordHandler(e){
     const updatedPassword = e.target.value;
-    fetchPassword(updatedPassword);
+    if(fetchPassword)
+      fetchPassword(updatedPassword);
   }
 
   return (

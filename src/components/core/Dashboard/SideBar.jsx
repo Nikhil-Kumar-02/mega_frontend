@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import './SideBar.css';
 import { sidebarLinks } from "../../../data/dashboardLinks";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import SideBarLinks from "./SideBarLinks";
 import { IoSettings } from "react-icons/io5";
@@ -13,6 +13,7 @@ const SideBar = (props) => {
 
   const user = useSelector((state) => (state.profile.user));
   const navigate = useNavigate();
+  const location = useLocation();
   const [confirmationModalVisibility , setConfirmationModalVisibility] = useState(false);
 
 
@@ -32,9 +33,7 @@ const SideBar = (props) => {
 
       <div className="userSideBar_wrapper">
 
-        <div onClick={()=>{
-          navigate("/dashboard/setting")
-        }}>
+        <div className={"/dashboard/setting" === location.pathname ? "currentSideBarTab" : ""}    onClick={() => navigate("/dashboard/setting")}>
           <div><IoSettings></IoSettings></div>
           <div>Setting</div>
         </div>

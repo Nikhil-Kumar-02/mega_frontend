@@ -3,10 +3,12 @@ import './MyProfile.css'
 import { useSelector } from "react-redux";
 import { FaRegEdit } from "react-icons/fa";
 import ButtonComponent from "../../home/buttonComponent";
+import { useNavigate } from "react-router-dom";
 
 const MyProfile = (props) => {
 
   const userData = useSelector((state) => (state.profile.user));
+  const navigate = useNavigate();
 
   return (
     <div className="userProfile_wrapper">
@@ -14,13 +16,13 @@ const MyProfile = (props) => {
           <h1>My Profile</h1>
           <div className="userProfile_section1">
               <div>
-                  <img src={userData.image} alt=""></img>
+                  <img src={userData.image} alt={`${userData.firstName}`}></img>
                   <div>
                       <h4>{`${userData.firstName} ${userData.lastName}`}</h4>
                       <p>{userData.email}</p>
                   </div>
               </div>
-              <div className="userProfile_Edit">
+              <div className="userProfile_Edit" onClick={()=> navigate("/dashboard/setting")}>
                   <ButtonComponent active={true}><div>
                       Edit
                       <FaRegEdit></FaRegEdit>
@@ -31,7 +33,7 @@ const MyProfile = (props) => {
           <div className="userProfile_section2">
               <div>
                   <h4>About</h4>
-                  <div className="userProfile_Edit">
+                  <div className="userProfile_Edit" onClick={()=> navigate("/dashboard/setting")}>
                       <ButtonComponent active={true}><div>
                           Edit
                           <FaRegEdit></FaRegEdit>
@@ -44,12 +46,14 @@ const MyProfile = (props) => {
           </div>
 
           <div className="userProfile_section3">
-              <div className="userProfile_Edit">
+              <div >
                   <h4>Personal Details</h4>
-                  <ButtonComponent active={true}><div>
-                      Edit
-                      <FaRegEdit></FaRegEdit>
-                  </div></ButtonComponent>
+                  <div className="userProfile_Edit" onClick={()=> navigate("/dashboard/setting")}>
+                        <ButtonComponent active={true}><div>
+                            Edit
+                            <FaRegEdit></FaRegEdit>
+                        </div></ButtonComponent>
+                    </div>
               </div>
               <div>
                   <div>
