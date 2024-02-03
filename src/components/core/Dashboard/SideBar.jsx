@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import './SideBar.css';
 import { sidebarLinks } from "../../../data/dashboardLinks";
 import { useNavigate } from "react-router-dom";
@@ -6,11 +6,14 @@ import { useSelector } from "react-redux";
 import SideBarLinks from "./SideBarLinks";
 import { IoSettings } from "react-icons/io5";
 import { VscSignOut } from "react-icons/vsc";
+import ConfirmationalModal from "../../common/ConfirmationalModal";
+
 
 const SideBar = (props) => {
 
   const user = useSelector((state) => (state.profile.user));
   const navigate = useNavigate();
+  const [confirmationModalVisibility , setConfirmationModalVisibility] = useState(false);
 
 
   return (
@@ -28,17 +31,26 @@ const SideBar = (props) => {
       <br></br>
 
       <div className="userSideBar_wrapper">
+
         <div onClick={()=>{
-          navigate("/setting")
+          navigate("/dashboard/setting")
         }}>
           <div><IoSettings></IoSettings></div>
           <div>Setting</div>
         </div>
-        <div>
+
+        <div onClick={()=>{
+            setConfirmationModalVisibility(true)
+          }}>
           <div><VscSignOut></VscSignOut></div>
           <div>Logout</div>
         </div>
       </div>
+
+      {
+        confirmationModalVisibility && 
+        <ConfirmationalModal setConfirmationModalVisibility={setConfirmationModalVisibility}></ConfirmationalModal>
+      }
     </div> 
   )
 };

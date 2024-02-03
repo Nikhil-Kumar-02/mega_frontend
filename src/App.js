@@ -39,13 +39,13 @@ function App() {
           <Route path='/forgotPassword' element={<ForgotPassword></ForgotPassword>}></Route>
           <Route path='/about' element={<AboutUs></AboutUs>}></Route>
           <Route path='/contact' element={<ContactUs></ContactUs>}></Route>
-          <Route path='/setting' element={<Settings></Settings>}></Route>
           <Route path='/dashboard' element={<Dashboard></Dashboard>}>
             <Route index element={<SideBar></SideBar>}></Route>
             <Route path='/dashboard/my-profile' element={<MyProfile></MyProfile>}></Route>
             <Route path='/dashboard/instructor' element={<Instructor></Instructor>}></Route>
             <Route path='/dashboard/my-courses' element={<MyCourses></MyCourses>}></Route>
             <Route path='/dashboard/add-course' element={<AddCourse></AddCourse>}></Route>
+            <Route path='/dashboard/setting' element={<Settings></Settings>}></Route>
           </Route>
         </Route>
         <Route path='/*' element={<NotFound />} />

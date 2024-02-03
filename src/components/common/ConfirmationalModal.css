@@ -1,0 +1,32 @@
+.ConfirmationalModal_wrapper{
+    z-index: 5;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(128, 128, 128, 0.301);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    >div{
+    color: white;
+    background-color: #000816;
+    border-radius: 1rem;
+    padding: 1rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    font-size: 1.5rem;
+    >h5{
+        margin: 0.5rem 0;
+    }
+    >div{
+        display: flex;
+        width: 70%;
+        justify-content:space-between;
+        margin: 1rem 0;
+        
+    }
+    }
+}
