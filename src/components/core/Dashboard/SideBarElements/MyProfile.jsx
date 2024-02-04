@@ -77,7 +77,7 @@ const MyProfile = (props) => {
                       </div>
                       <div>
                           <p>Phone Number</p>
-                          <h4>{userData.phonenumber ? userData.phonenumber : "Add Contact Number"}</h4>
+                          <h4>{userData.phoneNumber ? userData.phoneNumber : "Add Contact Number"}</h4>
                       </div>
                       <div>
                           <p>Date Of Birth</p>
