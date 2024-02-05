@@ -4,6 +4,7 @@
     justify-content: center;
 }
 .userProfile{
+    min-width: 70%;
     margin-top: 3rem;
     >h1{
         font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
@@ -17,6 +18,8 @@
     margin: 1rem 0;
     border: 1px solid rgb(68, 68, 68);
     border-radius: 0.6rem;
+    min-width : 100%;
+    justify-content: center;
 }
 
 .userProfile_section1 {
@@ -54,9 +57,9 @@
     }
     >:nth-child(2){
         display: flex;
+        justify-content: space-between;
         >div{
-            width: 100%;
-            padding-right: 8rem;
+            width: 45%;
             & p{
                 color: rgb(104, 100, 100);
             }

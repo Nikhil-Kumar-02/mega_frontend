@@ -59,7 +59,7 @@ export function backendLogInRequest(email , password , navigate){
     }
 }
 
-export function userLogout(navigate){
+export function userLogout(navigate , navigateTo){
     const toastId = toast.loading("Logging Out ....")
     return async (dispatch) => {
         //remove the instance from the user global store and local storage
@@ -69,7 +69,12 @@ export function userLogout(navigate){
         dispatch(setUser(null));
         toast.dismiss(toastId);
         toast.success("User Logged Out Sucessfully");
-        navigate("/");
+        if(navigateTo){
+            navigate(navigateTo)
+        }
+        else{
+            navigate("/");
+        }
     }
 }
 

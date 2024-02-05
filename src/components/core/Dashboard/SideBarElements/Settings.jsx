@@ -74,11 +74,11 @@ const Settings = (props) => {
         <div>
           <div>
             <label htmlFor="firstName">First Name</label>
-            <input type="text" placeholder={userFormData.firstName ?? "First Name"} name="firstName" value={userFormData.firstName} onChange={changeHandler}></input>
+            <input type="text" placeholder={userData.firstName ?? "First Name"} name="firstName" value={userData.firstName} ></input>
           </div>
           <div>
             <label htmlFor="lastName">Last Name</label>
-            <input type="text" placeholder={userFormData.lastName ?? "Last Name"} name="lastName" value={userFormData.lastName} onChange={changeHandler}></input>
+            <input type="text" placeholder={userData.lastName ?? "Last Name"} name="lastName" value={userData.lastName}></input>
           </div>
         </div>
 

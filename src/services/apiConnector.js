@@ -1,15 +1,13 @@
 import axios from "axios";
 
-export const requestBackend = async (method , url , data , header , params) => {
+export const requestBackend = async (method , url , data , headers , params) => {
     try {
-        console.log('in requrest backend try block')
         const axiosResponse = await axios({
             method : method,
             url : url,
-            data : data
-        
+            data : data,
+            headers : headers,
         })
-        console.log('response from the axios : ' , axiosResponse);
         return axiosResponse;
     } catch (error) {
         console.log('error in api connector' , error);

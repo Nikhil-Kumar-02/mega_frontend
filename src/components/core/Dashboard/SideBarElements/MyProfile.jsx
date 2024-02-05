@@ -41,12 +41,14 @@ const MyProfile = (props) => {
                   </div>
               </div>
               <div>
-                  <textarea placeholder="Write something about yourself"></textarea>
+                  <textarea placeholder={userData?.additionalDetails?.ButtonComponent?.about ?? "Write something about yourself"}>
+                    {userData?.additionalDetails?.about}
+                  </textarea>
               </div>
           </div>
 
           <div className="userProfile_section3">
-              <div >
+              <div>
                   <h4>Personal Details</h4>
                   <div className="userProfile_Edit" onClick={()=> navigate("/dashboard/setting")}>
                         <ButtonComponent active={true}><div>
@@ -67,7 +69,7 @@ const MyProfile = (props) => {
                       </div>
                       <div>
                           <p>Gender</p>
-                          <h4>{userData?.gender ? userData.gender : "Add Gender"}</h4>
+                          <h4>{userData?.additionalDetails?.gender ? userData.additionalDetails.gender : "Add Gender"}</h4>
                       </div>
                   </div>
                   <div>
@@ -81,7 +83,7 @@ const MyProfile = (props) => {
                       </div>
                       <div>
                           <p>Date Of Birth</p>
-                          <h4>{userData.dob ? userData.dob : "Add Date of Birth"}</h4>
+                          <h4>{userData.additionalDetails.dob ? userData.additionalDetails.dob : "Add Date of Birth"}</h4>
                       </div>
                   </div>
               </div>

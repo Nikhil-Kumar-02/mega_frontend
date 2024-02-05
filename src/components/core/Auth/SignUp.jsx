@@ -17,7 +17,6 @@ const SignUp = (props) => {
     const [newUserData , setnewUserData] = useState({accountType : "Student" ,firstName : "" , lastName : "" , email : "" , password : "" ,confirmPassword : "" , phoneNumber : "",
     CountryCode : "+91"});
 
-
     function currentUserRole(e){
         const val = e.target.getAttribute("name");
         setnewUserData( (prev) => ({
@@ -30,6 +29,7 @@ const SignUp = (props) => {
         e.preventDefault();
         if(newUserData.password !== newUserData.confirmPassword){
             alert("Password not matching")
+            return;
         }
         let conditions = {
             lowercase : false,
@@ -59,7 +59,7 @@ const SignUp = (props) => {
             if(!conditions[cond]){
                 console.log('condition not satisfied' , cond);
                 alert(`Password conditions not satisfied`);
-                break;
+                return;
             }
         }
         console.log(newUserData);
