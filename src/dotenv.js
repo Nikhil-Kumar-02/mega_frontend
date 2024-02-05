@@ -11,6 +11,7 @@ export const dotenv = {
     Sign_Up : "/signup",
     OtpForEmailVerication : '/sendotp',
     Reset_password : '/reset-password',
+    update_Password : '/updatePassword',
 
     send_Mail : '/sendMail',
 

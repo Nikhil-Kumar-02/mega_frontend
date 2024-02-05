@@ -23,7 +23,8 @@ export const userAllRoutes = {
     userLogIn : `${userBaseUrl}${dotenv.Log_In}`,
     sendOtpForEmailVerification : `${userBaseUrl}${dotenv.OtpForEmailVerication}`,
     userSignUp : `${userBaseUrl}${dotenv.Sign_Up}`,
-    Reset_user_forgotted_password : `${userBaseUrl}${dotenv.Reset_password}`
+    Reset_user_forgotted_password : `${userBaseUrl}${dotenv.Reset_password}`,
+    update_Password : `${userBaseUrl}${dotenv.update_Password}`
 }
 
 export const otherRoutes = {

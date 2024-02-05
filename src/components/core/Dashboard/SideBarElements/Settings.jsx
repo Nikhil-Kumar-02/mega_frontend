@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import PasswordInputComponent from "../../../common/PasswordInputComponent";
 import { RiDeleteBin6Line } from "react-icons/ri";
-import { update_Profile_Data } from "../../../../services/operations/profile";
+import { updateUserPasswordFromBackend, update_Profile_Data } from "../../../../services/operations/profile";
 
 const Settings = (props) => {
 
@@ -145,7 +145,10 @@ const Settings = (props) => {
 
         <div>
           <div onClick={()=> navigate("/dashboard/my-profile")}><ButtonComponent active={false}>Cancel</ButtonComponent></div>
-          <div><ButtonComponent active={true}>Update</ButtonComponent></div>
+          <div onClick={()=>{
+            dispatch(updateUserPasswordFromBackend(userCurrentPassword , userNewPassword , token));
+          }}
+          ><ButtonComponent active={true}>Update</ButtonComponent></div>
         </div>
 
       </div>
