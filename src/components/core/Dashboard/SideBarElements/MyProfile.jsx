@@ -1,14 +1,33 @@
-import React from "react"
+import React, { useEffect } from "react"
 import './MyProfile.css'
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { FaRegEdit } from "react-icons/fa";
 import ButtonComponent from "../../home/buttonComponent";
 import { useNavigate } from "react-router-dom";
+import { loadUserAdditionalDetailsFromBackend } from "../../../../services/operations/profile";
 
 const MyProfile = (props) => {
 
-  const userData = useSelector((state) => (state.profile.user));
-  const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const {token} = useSelector((state) => state.auth);
+    const { loading : authLoading } = useSelector((state) => state.auth.loading);
+    const { loading : profileLoading } = useSelector((state) => state.profile.loading);
+    const navigate = useNavigate();
+    const userData = useSelector((state) => (state.profile.user));
+
+    useEffect(()=>{
+        dispatch(loadUserAdditionalDetailsFromBackend(navigate , token));
+    } , []);
+
+    console.log('reached the loader')
+    if(authLoading || profileLoading){
+        return (
+            <div className="custom-loader"></div>
+            )
+        }
+        
+        
+    console.log('passed the loader')
 
   return (
     <div className="userProfile_wrapper">
@@ -41,9 +60,9 @@ const MyProfile = (props) => {
                   </div>
               </div>
               <div>
-                  <textarea placeholder={userData?.additionalDetails?.about ?? "Write something about yourself"}>
-                    {userData?.additionalDetails?.about}
-                  </textarea>
+                  <div>
+                    {userData?.additionalDetails?.about ?? "Write something about yourself"}
+                  </div>
               </div>
           </div>
 
