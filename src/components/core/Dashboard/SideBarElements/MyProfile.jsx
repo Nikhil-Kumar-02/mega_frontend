@@ -41,7 +41,7 @@ const MyProfile = (props) => {
                   </div>
               </div>
               <div>
-                  <textarea placeholder={userData?.additionalDetails?.ButtonComponent?.about ?? "Write something about yourself"}>
+                  <textarea placeholder={userData?.additionalDetails?.about ?? "Write something about yourself"}>
                     {userData?.additionalDetails?.about}
                   </textarea>
               </div>

@@ -3,18 +3,22 @@ import './Settings.css';
 import { GrUpload } from "react-icons/gr";
 import ButtonComponent from "../../home/buttonComponent";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import PasswordInputComponent from "../../../common/PasswordInputComponent";
 import { RiDeleteBin6Line } from "react-icons/ri";
+import { update_Profile_Data } from "../../../../services/operations/profile";
 
 const Settings = (props) => {
 
   const userData = useSelector((state) => (state.profile.user));
+  const {token} = useSelector((state) => (state.auth));
   const navigate = useNavigate();
   const fileuploadElement = useRef(null);
+  const dispatch = useDispatch();
 
 
-  const [userFormData , setUserFromData] = useState({firstName:userData?.firstName , lastName:userData?.lastName , dob:userData?.dob , phoneNumber:userData?.phoneNumber , gender:userData?.gender , about:userData?.about});
+  const [userFormData , setUserFromData] = useState({
+    dob:userData?.additionalDetails?.dob , phoneNumber:userData?.phoneNumber , gender:userData?.additionalDetails?.gender , about:userData?.additionalDetails?.about});
 
   const [userCurrentPassword , setUserCurrentPassword] = useState(null);
   const [userNewPassword , setUserNewPassword] = useState(null);
@@ -27,6 +31,7 @@ const Settings = (props) => {
 
   function saveHandler(){
     console.log('the data filled by user is : ' , userFormData);
+    dispatch(update_Profile_Data(navigate , token , userFormData));
   }
 
   function changeHandler(e){
