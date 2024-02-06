@@ -17,9 +17,9 @@ import ContactUs from './pages/ContactUs';
 import SideBar from './components/core/Dashboard/SideBar'
 import MyProfile from './components/core/Dashboard/SideBarElements/MyProfile';
 import Instructor from './components/core/Dashboard/SideBarElements/Instructor';
-import MyCourses from './components/core/Dashboard/SideBarElements/MyCourses';
+import MyCourses from './components/core/Dashboard/SideBarElements/AddCourseElements/MyCourses';
 import Settings from './components/core/Dashboard/SideBarElements/Settings';
-import AddCourse from './components/core/Dashboard/SideBarElements/AddCourse';
+import AddCourse from './components/core/Dashboard/SideBarElements/AddCourseElements/AddCourse';
 import Dashboard from './pages/DashBoard';
 import EnrolledCourses from './components/core/Dashboard/SideBarElements/EnrolledCourses';
 import Cart from './components/core/Dashboard/SideBarElements/Cart';
@@ -28,7 +28,7 @@ import { useSelector } from 'react-redux';
 
 function App() {
 
-  const {user} = useSelector((state) => state.auth);
+  const {user} = useSelector((state) => state.profile);
 
   return (
     <div className='App'>
@@ -49,15 +49,21 @@ function App() {
           <Route path='/dashboard' element={<Dashboard></Dashboard>}>
             <Route index element={<SideBar></SideBar>}></Route>
             <Route path='/dashboard/my-profile' element={<MyProfile></MyProfile>}></Route>
-            <Route path='/dashboard/instructor' element={<Instructor></Instructor>}></Route>
-            <Route path='/dashboard/my-courses' element={<MyCourses></MyCourses>}></Route>
-            <Route path='/dashboard/add-course' element={<AddCourse></AddCourse>}></Route>
             <Route path='/dashboard/setting' element={<Settings></Settings>}></Route>
             {
               user && user.accountType === ACCOUNT_TYPE.STUDENT && (
                 <>
                   <Route path='/dashboard/enrolled-courses' element={<EnrolledCourses></EnrolledCourses>}></Route>
                   <Route path='/dashboard/cart' element={<Cart></Cart>}></Route>
+                </>
+              )
+            }
+            {
+              user && user.accountType === ACCOUNT_TYPE.INSTRUCTOR && (
+                <>
+                <Route path='/dashboard/instructor' element={<Instructor></Instructor>}></Route>
+                <Route path='/dashboard/my-courses' element={<MyCourses></MyCourses>}></Route>
+                <Route path='/dashboard/add-course' element={<AddCourse></AddCourse>}></Route>
                 </>
               )
             }
