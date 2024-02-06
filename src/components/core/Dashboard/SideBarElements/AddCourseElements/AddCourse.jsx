@@ -1,9 +1,10 @@
-import React from "react"
+import React, { useState } from "react"
 import './AddCourse.css';
 import CourseUploadTips from "./CourseUploadTips";
 import { HiCurrencyRupee } from "react-icons/hi";
 import ButtonComponent from '../../../home/buttonComponent';
 import { CgAsterisk } from "react-icons/cg";
+import { FaCheck } from "react-icons/fa";
 
 const AddCourse = (props) => {
 
@@ -22,19 +23,30 @@ const AddCourse = (props) => {
     }
   ];
 
+  const [currStep , setCurrStep] = useState(2);
+
   return (
     <div className="addCourse_wrapper">
       <div>
-        <div>
+        <div className="three_steps_Container">
           {
             courseSteps.map((step) => (
-              <>
-                <div>
-                  <div>{step.id}</div>
-                  <div>{step.title}</div>
+              <div className="each_step_container">
+
+                <div className={currStep > step.id ? "Yellow_selected_stepNumber" : 
+                  currStep === step.id ? "current_stepNumber" : "" }>
+                  <div className={currStep >= step.id ? `addCourse_passed_horizontal_linel${step.id}` : `addCourse_horizontal_linel${step.id}`}></div>
+
+                  <div className="Step_Number">{
+                    currStep > step.id ? (<FaCheck size={9}></FaCheck>) : step.id
+                  }</div>
+
+                  <div className={currStep > step.id ?  `addCourse_passed_horizontal_liner${step.id}` : `addCourse_horizontal_liner${step.id}`}></div>
                 </div>
-                <div className={`addCourse_horizontal_line${step.id}`}></div>
-              </>
+
+                <div>{step.title}</div>
+
+              </div>
             ))
           }
         </div>

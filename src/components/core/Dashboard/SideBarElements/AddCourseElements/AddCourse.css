@@ -5,8 +5,25 @@
     justify-content: space-evenly;
     >:nth-child(1){
         width: 60%;
-        >:nth-child(1){
-
+        >.three_steps_Container{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 3rem 0rem;
+            >.each_step_container{
+                /* this has two childs one (hr number and hr again) and other one is title  */
+                color: grey;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                width: 33%;
+                >:nth-child(1){
+                    display: flex;
+                    align-items: center;
+                    margin: 1rem 0;
+                }
+            }
         }
         >:nth-child(2){
             background-color: #161D29;
@@ -50,4 +67,90 @@
             }
         }
     }
+}
+
+.Step_Number{
+    padding: 0.5rem 1rem;
+    background-color: #161D29;
+    border-radius: 50%;
+}
+
+.addCourse_horizontal_linel1{
+    width: 4.5rem;
+    height: 0rem;
+}
+.addCourse_horizontal_liner1{
+    width: 4.65rem;
+    height: 0rem;
+    border: 1px solid grey;
+    border-style: dashed;
+}
+
+.addCourse_horizontal_linel2{
+    width: 4.65rem;
+    height: 0rem;
+    border: 1px solid grey;
+    border-style: dashed;
+}
+.addCourse_horizontal_liner2{
+    width: 4.65rem;
+    height: 0rem;
+    border: 1px solid grey;
+    border-style: dashed;
+}
+
+
+.addCourse_horizontal_linel3{
+    width: 4.65rem;
+    height: 0rem;
+    border: 1px solid grey;
+    border-style: dashed;
+}
+.addCourse_horizontal_liner3{
+    width: 4.5rem;
+    height: 0rem;
+}
+
+.Yellow_selected_stepNumber{
+    >:nth-child(2){
+        border: 1.5px solid #FFD60A;
+        background-color: #FFD60A;
+    }
+}
+.current_stepNumber{
+    >:nth-child(2){
+        border: 1.5px solid #FFD60A;
+    }
+}
+.addCourse_passed_horizontal_linel1{
+    width: 4.65rem;
+    height: 0rem;
+}
+.addCourse_passed_horizontal_liner1{
+    width: 4.65rem;
+    height: 0rem;
+    border: 1px solid #FFD60A;
+    border-style: dashed;
+}
+.addCourse_passed_horizontal_linel2{
+    width: 4.65rem;
+    height: 0rem;
+    border: 1px solid #FFD60A;
+    border-style: dashed;
+}
+.addCourse_passed_horizontal_liner2{
+    width: 4.65rem;
+    height: 0rem;
+    border: 1px solid #FFD60A;
+    border-style: dashed;
+}
+.addCourse_passed_horizontal_linel3{
+    width: 4.65rem;
+    height: 0rem;
+    border: 1px solid #FFD60A;
+    border-style: dashed;
+}
+.addCourse_passed_horizontal_liner3{
+    width: 4.65rem;
+    height: 0rem;
 }
