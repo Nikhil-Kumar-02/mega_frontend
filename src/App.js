@@ -21,6 +21,7 @@ import MyCourses from './components/core/Dashboard/SideBarElements/MyCourses';
 import Settings from './components/core/Dashboard/SideBarElements/Settings';
 import AddCourse from './components/core/Dashboard/SideBarElements/AddCourse';
 import Dashboard from './pages/DashBoard';
+import EnrolledCourses from './components/core/Dashboard/SideBarElements/EnrolledCourses';
 
 function App() {
   return (
@@ -46,6 +47,7 @@ function App() {
             <Route path='/dashboard/my-courses' element={<MyCourses></MyCourses>}></Route>
             <Route path='/dashboard/add-course' element={<AddCourse></AddCourse>}></Route>
             <Route path='/dashboard/setting' element={<Settings></Settings>}></Route>
+            <Route path='/dashboard/enrolled-courses' element={<EnrolledCourses></EnrolledCourses>}></Route>
           </Route>
         </Route>
         <Route path='/*' element={<NotFound />} />

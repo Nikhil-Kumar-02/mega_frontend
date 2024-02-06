@@ -1,0 +1,59 @@
+.enrolled_courses_wrapper{
+    margin: 2rem;
+    width: 100%;
+}
+
+.all_available_courses_wrapper{
+    margin-top: 1.5rem;
+    width: 100%;
+    border: 1px solid grey;
+    border-radius: 1rem;
+    >:nth-child(1){
+        background-color: #2C333F;
+        border-top-left-radius: 1rem;
+        border-top-right-radius: 1rem;
+        font-size: 1.1rem;
+        padding: 0.6rem 0.5rem;
+    }
+    >div{
+        display: flex;
+        justify-content: space-between;
+        >:nth-child(1){
+            width: 50%;
+        }
+        >:nth-child(2){
+            width: 15%;
+        }
+        >:nth-child(3){
+            width: 35%;
+        }
+    }
+}
+
+.eachCourse_wrapper{
+    display: flex;
+    align-items: center;
+    border-top: 1px solid grey;
+    >:nth-child(1){
+        display: flex;
+        align-items: center;
+        >:nth-child(1){
+            border-radius: 1px;
+            margin: 0.5rem;
+        }
+        >:nth-child(2){
+            margin: 0.5rem;
+            cursor: pointer;
+        }:hover{
+            text-decoration: underline;
+        }
+    }
+    >:nth-child(3){
+        display: flex;
+        justify-content: space-between;
+        padding-right: 2rem;
+        >:last-child{
+            cursor: pointer;
+        }
+    }
+}

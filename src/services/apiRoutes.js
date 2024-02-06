@@ -36,4 +36,5 @@ export const profileAllRoutes = {
     update_Profile_Data : `${profileRouteBaseUrl}${dotenv.update_Profile_Data}`,
     get_All_User_Details : `${profileRouteBaseUrl}${dotenv.get_All_User_Details}`,
     delete_User_Permanently : `${profileRouteBaseUrl}${dotenv.delete_User_Permanently}`,
+    get_User_Enrolled_Courses : `${profileRouteBaseUrl}${dotenv.user_Enrolled_Courses}`
 }

@@ -21,7 +21,7 @@ const SideBar = (props) => {
     <div className="sideBar_wrapper">
       {
         sidebarLinks.map((eachOption) => {
-          if(eachOption.type && eachOption.type !== user.accountType) return null;
+          if(eachOption.type && eachOption.type !== user?.accountType) return null;
           return (
             <SideBarLinks id={eachOption.id} eachTabData={eachOption}></SideBarLinks>
           )

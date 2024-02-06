@@ -75,7 +75,6 @@ export function updateUserPasswordFromBackend(currentPassword , newPassword , to
     return async (dispatch) => {
         const toastId = toast.loading("Working On It .... Please Wait");
         try {
-            console.log("reached the updateUserPasswordFromBackend")
             const responseFromapiConnector = await requestBackend("PUT" , userAllRoutes.update_Password , {currentPassword , newPassword} , {Authorization : `Bearer ${token}`});
 
             if(!responseFromapiConnector.data){
@@ -92,6 +91,32 @@ export function updateUserPasswordFromBackend(currentPassword , newPassword , to
         } catch (error) {
             console.log('error in operations profile ' , error);
             toast.error("Error while Updating Password");
+        }
+    }
+}
+
+export function getUserEnrolledCourses(setUserEnrolledCourses , token){
+    return async (dispatch) => {
+        try {
+            const toastId = toast.loading("Loading Enrolled Courses ... ");
+
+            const responseFromapiConnector = await requestBackend("GET" , profileAllRoutes.get_User_Enrolled_Courses , null , {Authorization : `Bearer ${token}`},);
+
+            if(!responseFromapiConnector.data){
+                //means some error as if it was a ok response then .data will be available directly
+                toast.dismiss(toastId);
+                toast.error(responseFromapiConnector?.response?.data?.message);
+            }
+            else{
+                //so set this course
+                console.log('the courses recieved r : ' , responseFromapiConnector.data.userEnrolledCourses)
+                setUserEnrolledCourses(responseFromapiConnector?.data?.userEnrolledCourses);
+                toast.dismiss(toastId);
+            }
+            
+        } catch (error) {
+            console.log('error in operations profile while fetching user enrolled courses ' ,error);
+            toast.error("Error while fetching your Courses")
         }
     }
 }

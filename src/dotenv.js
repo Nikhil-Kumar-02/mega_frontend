@@ -20,5 +20,6 @@ export const dotenv = {
     update_Profile_Photo : '/updateDisplayPicture',
     update_Profile_Data : '/updateProfile',
     get_All_User_Details : '/getUserDetails',
-    delete_User_Permanently : '/deleteProfile'
+    delete_User_Permanently : '/deleteProfile',
+    user_Enrolled_Courses : '/userEnrolledCourses',
 }

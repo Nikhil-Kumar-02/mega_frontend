@@ -19,16 +19,12 @@ const MyProfile = (props) => {
         dispatch(loadUserAdditionalDetailsFromBackend(navigate , token));
     } , []);
 
-    console.log('reached the loader')
     if(authLoading || profileLoading){
         return (
             <div className="custom-loader"></div>
             )
         }
         
-        
-    console.log('passed the loader')
-
   return (
     <div className="userProfile_wrapper">
       <div className="userProfile">
