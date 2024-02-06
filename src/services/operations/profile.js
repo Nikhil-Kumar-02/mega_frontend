@@ -95,28 +95,25 @@ export function updateUserPasswordFromBackend(currentPassword , newPassword , to
     }
 }
 
-export function getUserEnrolledCourses(setUserEnrolledCourses , token){
-    return async (dispatch) => {
-        try {
-            const toastId = toast.loading("Loading Enrolled Courses ... ");
+export async function getUserEnrolledCourses(token){
+    try {
+        const toastId = toast.loading("Loading Enrolled Courses ... ");
 
-            const responseFromapiConnector = await requestBackend("GET" , profileAllRoutes.get_User_Enrolled_Courses , null , {Authorization : `Bearer ${token}`},);
+        const responseFromapiConnector = await requestBackend("GET" , profileAllRoutes.get_User_Enrolled_Courses , null , {Authorization : `Bearer ${token}`},);
 
-            if(!responseFromapiConnector.data){
-                //means some error as if it was a ok response then .data will be available directly
-                toast.dismiss(toastId);
-                toast.error(responseFromapiConnector?.response?.data?.message);
-            }
-            else{
-                //so set this course
-                console.log('the courses recieved r : ' , responseFromapiConnector.data.userEnrolledCourses)
-                setUserEnrolledCourses(responseFromapiConnector?.data?.userEnrolledCourses);
-                toast.dismiss(toastId);
-            }
-            
-        } catch (error) {
-            console.log('error in operations profile while fetching user enrolled courses ' ,error);
-            toast.error("Error while fetching your Courses")
+        if(!responseFromapiConnector.data){
+            //means some error as if it was a ok response then .data will be available directly
+            toast.dismiss(toastId);
+            toast.error(responseFromapiConnector?.response?.data?.message);
         }
+        else{
+            //so set this course
+            toast.dismiss(toastId);
+            return responseFromapiConnector?.data?.userEnrolledCourses;
+        }
+        
+    } catch (error) {
+        console.log('error in operations profile while fetching user enrolled courses ' ,error);
+        toast.error("Error while fetching your Courses")
     }
 }

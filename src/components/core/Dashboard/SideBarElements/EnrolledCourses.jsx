@@ -5,14 +5,23 @@ import { getUserEnrolledCourses } from "../../../../services/operations/profile"
 
 
 const EnrolledCourses = (props) => {
-    const [userCourses , setUserCourses] = useState([]);
-    const dispatch = useDispatch();
+    const [userCourses , setUserCourses] = useState(null);
     const {token} = useSelector((state) => state.auth);
 
+    const getEnrolledCourses = async () =>{
+        try {
+            const courses = await getUserEnrolledCourses(token);
+            setUserCourses(courses);
+        } catch (error) {
+            console.log('error while fetching the courses')
+        }
+    }
+
     useEffect(() => {
-        console.log("called userenrolled courses to the backend !")
-        dispatch(getUserEnrolledCourses(setUserCourses , token));
+        getEnrolledCourses();
     } , [])
+
+    console.log('the user courses are ', userCourses)
 
     if(!userCourses){
         return (
@@ -22,45 +31,63 @@ const EnrolledCourses = (props) => {
 
   return (
     <div className="enrolled_courses_wrapper">
-        <div>
-            <h1>Enrolled Courses</h1>
-        </div>
+        {
+            !userCourses || userCourses.length===0 ? 
+            (
+                <>
+                <div>
+                    <h1>Enrolled Courses</h1>
+                </div>
+                <br></br>
+                <h2>You have not enrolled in any Courses</h2>
+                </>
+            )
+            : 
+            (
+                <>
+                <div>
+                    <h1>Enrolled Courses</h1>
+                </div>
 
-        <div className="all_available_courses_wrapper">
-            <div>
-                <div>Course Name</div>
-                <div>Duration</div>
-                <div>Progress</div>
-            </div>
+                <div className="all_available_courses_wrapper">
+                    <div>
+                        <div>Course Name</div>
+                        <div>Duration</div>
+                        <div>Progress</div>
+                    </div>
 
-            {
-                userCourses.map((eachCourse) => {
-                    return (
-                        <div className="eachCourse_wrapper">
+                    {
+                        userCourses.map((eachCourse) => {
+                            return (
+                                <div className="eachCourse_wrapper">
 
-                            <div>
-                                <div><img src={eachCourse?.thumbnail} height={40}></img></div>
-                                <div>
-                                    <div>{eachCourse?.courseName}</div>
-                                    <div>{eachCourse?.courseDescription}</div>
+                                    <div>
+                                        <div><img src={eachCourse?.thumbnail} height={40}></img></div>
+                                        <div>
+                                            <div>{eachCourse?.courseName}</div>
+                                            <div>{eachCourse?.courseDescription}</div>
+                                        </div>
+                                    </div>
+
+                                    <div>2 hr 45 min</div>
+
+                                    <div>
+                                        <div>
+                                            <div>Progress</div>
+                                            <div>Progress bar</div>
+                                        </div>
+                                        <div> ... </div>
+                                    </div>
+
                                 </div>
-                            </div>
-
-                            <div>2 hr 45 min</div>
-
-                            <div>
-                                <div>
-                                    <div>Progress</div>
-                                    <div>Progress bar</div>
-                                </div>
-                                <div> ... </div>
-                            </div>
-
-                        </div>
-                    )
-                })
-            }
-        </div>
+                            )
+                        })
+                    }
+                </div>
+                </>
+            )
+        }
+        
     </div>
   )
 };

@@ -22,8 +22,14 @@ import Settings from './components/core/Dashboard/SideBarElements/Settings';
 import AddCourse from './components/core/Dashboard/SideBarElements/AddCourse';
 import Dashboard from './pages/DashBoard';
 import EnrolledCourses from './components/core/Dashboard/SideBarElements/EnrolledCourses';
+import Cart from './components/core/Dashboard/SideBarElements/Cart';
+import { ACCOUNT_TYPE } from './utils/constants';
+import { useSelector } from 'react-redux';
 
 function App() {
+
+  const {user} = useSelector((state) => state.auth);
+
   return (
     <div className='App'>
       <Routes>
@@ -47,7 +53,14 @@ function App() {
             <Route path='/dashboard/my-courses' element={<MyCourses></MyCourses>}></Route>
             <Route path='/dashboard/add-course' element={<AddCourse></AddCourse>}></Route>
             <Route path='/dashboard/setting' element={<Settings></Settings>}></Route>
-            <Route path='/dashboard/enrolled-courses' element={<EnrolledCourses></EnrolledCourses>}></Route>
+            {
+              user && user.accountType === ACCOUNT_TYPE.STUDENT && (
+                <>
+                  <Route path='/dashboard/enrolled-courses' element={<EnrolledCourses></EnrolledCourses>}></Route>
+                  <Route path='/dashboard/cart' element={<Cart></Cart>}></Route>
+                </>
+              )
+            }
           </Route>
         </Route>
         <Route path='/*' element={<NotFound />} />
