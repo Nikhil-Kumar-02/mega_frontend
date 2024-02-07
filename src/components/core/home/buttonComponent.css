@@ -16,13 +16,13 @@
 .yellow_btn{
     background-color: rgb(255,214,10);
     color: black; 
-    padding: 0.5rem;
+    padding: 0.5rem 1rem;
 
 }
 
 .black_btn{
     background-color: rgb(69, 68, 68);
     color: white;    
-    padding: 0.5rem;
+    padding: 0.5rem 1rem;
 
 }
