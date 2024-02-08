@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import '../AddCourse.css';
+import './CourseInformation.css';
 import { HiCurrencyRupee } from "react-icons/hi";
 import ButtonComponent from '../../../../home/buttonComponent';
 import { CgAsterisk } from "react-icons/cg";
@@ -56,61 +56,61 @@ const CourseInformation = (props) => {
 
   return (
     <form>
-        <div>
-            <label>Course Title<CgAsterisk size={13}></CgAsterisk></label>
-            <input type="text" placeholder="Enter Course Title"></input>
-        </div>
-        <div>
-            <label>Course Short Description<CgAsterisk size={13}></CgAsterisk></label>
-            <textarea placeholder="Enter Description"></textarea>
-        </div>
-        <div className="addCourse_rupee_container">
-            <label><HiCurrencyRupee color="grey" size={20}/>Course Price<CgAsterisk color="red" size={13}></CgAsterisk></label>
-            <input type="text" placeholder="Enter Price"></input>
-        </div>
-        <div>
-            <label>Category<CgAsterisk size={13}></CgAsterisk></label>
-            <div className="addCourse_category_drop_down">
-            <select>
-            <option key={0}>Choose Course Category</option>
-            {
-                allCategories?.length > 0 && 
-                allCategories?.map((category) => (
-                    <option key={category._id}>{category.name}</option>
-                ))
-            }
-            </select>
-            </div>
-        </div>
-        <div>
-            <label>Tags<CgAsterisk size={13}></CgAsterisk></label>
-            <div className={enteredTags.length>0 ? "addCourse_tags_Container" : ""}>
-            {
-                enteredTags?.length > 0 && enteredTags.map((tag) => (
-                <span key={tag.id}>{tag.name}<span onClick={()=>{removeTagHandler(tag.id)}}><RxCross2 size={15} /></span></span>
-                ))
-            }
-            </div>
-            <input type="text" placeholder="Choose a Tag And Press Enter" onKeyDown={AddNewTagHandler}></input>
-        </div>
-        <div>
-            <label>Course Thumbnail<CgAsterisk size={13}></CgAsterisk></label>
-            <input type="file" placeholder="Drag and Drop or Choose"></input>
-        </div>
-        <div>
-            <label>Benefits of the course<CgAsterisk size={13}></CgAsterisk></label>
-            <textarea placeholder="Enter benefits of the course"></textarea>
-        </div>
-        <div>
-            <label>Requirements / Instructions<CgAsterisk size={13}></CgAsterisk></label>
-            <textarea placeholder="Enter benefits of the course"></textarea>
-        </div>
-        <div className="homepage_button_arrow" onClick={()=>toggleStep(+1)}>
-            <ButtonComponent active={true}>
-            Next
-            <FaChevronRight size={12}></FaChevronRight>
-            </ButtonComponent>
-        </div>
+      <div>
+          <label>Course Title<CgAsterisk size={13}></CgAsterisk></label>
+          <input type="text" placeholder="Enter Course Title"></input>
+      </div>
+      <div>
+          <label>Course Short Description<CgAsterisk size={13}></CgAsterisk></label>
+          <textarea placeholder="Enter Description"></textarea>
+      </div>
+      <div className="addCourse_rupee_container">
+          <label><HiCurrencyRupee color="grey" size={20}/>Course Price<CgAsterisk color="red" size={13}></CgAsterisk></label>
+          <input type="text" placeholder="Enter Price"></input>
+      </div>
+      <div>
+          <label>Category<CgAsterisk size={13}></CgAsterisk></label>
+          <div className="addCourse_category_drop_down">
+          <select>
+          <option key={0}>Choose Course Category</option>
+          {
+              allCategories?.length > 0 && 
+              allCategories?.map((category) => (
+                  <option key={category._id}>{category.name}</option>
+              ))
+          }
+          </select>
+          </div>
+      </div>
+      <div>
+          <label>Tags<CgAsterisk size={13}></CgAsterisk></label>
+          <div className={enteredTags.length>0 ? "addCourse_tags_Container" : ""}>
+          {
+              enteredTags?.length > 0 && enteredTags.map((tag) => (
+              <span key={tag.id}>{tag.name}<span onClick={()=>{removeTagHandler(tag.id)}}><RxCross2 size={15} /></span></span>
+              ))
+          }
+          </div>
+          <input type="text" placeholder="Choose a Tag And Press Enter" onKeyDown={AddNewTagHandler}></input>
+      </div>
+      <div>
+          <label>Course Thumbnail<CgAsterisk size={13}></CgAsterisk></label>
+          <input type="file" placeholder="Drag and Drop or Choose"></input>
+      </div>
+      <div>
+          <label>Benefits of the course<CgAsterisk size={13}></CgAsterisk></label>
+          <textarea placeholder="Enter benefits of the course"></textarea>
+      </div>
+      <div>
+          <label>Requirements / Instructions<CgAsterisk size={13}></CgAsterisk></label>
+          <textarea placeholder="Enter benefits of the course"></textarea>
+      </div>
+      <div className="homepage_button_arrow" onClick={()=>toggleStep(+1)}>
+          <ButtonComponent active={true}>
+          Next
+          <FaChevronRight size={12}></FaChevronRight>
+          </ButtonComponent>
+      </div>
     </form>
   )
 };

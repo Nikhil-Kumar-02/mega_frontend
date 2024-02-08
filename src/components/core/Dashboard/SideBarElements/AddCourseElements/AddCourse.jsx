@@ -53,22 +53,15 @@ const AddCourse = (props) => {
             ))
           }
         </div>
-
-        <div>
         {
           currStep === 1 && <CourseInformation></CourseInformation>
         }
-        </div>
-        <div>
         {
           currStep === 2 && <CourseBuilder></CourseBuilder>
         }
-        </div>
-        <div>
         {
           currStep === 3 && <CoursePublish></CoursePublish>
         }
-        </div>
 
       </div>
 

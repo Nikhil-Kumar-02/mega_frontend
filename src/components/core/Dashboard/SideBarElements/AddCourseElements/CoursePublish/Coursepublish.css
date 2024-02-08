@@ -1,0 +1,36 @@
+.coursePublish_container{
+    >:nth-child(1){
+        background-color: #161D29;
+        border-radius: 1rem;
+        padding: 1rem;
+        >:nth-child(2){
+            display: flex;
+            font-size: 1rem;
+            margin: 1.5rem 0;
+            >input{
+                width: max-content;
+                margin-right: 1rem;
+            }
+        }
+    }
+}
+
+.coursePublish_buttonContainer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 2rem 0;
+    >:nth-child(1){
+        height: max-content;
+        & *{
+            display: flex;
+            align-items: center;
+        }
+    }
+    >:nth-child(2){
+        display: flex;
+        justify-content: space-between;
+        width: 50%;
+        height: max-content;
+    }
+}
