@@ -1,0 +1,51 @@
+.courseSection_eachSection{
+
+    >.courseSection_eachSection_header{
+        display: flex;
+        justify-content: space-between;
+        margin: 0.7rem 0;
+        padding: 0.3rem 0;
+        border-bottom: 1px solid #6E727F;
+        >:nth-child(1){
+            width: 85%;
+            display: flex;
+            >p{
+                width: 90%;
+                padding-left: 0.5rem;
+                overflow-wrap: break-word;
+            }
+        }
+        >:nth-child(2){
+            width: 15%;
+            display: flex;
+            justify-content: space-between;
+            >span{
+                height: 95%;
+                border: 1px solid #6E727F;
+            }
+            >.courseSection{
+                cursor: pointer;
+            }
+        }
+        .courseSection_dropDown{
+            cursor: pointer;
+            >:hover{
+                background-color: black;
+            }
+        }
+    }
+}
+
+.courseSection_Subsection_addLecture{
+    color: #FFD60A;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    width: max-content;
+    & *{
+        margin: 0 0.4rem;
+    }
+}
+.courseSection_Subsection_addLecture:hover{
+    color: yellow;
+}
