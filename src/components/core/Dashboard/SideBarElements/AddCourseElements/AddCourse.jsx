@@ -47,7 +47,7 @@ const AddCourse = (props) => {
                   <div className={currStep > step.id ?  `addCourse_passed_horizontal_liner${step.id}` : `addCourse_horizontal_liner${step.id}`}></div>
                 </div>
 
-                <div>{step.title}</div>
+                <div className={currStep >= step.id ? "addCourse_passed_titles" : ""}>{step.title}</div>
 
               </div>
             ))

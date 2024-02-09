@@ -1,6 +1,6 @@
 form{
     >div{
-        margin: 1.5rem 0;
+        margin: 0.8rem 0;
         >input{
             background-color: #2C333F;
             margin-top: 0.5rem;
@@ -14,6 +14,11 @@ form{
             padding: 0.5rem;
             border: none;
             border-radius: 0.3rem;
+        }
+    }
+    >:nth-child(6){
+        >div{
+            padding-top: 0.5rem;
         }
     }
     >:last-child{

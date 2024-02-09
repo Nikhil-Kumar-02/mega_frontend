@@ -67,6 +67,10 @@
     border-radius: 50%;
 }
 
+.addCourse_passed_titles{
+    color: white;
+}
+
 .addCourse_horizontal_linel1{
     width: 4.9rem;
     height: 0rem;

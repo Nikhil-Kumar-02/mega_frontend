@@ -1,0 +1,54 @@
+.LectureUpload_wrapper{
+    background-color: #2C333F;
+    border: 1px dashed gray;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: grey;
+    font-size: 0.8rem;
+    >input{
+        display: none;
+    }
+    >div{
+        margin: 0.3rem 0;
+        width: 100%;
+        text-align: center;
+        >ul{
+            display: flex;
+            justify-content: space-evenly;
+        }
+        >span{
+            color: yellow;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+        >span:hover{
+            text-decoration: underline;
+        }
+    }
+    >:nth-child(2){
+        background-color: #171717;
+        width: max-content;
+        padding: 0.8rem;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+    >:nth-child(2):hover{
+        background-color: #413f3f;
+    }
+    >.LectureUpload_file_wrapper{
+        padding: 0.3rem 1rem;
+        width: max-content;
+        border-radius: 1rem;
+        background-color: black;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        >span{
+            margin-left: 0.3rem;
+        }
+    }
+}

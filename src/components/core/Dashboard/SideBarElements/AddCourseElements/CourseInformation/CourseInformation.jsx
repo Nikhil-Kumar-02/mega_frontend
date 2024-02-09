@@ -8,7 +8,10 @@ import { RxCross2 } from "react-icons/rx";
 import {requestBackend}  from '../../../../../../services/apiConnector';
 import {courseAllRoutes} from '../../../../../../services/apiRoutes';
 import { useDispatch, useSelector } from "react-redux";
-import {setStep} from '../../../../../../reducers/slices/courseSlice'
+import {setStep} from '../../../../../../reducers/slices/courseSlice';
+import LectureUpload from "../../../../../common/LectureUpload";
+
+
 
 const CourseInformation = (props) => {
 
@@ -72,7 +75,13 @@ const CourseInformation = (props) => {
           <label>Category<CgAsterisk size={13}></CgAsterisk></label>
           <div className="addCourse_category_drop_down">
           <select>
-          <option key={0}>Choose Course Category</option>
+          <option key={0}>
+          {
+            allCategories?.length>0 ?
+            <span>Choose Course Category</span> : 
+            <span>Loading...</span>
+          }
+          </option>
           {
               allCategories?.length > 0 && 
               allCategories?.map((category) => (
@@ -94,8 +103,10 @@ const CourseInformation = (props) => {
           <input type="text" placeholder="Choose a Tag And Press Enter" onKeyDown={AddNewTagHandler}></input>
       </div>
       <div>
-          <label>Course Thumbnail<CgAsterisk size={13}></CgAsterisk></label>
-          <input type="file" placeholder="Drag and Drop or Choose"></input>
+        <label>Course Thumbnail<CgAsterisk size={13}></CgAsterisk></label>
+        <div>
+          <LectureUpload></LectureUpload>
+        </div>
       </div>
       <div>
           <label>Benefits of the course<CgAsterisk size={13}></CgAsterisk></label>
