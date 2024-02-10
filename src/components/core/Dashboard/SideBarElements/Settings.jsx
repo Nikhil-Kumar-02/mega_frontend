@@ -6,14 +6,13 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import PasswordInputComponent from "../../../common/PasswordInputComponent";
 import { RiDeleteBin6Line } from "react-icons/ri";
-import { updateUserPasswordFromBackend, update_Profile_Data } from "../../../../services/operations/profile";
+import { updateUserPasswordFromBackend, updateUserProfilePhotoFromBackend, update_Profile_Data } from "../../../../services/operations/profile";
 
 const Settings = (props) => {
 
   const userData = useSelector((state) => (state.profile.user));
   const {token} = useSelector((state) => (state.auth));
   const navigate = useNavigate();
-  const fileuploadElement = useRef(null);
   const dispatch = useDispatch();
 
 
@@ -23,10 +22,14 @@ const Settings = (props) => {
   const [userCurrentPassword , setUserCurrentPassword] = useState(null);
   const [userNewPassword , setUserNewPassword] = useState(null);
 
+  const [uploadedImage , setUploadedimage] = useState(null);
+  const inputRef = useRef();
 
-  function fileUploadHandler(){
-    // fileuploadElement.current.click();
-    console.log('clicked')
+  function changeProfilePicHandler(){
+    const formData = new FormData();
+    formData.append('displayPicture', uploadedImage);
+    dispatch(updateUserProfilePhotoFromBackend(formData , token));
+    setUploadedimage(null);
   }
 
   function saveHandler(){
@@ -49,27 +52,41 @@ const Settings = (props) => {
       </div>
 
       <div>
-        <img src={userData.image} alt={`${userData.firstName}`} height={100}></img>
+        <div className="userProfilePicture">
+          <img src={userData.image} alt={`${userData.firstName}`} height={100}></img>
+        </div>
         <div>
           <h4>Change Profile Picture</h4>
           <div>
 
-            <div className="userProfile_Edit" onClick={fileUploadHandler} ref={fileuploadElement}>
+            <div className="userProfile_Edit" onClick={() => {
+              inputRef.current.click();
+            }}>
               <ButtonComponent active={true}>
               <div>
                 Select
               </div></ButtonComponent>
             </div>
 
-            <div className="userProfile_Edit">
+            <input type="file" style={{"display" : "none"}} ref={inputRef} onChange={(e) => {
+              const file = e.target.files[0];
+              setUploadedimage(file);
+            }}></input>
+
+            <div className="userProfile_Edit" onClick={changeProfilePicHandler}>
               <ButtonComponent active={true}>
               <div>
                 Upload
                 <GrUpload></GrUpload>
               </div></ButtonComponent>
             </div>
-
+            
           </div>
+            <div>
+              {
+                uploadedImage && <span>{uploadedImage?.name}</span>
+              }
+            </div>
         </div>
       </div>
 

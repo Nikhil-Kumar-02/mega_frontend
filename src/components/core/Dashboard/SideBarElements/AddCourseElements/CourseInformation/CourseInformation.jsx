@@ -49,7 +49,6 @@ const CourseInformation = (props) => {
   }
 
   function removeTagHandler(id){
-    console.log(id);
     setEnteredTags((prev) => (
       prev.filter((eachtag) => (eachtag.id !== id))
     ))
@@ -58,7 +57,7 @@ const CourseInformation = (props) => {
 
 
   return (
-    <form>
+    <form className="courseInformation_form_wrapper">
       <div>
           <label>Course Title<CgAsterisk size={13}></CgAsterisk></label>
           <input type="text" placeholder="Enter Course Title"></input>

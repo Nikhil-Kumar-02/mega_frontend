@@ -1,6 +1,5 @@
 import React, { useRef, useState } from "react"
 import './LectureUpload.css';
-import { MdCloudDone } from "react-icons/md";
 import { PiCloudArrowUpBold } from "react-icons/pi";
 import { RxCross2 } from "react-icons/rx";
 
@@ -8,7 +7,7 @@ const LectureUpload = (props) => {
 
     const inputRef = useRef(null);
     const [selectedFile , setSelectedFile] = useState(null);
-    console.log(selectedFile);
+    const [isDraggedInside , setIsDraggedInside] = useState(false);
 
     function inputClickHandler(){
         if(inputRef.current){
@@ -27,13 +26,25 @@ const LectureUpload = (props) => {
         // e.stopPropagation();
         console.log("the area has been dragged with something ..   " , e.dataTransfer.files[0]);
         const file = e.dataTransfer.files[0];
-        setSelectedFile(file)
+        setSelectedFile(file);
+        setIsDraggedInside(false);
     }
 
+    function dragEnterHandler(e){
+        e.preventDefault();
+        setIsDraggedInside(true);
+        console.log("dragged inside")
+    }
+
+    function dragLeaveHandler(e){
+        e.preventDefault();
+        setIsDraggedInside(false);
+        console.log('moved out');
+    }
 
   return (
-    <div className="LectureUpload_wrapper" onDrop={dropHandler} 
-        onDragOver={(e) => e.preventDefault()}>
+    <div className={`LectureUpload_wrapper ${isDraggedInside ? "Dragged_inside_Lecture_Upload" : ""}`}  onDrop={dropHandler} onDragOver={(e) => e.preventDefault()}
+        onDragEnter={dragEnterHandler} onDragLeave={dragLeaveHandler}>
         <input type="file" placeholder="Drag and Drop or Choose" ref={inputRef} onChange={inputChangeHandler}></input>
 
         <div onClick={inputClickHandler}>

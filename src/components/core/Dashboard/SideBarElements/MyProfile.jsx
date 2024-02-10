@@ -17,7 +17,7 @@ const MyProfile = (props) => {
 
     useEffect(()=>{
         dispatch(loadUserAdditionalDetailsFromBackend(navigate , token));
-    } , []);
+    } , [navigate , token ,dispatch]);
 
     if(authLoading || profileLoading){
         return (
@@ -31,7 +31,7 @@ const MyProfile = (props) => {
           <h1>My Profile</h1>
           <div className="userProfile_section1">
               <div>
-                  <img src={userData.image} alt={`${userData.firstName}`}></img>
+                  <img src={userData.image} alt={`${userData.firstName}`} height={100}></img>
                   <div>
                       <h4>{`${userData.firstName} ${userData.lastName}`}</h4>
                       <p>{userData.email}</p>

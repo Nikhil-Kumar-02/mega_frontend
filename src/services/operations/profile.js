@@ -117,3 +117,27 @@ export async function getUserEnrolledCourses(token){
         toast.error("Error while fetching your Courses")
     }
 }
+
+export function updateUserProfilePhotoFromBackend(formData , token){
+    return async (dispatch) => {
+        try {
+            const toastId = toast.loading("Updating profile picture ... ");
+            const responseFromapiConnector = await requestBackend("PUT" , profileAllRoutes.update_Profile_Photo , formData , {Authorization : `Bearer ${token}`} ,);
+
+            if(!responseFromapiConnector.data){
+                //means some error as if it was a ok response then .data will be available directly
+                toast.dismiss(toastId);
+                toast.error(responseFromapiConnector?.response?.data?.message);
+            }
+            else{
+                toast.dismiss(toastId);
+                dispatch(setUser(responseFromapiConnector?.data?.updatedProfileResponse));
+                toast.success("Profile Picture Updated Sucessfully")
+                console.log('the response is ' , responseFromapiConnector?.data?.updatedProfileResponse);
+            }
+        } catch (error) {
+            console.log('error while trying to update the user profile photo ', error);
+            toast.error("Failed to update Profile Picture")
+        }
+    }
+}
