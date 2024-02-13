@@ -6,7 +6,6 @@ export const dotenv = {
     other_Route : '/otherRoutes',
 
     Reset_password_token : "/reset-password-token",
-    Show_All_Categories : "/showAllCategories",
     Log_In : "/login",
     Sign_Up : "/signup",
     OtpForEmailVerication : '/sendotp',
@@ -22,4 +21,8 @@ export const dotenv = {
     get_All_User_Details : '/getUserDetails',
     delete_User_Permanently : '/deleteProfile',
     user_Enrolled_Courses : '/userEnrolledCourses',
+
+    //all course routes
+    Show_All_Categories : "/showAllCategories",
+    create_Course : '/createCourse'
 }

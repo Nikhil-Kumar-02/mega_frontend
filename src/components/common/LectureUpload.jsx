@@ -3,7 +3,7 @@ import './LectureUpload.css';
 import { PiCloudArrowUpBold } from "react-icons/pi";
 import { RxCross2 } from "react-icons/rx";
 
-const LectureUpload = (props) => {
+const LectureUpload = ({setValue}) => {
 
     const inputRef = useRef(null);
     const [selectedFile , setSelectedFile] = useState(null);
@@ -12,19 +12,18 @@ const LectureUpload = (props) => {
     function inputClickHandler(){
         if(inputRef.current){
             inputRef.current.click();
-            console.log(inputRef.current.value);
         }
     }
 
     function inputChangeHandler(e){
         const file = e.target.files[0];
-        setSelectedFile(file)
+        setSelectedFile(file);
+        setValue('courseImage' , file);
     }
 
     function dropHandler(e){
         e.preventDefault();
         // e.stopPropagation();
-        console.log("the area has been dragged with something ..   " , e.dataTransfer.files[0]);
         const file = e.dataTransfer.files[0];
         setSelectedFile(file);
         setIsDraggedInside(false);
@@ -54,7 +53,13 @@ const LectureUpload = (props) => {
         {
             selectedFile && <div className="LectureUpload_file_wrapper">
             {selectedFile.name}
-            <span onClick={() => {setSelectedFile(null)}}><RxCross2></RxCross2></span>
+            <span onClick={() => {
+                if(inputRef.current){
+                    inputRef.current.value = "";
+                }
+                setSelectedFile(null);
+                setValue('courseImage' , null);
+            }}><RxCross2></RxCross2></span>
             </div>
         }
 

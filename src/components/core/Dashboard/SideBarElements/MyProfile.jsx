@@ -31,10 +31,10 @@ const MyProfile = (props) => {
           <h1>My Profile</h1>
           <div className="userProfile_section1">
               <div>
-                  <img src={userData.image} alt={`${userData.firstName}`} height={100}></img>
+                  <img src={userData?.image} alt={`${userData?.firstName}`} height={100}></img>
                   <div>
-                      <h4>{`${userData.firstName} ${userData.lastName}`}</h4>
-                      <p>{userData.email}</p>
+                      <h4>{`${userData?.firstName} ${userData?.lastName}`}</h4>
+                      <p>{userData?.email}</p>
                   </div>
               </div>
               <div className="userProfile_Edit" onClick={()=> navigate("/dashboard/setting")}>
@@ -76,29 +76,29 @@ const MyProfile = (props) => {
                   <div>
                       <div>
                           <p>First Name</p>
-                          <h4>{userData.firstName}</h4>
+                          <h4>{userData?.firstName}</h4>
                       </div>
                       <div>
                           <p>Email</p>
-                          <h4>{userData.email}</h4>
+                          <h4>{userData?.email}</h4>
                       </div>
                       <div>
                           <p>Gender</p>
-                          <h4>{userData?.additionalDetails?.gender ? userData.additionalDetails.gender : "Add Gender"}</h4>
+                          <h4>{userData?.additionalDetails?.gender ? userData?.additionalDetails.gender : "Add Gender"}</h4>
                       </div>
                   </div>
                   <div>
                       <div>
                           <p>Last Name</p>
-                          <h4>{userData.lastName}</h4>
+                          <h4>{userData?.lastName}</h4>
                       </div>
                       <div>
                           <p>Phone Number</p>
-                          <h4>{userData.phoneNumber ? userData.phoneNumber : "Add Contact Number"}</h4>
+                          <h4>{userData?.phoneNumber ? userData?.phoneNumber : "Add Contact Number"}</h4>
                       </div>
                       <div>
                           <p>Date Of Birth</p>
-                          <h4>{userData.additionalDetails.dob ? userData.additionalDetails.dob : "Add Date of Birth"}</h4>
+                          <h4>{userData?.additionalDetails.dob ? userData?.additionalDetails.dob : "Add Date of Birth"}</h4>
                       </div>
                   </div>
               </div>

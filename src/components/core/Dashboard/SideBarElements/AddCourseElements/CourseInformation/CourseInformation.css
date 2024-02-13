@@ -1,6 +1,11 @@
 .courseInformation_form_wrapper{
     >div{
-        margin: 0.8rem 0;
+        margin: 1.5rem 0;
+        >p{
+            color: red;
+            padding-top: 0.5rem;
+            font-size: 0.8rem;
+        }
         >input{
             background-color: #2C333F;
             margin-top: 0.5rem;
@@ -23,15 +28,22 @@
     }
     >:last-child{
         display: flex;
-        padding-right: 1rem;
         justify-content: right;
-        & *{
+        >.courseInformation_button_arrow{
+            background-color: yellow;
+            padding: 0.5rem 1rem;
+            margin: 0 1rem;
             display: flex;
             align-items: center;
-            width: fit-content;
-            >:last-child{
-                padding-left: 1rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-size: 0.9rem;
+            >:nth-child(1){
+                margin-left: 0.3rem;
             }
+        }:hover{
+            scale: 1.1;
+            transition: all 0.3s ease;
         }
     }
 }
@@ -72,6 +84,10 @@
         color: white;
         border-radius: 0.2rem;
         border-bottom: 1px solid grey;
+        cursor: pointer;
+        >option{
+            cursor: pointer;
+        }
     }
 }
 
