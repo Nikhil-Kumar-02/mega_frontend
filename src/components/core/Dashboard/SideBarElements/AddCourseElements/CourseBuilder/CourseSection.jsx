@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useState } from "react"
 import './CourseSection.css';
 import { ImParagraphLeft } from "react-icons/im";
 import { MdModeEdit } from "react-icons/md";
@@ -7,16 +7,15 @@ import { IoMdArrowDropdown } from "react-icons/io";
 import { IoMdArrowDropup } from "react-icons/io";
 import { FaPlus } from "react-icons/fa6";
 import ConfirmationalModal from "../../../../../common/ConfirmationalModal";
+import CreateSubsectionModal from './CreateSubsectionModal';
 
 const CourseSection = ({eachSection , deleteHandler , nameEditSetupHandler , index}) => {
 
     const [allSectionSubSectionData , setAllSectionSubSectionData] = useState([]);
     const [subSectionVisibility ,  setSubSectionVisibility] = useState(false);
     const [confirmationModalVisibility , setConfirmationModalVisibility] = useState(false);
-
-    function callDeleteModalHandler(){
-        setConfirmationModalVisibility(true);
-    }    
+    const [viewSubsectionModal , setViewSubsectionModal] = useState(false); 
+    
 
     function deleteSectionHandler(){
         deleteHandler(eachSection.id);
@@ -35,9 +34,9 @@ const CourseSection = ({eachSection , deleteHandler , nameEditSetupHandler , ind
                 <div className="courseSection_edit_icon" onClick={() => nameEditSetupHandler({name : eachSection.title , index:index})}>
                     <MdModeEdit></MdModeEdit>
                 </div>
-                <div className="courseSection_delete_icon" onClick={() => {
-                    callDeleteModalHandler()
-                }}>
+                <div className="courseSection_delete_icon" onClick={() => 
+                    setConfirmationModalVisibility(true)
+                }>
                     <MdDelete></MdDelete>
                 </div>
                 <span></span>
@@ -60,7 +59,7 @@ const CourseSection = ({eachSection , deleteHandler , nameEditSetupHandler , ind
                         ))
                     }
                 </div>
-                <div className="courseSection_Subsection_addLecture"><FaPlus></FaPlus>Add Lecture</div>
+                <div className="courseSection_Subsection_addLecture" onClick={()=>setViewSubsectionModal(true)}><FaPlus></FaPlus>Add Lecture</div>
             </div>
         }
         </div>
@@ -69,6 +68,11 @@ const CourseSection = ({eachSection , deleteHandler , nameEditSetupHandler , ind
             confirmationModalVisibility && 
             <ConfirmationalModal setConfirmationModalVisibility={setConfirmationModalVisibility}
             text1={"Delete this Section ?"} text2={"All the lectures in this section will be deleted"} button1={"Delete"} button2={"Cancel"} confirmationFunctionality={deleteSectionHandler}></ConfirmationalModal>
+        }
+
+        {
+            viewSubsectionModal && 
+            <CreateSubsectionModal setViewSubsectionModal={setViewSubsectionModal}></CreateSubsectionModal>
         }
 
     </div>
