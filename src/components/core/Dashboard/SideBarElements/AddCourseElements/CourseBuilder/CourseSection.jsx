@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import './CourseSection.css';
 import { ImParagraphLeft } from "react-icons/im";
 import { MdModeEdit } from "react-icons/md";
@@ -8,9 +8,9 @@ import { IoMdArrowDropup } from "react-icons/io";
 import { FaPlus } from "react-icons/fa6";
 import ConfirmationalModal from "../../../../../common/ConfirmationalModal";
 
-const CourseSection = ({eachSection , deleteHandler}) => {
+const CourseSection = ({eachSection , deleteHandler , nameEditSetupHandler , index}) => {
 
-    const [subSection , setSubSection] = useState([]);
+    const [allSectionSubSectionData , setAllSectionSubSectionData] = useState([]);
     const [subSectionVisibility ,  setSubSectionVisibility] = useState(false);
     const [confirmationModalVisibility , setConfirmationModalVisibility] = useState(false);
 
@@ -32,7 +32,7 @@ const CourseSection = ({eachSection , deleteHandler}) => {
                 <p>{eachSection.title}</p>
             </div>
             <div>
-                <div className="courseSection_edit_icon">
+                <div className="courseSection_edit_icon" onClick={() => nameEditSetupHandler({name : eachSection.title , index:index})}>
                     <MdModeEdit></MdModeEdit>
                 </div>
                 <div className="courseSection_delete_icon" onClick={() => {
@@ -55,7 +55,7 @@ const CourseSection = ({eachSection , deleteHandler}) => {
             <div>
                 <div>
                     {
-                        subSection?.map((eachSubSection) => (
+                        allSectionSubSectionData?.map((eachSubSection) => (
                             <div>{eachSubSection}</div>
                         ))
                     }

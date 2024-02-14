@@ -4,7 +4,7 @@ import { IoMdAddCircleOutline } from "react-icons/io";
 import ButtonComponent from '../../../../home/buttonComponent';
 import { FaChevronRight } from "react-icons/fa";
 import { IoIosArrowBack } from "react-icons/io";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import {setStep} from '../../../../../../reducers/slices/courseSlice';
 import CourseSection from "./CourseSection";
 
@@ -15,6 +15,8 @@ const CourseBuilder = (props) => {
   const inputRef = useRef(null);
 
   const [courseData , setCourseData] = useState([]);
+  const [sectionName , setSectionName] = useState(null);
+  const [editName , setEditName] = useState(false);
 
   function deleteHandler(id){
     setCourseData((prevData) => (
@@ -30,7 +32,23 @@ const CourseBuilder = (props) => {
         [...prev , {id : uuid , title : value}]
       ));
       inputRef.current.value = "";
+      setSectionName(null);
     }
+  }
+
+  function nameEditSetupHandler(data){
+    console.log('the editable data : ', data);
+    setEditName(data.index+1);
+    //plus one because when trying to update 0 th index it was reading it as false
+    setSectionName(data.name);
+  }
+
+  function editSectionName(){
+    const updatedCourseData = [...courseData];
+    updatedCourseData[editName-1] = {...updatedCourseData[editName-1] , title : sectionName};
+    setCourseData(updatedCourseData);
+    setEditName(false);
+    setSectionName("");
   }
 
   
@@ -42,19 +60,22 @@ const CourseBuilder = (props) => {
 
         <div className={courseData?.length>0 ? "courseBuilder_section_container" : ""}>
         {
-          courseData && courseData?.length>0 && courseData.map((eachSection) => (
-            <CourseSection key={eachSection.id} eachSection={eachSection} deleteHandler={deleteHandler}></CourseSection>
+          courseData && courseData?.length>0 && courseData.map((eachSection , index) => (
+            <CourseSection key={eachSection.id} eachSection={eachSection} deleteHandler={deleteHandler} nameEditSetupHandler={nameEditSetupHandler} index={index}></CourseSection>
           ))
         }
         </div>
 
         <div className="courseBuilder_input_feild" >
-          <input type="text" placeholder="Add a section to build your course" onKeyDown={handleAddSection} ref={inputRef}></input>
+          <input type="text" placeholder="Add a section to build your course" onKeyDown={editName ? null : handleAddSection} ref={inputRef} value={sectionName} onChange={(e)=>setSectionName(e.target.value)}></input>
         </div>
 
-        <div className="courseBuilder_createSection" onClick={handleAddSection}>
-          <IoMdAddCircleOutline color="yellow"></IoMdAddCircleOutline>Create Section
-        </div>
+        {
+          editName ? <div className="courseBuilder_createSection" onClick={editSectionName}>Save</div> : 
+          <div className="courseBuilder_createSection" onClick={handleAddSection}>
+            <IoMdAddCircleOutline color="yellow"></IoMdAddCircleOutline>Create Section
+          </div>
+        }
 
       </div>
 

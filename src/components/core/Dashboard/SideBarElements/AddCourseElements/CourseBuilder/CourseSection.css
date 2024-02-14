@@ -25,7 +25,7 @@
             }
             >.courseSection_edit_icon:hover{
                 cursor: pointer;
-                color: blue;
+                color: aqua;
             }
             >.courseSection_delete_icon{
                 cursor: pointer;
