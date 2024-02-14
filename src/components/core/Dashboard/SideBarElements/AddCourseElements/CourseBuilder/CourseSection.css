@@ -23,14 +23,21 @@
                 height: 95%;
                 border: 1px solid #6E727F;
             }
-            >.courseSection{
+            >.courseSection_edit_icon:hover{
                 cursor: pointer;
+                color: blue;
+            }
+            >.courseSection_delete_icon{
+                cursor: pointer;
+            }
+            >.courseSection_delete_icon:hover{
+                color: red;
             }
         }
         .courseSection_dropDown{
             cursor: pointer;
             >:hover{
-                background-color: black;
+                color: black;
             }
         }
     }

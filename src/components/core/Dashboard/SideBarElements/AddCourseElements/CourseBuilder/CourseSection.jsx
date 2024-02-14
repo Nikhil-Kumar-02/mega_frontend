@@ -6,18 +6,25 @@ import { MdDelete } from "react-icons/md";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { IoMdArrowDropup } from "react-icons/io";
 import { FaPlus } from "react-icons/fa6";
+import ConfirmationalModal from "../../../../../common/ConfirmationalModal";
 
 const CourseSection = ({eachSection , deleteHandler}) => {
 
     const [subSection , setSubSection] = useState([]);
     const [subSectionVisibility ,  setSubSectionVisibility] = useState(false);
-    function calldeleteHandler(id){
-        deleteHandler(id);
+    const [confirmationModalVisibility , setConfirmationModalVisibility] = useState(false);
+
+    function callDeleteModalHandler(){
+        setConfirmationModalVisibility(true);
     }    
+
+    function deleteSectionHandler(){
+        deleteHandler(eachSection.id);
+    }
 
 
   return (
-    <div className="courseSection_eachSection" key={eachSection.id}>
+    <div className="courseSection_eachSection">
 
         <div className="courseSection_eachSection_header">
             <div>
@@ -25,9 +32,11 @@ const CourseSection = ({eachSection , deleteHandler}) => {
                 <p>{eachSection.title}</p>
             </div>
             <div>
-                <MdModeEdit></MdModeEdit>
-                <div className="courseSection" onClick={() => {
-                calldeleteHandler(eachSection.id)
+                <div className="courseSection_edit_icon">
+                    <MdModeEdit></MdModeEdit>
+                </div>
+                <div className="courseSection_delete_icon" onClick={() => {
+                    callDeleteModalHandler()
                 }}>
                     <MdDelete></MdDelete>
                 </div>
@@ -55,6 +64,12 @@ const CourseSection = ({eachSection , deleteHandler}) => {
             </div>
         }
         </div>
+
+        {
+            confirmationModalVisibility && 
+            <ConfirmationalModal setConfirmationModalVisibility={setConfirmationModalVisibility}
+            text1={"Delete this Section ?"} text2={"All the lectures in this section will be deleted"} button1={"Delete"} button2={"Cancel"} confirmationFunctionality={deleteSectionHandler}></ConfirmationalModal>
+        }
 
     </div>
   )

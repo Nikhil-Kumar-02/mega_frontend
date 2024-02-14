@@ -2,11 +2,12 @@ import React, { useState } from "react"
 import './SideBar.css';
 import { sidebarLinks } from "../../../data/dashboardLinks";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import SideBarLinks from "./SideBarLinks";
 import { IoSettings } from "react-icons/io5";
 import { VscSignOut } from "react-icons/vsc";
 import ConfirmationalModal from "../../common/ConfirmationalModal";
+import { userLogout } from "../../../services/operations/auth";
 
 
 const SideBar = (props) => {
@@ -15,6 +16,11 @@ const SideBar = (props) => {
   const navigate = useNavigate();
   const location = useLocation();
   const [confirmationModalVisibility , setConfirmationModalVisibility] = useState(false);
+  const dispatch = useDispatch();
+
+  function logOutUser(){
+    dispatch(userLogout(navigate));
+  }
 
 
   return (
@@ -48,7 +54,8 @@ const SideBar = (props) => {
 
       {
         confirmationModalVisibility && 
-        <ConfirmationalModal setConfirmationModalVisibility={setConfirmationModalVisibility}></ConfirmationalModal>
+        <ConfirmationalModal setConfirmationModalVisibility={setConfirmationModalVisibility}
+        text1={"Are You Sure ?"} text2={"You will be logged out of your account."} button1={"LogOut"} button2={"Cancel"} confirmationFunctionality={logOutUser}></ConfirmationalModal>
       }
     </div> 
   )

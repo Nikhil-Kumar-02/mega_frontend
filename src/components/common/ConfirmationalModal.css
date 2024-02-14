@@ -11,6 +11,7 @@
     align-items: center;
     backdrop-filter: blur(3px);
     >div{
+        width: 25%;
     color: white;
     background-color: #000816;
     border-radius: 1rem;
@@ -18,16 +19,16 @@
     display: flex;
     flex-direction: column;
     justify-content: left;
-    font-size: 1.5rem;
-    >h5{
-        margin: 0.5rem 0;
-    }
-    >div{
-        display: flex;
-        width: 70%;
-        justify-content:space-between;
-        margin: 1rem 0;
-        
-    }
+    font-size: 1rem;
+        >h5{
+            margin: 0.5rem 0;
+        }
+        >div{
+            display: flex;
+            width: 70%;
+            justify-content:space-between;
+            margin: 1rem 0;
+            
+        }
     }
 }

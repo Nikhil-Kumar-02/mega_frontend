@@ -3,8 +3,9 @@ import { requestBackend } from "../apiConnector";
 import { courseAllRoutes } from "../apiRoutes";
 
 export async function createANewCourseBackendRequest(formdata , token){
+    let result = [];
     try {
-        const toastId = toast.loading("Creating Your drafted Course Please Wait ... ");
+        const toastId = toast.loading("Creating Course Please Wait ... ");
         const responseFromapiConnector = await requestBackend("POST" , courseAllRoutes.create_course , formdata , {Authorization : `Bearer ${token}`} , );
 
         if(!responseFromapiConnector.data){
@@ -14,11 +15,13 @@ export async function createANewCourseBackendRequest(formdata , token){
         }
         else{
             //the user exists and he has been emailed with the url to update the password
+            result = responseFromapiConnector.data.data;
             toast.dismiss(toastId);
-            toast.success("Course Drafted Sucessfully")
+            toast.success("Course Drafted Sucessfully");
         }
     } catch (error) {
         console.log('error in the operations course while creating a course : ' , error);
         toast.error("Something went wrong");
     }
+    return result;
 }

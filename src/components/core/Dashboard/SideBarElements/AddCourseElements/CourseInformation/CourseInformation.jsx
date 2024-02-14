@@ -7,7 +7,7 @@ import { RxCross2 } from "react-icons/rx";
 import {requestBackend}  from '../../../../../../services/apiConnector';
 import {courseAllRoutes} from '../../../../../../services/apiRoutes';
 import { useDispatch, useSelector } from "react-redux";
-import {setStep} from '../../../../../../reducers/slices/courseSlice';
+import {setStep , setCourse} from '../../../../../../reducers/slices/courseSlice';
 import LectureUpload from "../../../../../common/LectureUpload";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
@@ -89,13 +89,13 @@ const CourseInformation = (props) => {
         if (currentValues.coursePrice !== course.price) {
           formData.append("price", currentValues.coursePrice)
         }
-        // if (currentValues.courseTags.toString() !== course.tag.toString()) {
-        //   formData.append("tag", JSON.stringify(data.courseTags))
-        // }
+        if (currentValues.tags.toString() !== course.tag.toString()) {
+          formData.append("tag", JSON.stringify(currentValues.tags))
+        }
         if (currentValues.courseBenefits !== course.whatYouWillLearn) {
           formData.append("whatYouWillLearn", currentValues.courseBenefits)
         }
-        if (currentValues.courseCategory._id !== course.category._id) {
+        if (currentValues.courseCategory !== course.category) {
           formData.append("category", currentValues.courseCategory)
         }
         if (
@@ -137,18 +137,13 @@ const CourseInformation = (props) => {
     formData.append("instructions", currentValues.courseRequirements);
     formData.append("courseImage", currentValues.courseImage)
 
-    console.log("the created form data is : ");
-    for (const pair of formData.entries()) {
-      console.log(pair[0] + ', ' + pair[1]);
-    }
-
     // setLoading(true)
     const result = await createANewCourseBackendRequest(formData, token);
     console.log('the result after making the call to the backend : ' , result);
-    // if (result) {
-      // dispatch(setStep(2));
-      // dispatch(setCourse(result))
-    // }
+    if (result) {
+      dispatch(setStep(2));
+      dispatch(setCourse(result))
+    }
     // setLoading(false)
   }
 

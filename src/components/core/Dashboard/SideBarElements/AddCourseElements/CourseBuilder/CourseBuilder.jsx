@@ -11,16 +11,10 @@ import CourseSection from "./CourseSection";
 
 const CourseBuilder = (props) => {
 
-  const currStep = useSelector((state) => state.course.step);
-  // const course = useSelector((state) => state.course.course);
   const dispatch = useDispatch();
   const inputRef = useRef(null);
 
   const [courseData , setCourseData] = useState([]);
-
-  function toggleStep(val){
-    dispatch(setStep(currStep+val));
-  }
 
   function deleteHandler(id){
     setCourseData((prevData) => (
@@ -49,7 +43,7 @@ const CourseBuilder = (props) => {
         <div className={courseData?.length>0 ? "courseBuilder_section_container" : ""}>
         {
           courseData && courseData?.length>0 && courseData.map((eachSection) => (
-            <CourseSection eachSection={eachSection} deleteHandler={deleteHandler}></CourseSection>
+            <CourseSection key={eachSection.id} eachSection={eachSection} deleteHandler={deleteHandler}></CourseSection>
           ))
         }
         </div>
@@ -65,10 +59,10 @@ const CourseBuilder = (props) => {
       </div>
 
       <div className="courseBuilder_button_container">
-        <div onClick={()=>toggleStep(-1)}>
+        <div onClick={()=>dispatch(setStep(1))}>
           <ButtonComponent active={false}><IoIosArrowBack size={22} style={{paddingRight : "0.5rem"}}></IoIosArrowBack>Back</ButtonComponent>
         </div>
-        <div onClick={()=>toggleStep(1)}>
+        <div onClick={()=>dispatch(setStep(3))}>
           <ButtonComponent active={true}>Next<FaChevronRight size={15} style={{paddingLeft : "0.5rem"}}></FaChevronRight></ButtonComponent>
         </div>
       </div>
