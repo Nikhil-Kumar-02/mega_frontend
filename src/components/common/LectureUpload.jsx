@@ -3,7 +3,7 @@ import './LectureUpload.css';
 import { PiCloudArrowUpBold } from "react-icons/pi";
 import { RxCross2 } from "react-icons/rx";
 
-const LectureUpload = ({setValue}) => {
+const LectureUpload = ({setValue , attributeName}) => {
 
     const inputRef = useRef(null);
     const [selectedFile , setSelectedFile] = useState(null);
@@ -18,7 +18,7 @@ const LectureUpload = ({setValue}) => {
     function inputChangeHandler(e){
         const file = e.target.files[0];
         setSelectedFile(file);
-        setValue('courseImage' , file);
+        setValue(attributeName , file);
     }
 
     function dropHandler(e){
@@ -58,7 +58,7 @@ const LectureUpload = ({setValue}) => {
                     inputRef.current.value = "";
                 }
                 setSelectedFile(null);
-                setValue('courseImage' , null);
+                setValue(attributeName , null);
             }}><RxCross2></RxCross2></span>
             </div>
         }

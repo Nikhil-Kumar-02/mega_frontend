@@ -15,7 +15,12 @@ const profileRouteBaseUrl = baseUrl + profileRoute;
 
 export const courseAllRoutes = {
     getAllCategories : `${courseBaseUrl}${dotenv.Show_All_Categories}`,
-    create_course : `${courseBaseUrl}${dotenv.create_Course}`
+    create_course : `${courseBaseUrl}${dotenv.create_Course}`,
+    add_section : `${courseBaseUrl}${dotenv.add_Section}`,
+    update_section : `${courseBaseUrl}${dotenv.update_Section}`,
+    delete_section : `${courseBaseUrl}${dotenv.delete_Section}`,
+    get_full_course_details : `${courseBaseUrl}${dotenv.get_Full_Course_Details}`,
+    
 }
 
 

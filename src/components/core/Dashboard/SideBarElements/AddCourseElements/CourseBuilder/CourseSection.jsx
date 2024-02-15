@@ -8,6 +8,8 @@ import { IoMdArrowDropup } from "react-icons/io";
 import { FaPlus } from "react-icons/fa6";
 import ConfirmationalModal from "../../../../../common/ConfirmationalModal";
 import CreateSubsectionModal from './CreateSubsectionModal';
+import { createSectionBackendRequest } from "../../../../../../services/operations/course";
+
 
 const CourseSection = ({eachSection , deleteHandler , nameEditSetupHandler , index}) => {
 

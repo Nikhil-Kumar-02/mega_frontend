@@ -24,5 +24,9 @@ export const dotenv = {
 
     //all course routes
     Show_All_Categories : "/showAllCategories",
-    create_Course : '/createCourse'
+    create_Course : '/createCourse',
+    add_Section : '/addSection',
+    update_Section : '/updateSection',
+    delete_Section : '/deleteSection',
+    get_Full_Course_Details : '/getFullCourseDetails'
 }

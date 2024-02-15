@@ -1,22 +1,31 @@
-import React, { useRef, useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import './CourseBuilder.css';
 import { IoMdAddCircleOutline } from "react-icons/io";
 import ButtonComponent from '../../../../home/buttonComponent';
 import { FaChevronRight } from "react-icons/fa";
 import { IoIosArrowBack } from "react-icons/io";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {setStep} from '../../../../../../reducers/slices/courseSlice';
 import CourseSection from "./CourseSection";
+import { createSectionBackendRequest } from "../../../../../../services/operations/course";
+import { getcompleteCourseDetailsFromBackend } from "../../../../../../services/operations/course";
 
 
 const CourseBuilder = (props) => {
 
   const dispatch = useDispatch();
   const inputRef = useRef(null);
+  const course = useSelector((state) => state.course.course);
+  const token = useSelector((state) => state.auth.token);
+
 
   const [courseData , setCourseData] = useState([]);
   const [sectionName , setSectionName] = useState(null);
   const [editName , setEditName] = useState(false);
+
+  useEffect(() => {
+    dispatch(getcompleteCourseDetailsFromBackend(course._id));
+  } , []);
 
   function deleteHandler(id){
     setCourseData((prevData) => (
@@ -27,6 +36,9 @@ const CourseBuilder = (props) => {
   function handleAddSection(e){
     const value =inputRef.current.value;
     if((e.key === "Enter" || e?._reactName === "onClick" || e.target?.className ===   "courseBuilder_createSection") && value?.length>0){
+
+      dispatch(createSectionBackendRequest({sectionName:value , courseId : course._id} , token));
+
       const uuid = Date.now();
       setCourseData((prev) => (
         [...prev , {id : uuid , title : value}]
@@ -44,11 +56,13 @@ const CourseBuilder = (props) => {
   }
 
   function editSectionName(){
-    const updatedCourseData = [...courseData];
-    updatedCourseData[editName-1] = {...updatedCourseData[editName-1] , title : sectionName};
-    setCourseData(updatedCourseData);
-    setEditName(false);
-    setSectionName("");
+    if(sectionName?.length>0){
+      const updatedCourseData = [...courseData];
+      updatedCourseData[editName-1] = {...updatedCourseData[editName-1] , title : sectionName};
+      setCourseData(updatedCourseData);
+      setEditName(false);
+      setSectionName("");
+    }
   }
 
   

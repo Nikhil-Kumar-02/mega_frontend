@@ -142,7 +142,7 @@ const CourseInformation = (props) => {
     console.log('the result after making the call to the backend : ' , result);
     if (result) {
       dispatch(setStep(2));
-      dispatch(setCourse(result))
+      dispatch(setCourse(result));
     }
     // setLoading(false)
   }
@@ -232,7 +232,7 @@ const CourseInformation = (props) => {
       <div>
         <label>Course Thumbnail<CgAsterisk size={13}></CgAsterisk></label>
         <div>
-          <LectureUpload setValue={setValue}></LectureUpload>
+          <LectureUpload setValue={setValue} attributeName={"courseImage"}></LectureUpload>
         </div>
       </div>
       <div>
