@@ -12,16 +12,27 @@ import CreateSubsectionModal from './CreateSubsectionModal';
 
 const CourseSection = ({eachSection , deleteHandler , nameEditSetupHandler , index}) => {
 
-    const [allSectionSubSectionData , setAllSectionSubSectionData] = useState([]);
+    const [subSectionData , setSubSectionData] = useState([]);
     const [subSectionVisibility ,  setSubSectionVisibility] = useState(false);
     const [confirmationModalVisibility , setConfirmationModalVisibility] = useState(false);
     const [viewSubsectionModal , setViewSubsectionModal] = useState(false); 
     
+    console.log('the subsection data is : ' , subSectionData)
 
     function deleteSectionHandler(){
         console.log("section to be deleted id : " , eachSection);
         setConfirmationModalVisibility(false);
         deleteHandler(eachSection?.id);
+    }
+
+    function deleteSubsectionHandler(id){
+        setSubSectionData((prev) => (
+            prev.filter((eachSS) => (eachSS.id !== id))
+        ))
+    }
+
+    function editSubSectionHandler(){
+        
     }
 
 
@@ -51,14 +62,27 @@ const CourseSection = ({eachSection , deleteHandler , nameEditSetupHandler , ind
             </div>
         </div>
 
-        <div className="courseSection_Subsection">
+        <div className="courseSection_Subsection_wrapper">
         {
             subSectionVisibility && 
             <div>
-                <div>
+                <div className="courseSection_Subsection">
                     {
-                        allSectionSubSectionData?.map((eachSubSection) => (
-                            <div>{eachSubSection}</div>
+                        subSectionData?.map((eachSubSection , index) => (
+                            <div>
+                                <span>
+                                    <ImParagraphLeft></ImParagraphLeft>
+                                    {eachSubSection.title}
+                                </span>
+                                <span>
+                                    <span onClick={() => {
+                                        editSubSectionHandler()
+                                    }}><MdModeEdit></MdModeEdit></span>
+                                    <span onClick={() => {
+                                        deleteSubsectionHandler(eachSubSection.id)
+                                    }}><MdDelete></MdDelete></span>
+                                </span>
+                            </div>
                         ))
                     }
                 </div>
@@ -75,7 +99,7 @@ const CourseSection = ({eachSection , deleteHandler , nameEditSetupHandler , ind
 
         {
             viewSubsectionModal && 
-            <CreateSubsectionModal setViewSubsectionModal={setViewSubsectionModal}></CreateSubsectionModal>
+            <CreateSubsectionModal setViewSubsectionModal={setViewSubsectionModal} setSubSectionData={setSubSectionData}></CreateSubsectionModal>
         }
 
     </div>

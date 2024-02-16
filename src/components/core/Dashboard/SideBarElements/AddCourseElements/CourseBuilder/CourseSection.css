@@ -4,7 +4,7 @@
         display: flex;
         justify-content: space-between;
         margin: 0.7rem 0;
-        padding: 0.3rem 0;
+        padding: 0.5rem 0;
         border-bottom: 1px solid #6E727F;
         >:nth-child(1){
             width: 85%;
@@ -43,11 +43,47 @@
     }
 }
 
+.courseSection_Subsection_wrapper>div{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: 85%;
+}
+
+.courseSection_Subsection{
+    >div{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid grey;
+        padding: 0.5rem 0;
+        margin: 0.2rem 0;
+        >:nth-child(1){
+            & *{
+                margin-right:0.5rem;
+            }
+        }
+        >:nth-child(2){
+            >:nth-child(1):hover{
+                color: aqua;
+            }
+            >:nth-child(2):hover{
+                color: red;
+            }
+        }
+        & *{
+            margin: 0 0.2rem;
+            cursor: pointer;
+        }
+    }
+}
+
 .courseSection_Subsection_addLecture{
     color: #FFD60A;
     cursor: pointer;
     display: flex;
     align-items: center;
+    margin-top: 0.5rem;
     width: max-content;
     & *{
         margin: 0 0.4rem;

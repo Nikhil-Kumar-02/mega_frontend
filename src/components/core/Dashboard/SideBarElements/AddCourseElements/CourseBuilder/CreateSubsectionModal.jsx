@@ -1,10 +1,10 @@
-import React, { useState } from "react"
+import React from "react"
 import './CreateSubsectionModal.css';
 import { RxCross2 } from "react-icons/rx";
 import LectureUpload from "../../../../../common/LectureUpload";
 import { useForm } from "react-hook-form";
 
-const CreateSubsectionModal = ({setViewSubsectionModal}) => {
+const CreateSubsectionModal = ({setViewSubsectionModal , setSubSectionData}) => {
 
   function submitHandler(){
     // e.preventDefault();
@@ -15,7 +15,10 @@ const CreateSubsectionModal = ({setViewSubsectionModal}) => {
     formData.append("videoFile" , currentValues.videoFile);
     formData.append("title" , currentValues.title);
     formData.append("Description" , currentValues.Description);
-
+    console.log('the subsection data to be sent is : ' , formData);
+    const uuid = Date.now();
+    setSubSectionData((prev) => [...prev , {id : uuid , ...currentValues}]);
+    setViewSubsectionModal(false);
   }
 
   const {register , getValues , setValue , formState : {errors} , handleSubmit} = useForm();
