@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react"
+import React, { useRef, useState } from "react"
 import './CourseBuilder.css';
 import { IoMdAddCircleOutline } from "react-icons/io";
 import ButtonComponent from '../../../../home/buttonComponent';
@@ -7,61 +7,65 @@ import { IoIosArrowBack } from "react-icons/io";
 import { useDispatch, useSelector } from "react-redux";
 import {setStep} from '../../../../../../reducers/slices/courseSlice';
 import CourseSection from "./CourseSection";
-import { createSectionBackendRequest } from "../../../../../../services/operations/course";
-import { getcompleteCourseDetailsFromBackend } from "../../../../../../services/operations/course";
-
+import { createSectionBackendRequest, deleteSectionBackendRequest ,updateSectionBackendRequest } from "../../../../../../services/operations/course";
 
 const CourseBuilder = (props) => {
-
+  
   const dispatch = useDispatch();
   const inputRef = useRef(null);
   const course = useSelector((state) => state.course.course);
   const token = useSelector((state) => state.auth.token);
-
-
+  
   const [courseData , setCourseData] = useState([]);
   const [sectionName , setSectionName] = useState(null);
   const [editName , setEditName] = useState(false);
 
-  useEffect(() => {
-    dispatch(getcompleteCourseDetailsFromBackend(course._id));
-  } , []);
-
   function deleteHandler(id){
+
+    dispatch(deleteSectionBackendRequest({courseId:course._id , sectionId:id} , token));
+
     setCourseData((prevData) => (
-      prevData.filter((sec) => {return sec.id !== id})
+      prevData.filter((section) =>( section.id !== id))
     ))
+
   }
 
-  function handleAddSection(e){
+  async function handleAddSection(e){
     const value =inputRef.current.value;
+
     if((e.key === "Enter" || e?._reactName === "onClick" || e.target?.className ===   "courseBuilder_createSection") && value?.length>0){
+      
+      dispatch(createSectionBackendRequest({sectionName:value , courseId : course._id} , token))
+      .then((result) => {
 
-      dispatch(createSectionBackendRequest({sectionName:value , courseId : course._id} , token));
+        setCourseData((prev) => (
+          [...prev , {id : result?.slice(-1)[0]?._id , sectionName: value}]
+        ));
+  
+        inputRef.current.value = "";
+        setSectionName(null);
 
-      const uuid = Date.now();
-      setCourseData((prev) => (
-        [...prev , {id : uuid , title : value}]
-      ));
-      inputRef.current.value = "";
-      setSectionName(null);
+      })
+
     }
   }
 
   function nameEditSetupHandler(data){
-    console.log('the editable data : ', data);
-    setEditName(data.index+1);
-    //plus one because when trying to update 0 th index it was reading it as false
+    setEditName({index:data.index , id:data.id});
     setSectionName(data.name);
   }
 
   function editSectionName(){
     if(sectionName?.length>0){
+
+      dispatch(updateSectionBackendRequest({sectionName:sectionName , sectionId:editName.id} , token));
+
       const updatedCourseData = [...courseData];
-      updatedCourseData[editName-1] = {...updatedCourseData[editName-1] , title : sectionName};
+      updatedCourseData[editName.index] = {...updatedCourseData[editName.index] , sectionName : sectionName};
       setCourseData(updatedCourseData);
       setEditName(false);
       setSectionName("");
+
     }
   }
 

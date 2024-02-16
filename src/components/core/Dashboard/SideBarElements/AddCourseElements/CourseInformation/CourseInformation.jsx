@@ -21,7 +21,6 @@ const CourseInformation = (props) => {
   const {course , editCourse} = useSelector((state) => state.course);
   // const [loading, setLoading] = useState(false)
 
-  const currStep = useSelector((state) => state.course.step);
   const token = useSelector((state) => state.auth.token);
   const dispatch = useDispatch();
 

@@ -8,7 +8,6 @@ import { IoMdArrowDropup } from "react-icons/io";
 import { FaPlus } from "react-icons/fa6";
 import ConfirmationalModal from "../../../../../common/ConfirmationalModal";
 import CreateSubsectionModal from './CreateSubsectionModal';
-import { createSectionBackendRequest } from "../../../../../../services/operations/course";
 
 
 const CourseSection = ({eachSection , deleteHandler , nameEditSetupHandler , index}) => {
@@ -20,7 +19,9 @@ const CourseSection = ({eachSection , deleteHandler , nameEditSetupHandler , ind
     
 
     function deleteSectionHandler(){
-        deleteHandler(eachSection.id);
+        console.log("section to be deleted id : " , eachSection);
+        setConfirmationModalVisibility(false);
+        deleteHandler(eachSection?.id);
     }
 
 
@@ -30,10 +31,10 @@ const CourseSection = ({eachSection , deleteHandler , nameEditSetupHandler , ind
         <div className="courseSection_eachSection_header">
             <div>
                 <ImParagraphLeft></ImParagraphLeft>
-                <p>{eachSection.title}</p>
+                <p>{eachSection?.sectionName}</p>
             </div>
             <div>
-                <div className="courseSection_edit_icon" onClick={() => nameEditSetupHandler({name : eachSection.title , index:index})}>
+                <div className="courseSection_edit_icon" onClick={() => nameEditSetupHandler({name : eachSection.sectionName , index:index , id:eachSection.id})}>
                     <MdModeEdit></MdModeEdit>
                 </div>
                 <div className="courseSection_delete_icon" onClick={() => 
