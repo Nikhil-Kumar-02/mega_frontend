@@ -151,3 +151,24 @@ export async function createSubSectionBackendRequest(data , token){
     }
     return result;
 }
+
+
+export async function deleteSubSectionBackendRequest(data , token){
+    try {
+        const toastId = toast.loading("Deleting lecture ... ");
+        const responseFromapiConnector = await requestBackend("POST" , courseAllRoutes.delete_sub_section , data , {Authorization : `Bearer ${token}`} , );
+
+        if(!responseFromapiConnector.data){
+            //means some error as if it was a ok response then .data will be available directly
+            toast.dismiss(toastId);
+            toast.error(responseFromapiConnector?.response?.data?.message);
+        }
+        else{
+            toast.dismiss(toastId);
+            toast.success("Lecture Deleted");
+        }
+    } catch (error) {
+        console.log('error while updating a section in operation course : ' , error);
+        toast.error("Section not Updated");
+    }
+}

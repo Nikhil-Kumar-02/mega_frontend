@@ -8,10 +8,13 @@ import { IoMdArrowDropup } from "react-icons/io";
 import { FaPlus } from "react-icons/fa6";
 import ConfirmationalModal from "../../../../../common/ConfirmationalModal";
 import CreateSubsectionModal from './CreateSubsectionModal';
+import { deleteSubSectionBackendRequest } from "../../../../../../services/operations/course";
+import { useSelector } from "react-redux";
 
 
 const CourseSection = ({eachSection , deleteHandler , nameEditSetupHandler , index}) => {
 
+    const token = useSelector((state) => state.auth.token);
     const [subSectionData , setSubSectionData] = useState([]);
     const [subSectionVisibility ,  setSubSectionVisibility] = useState(false);
     const [confirmationModalVisibility , setConfirmationModalVisibility] = useState(false);
@@ -26,6 +29,9 @@ const CourseSection = ({eachSection , deleteHandler , nameEditSetupHandler , ind
     }
 
     function deleteSubsectionHandler(id){
+
+        deleteSubSectionBackendRequest({subSectionId : id , sectionId : eachSection.id} , token);
+
         setSubSectionData((prev) => (
             prev.filter((eachSubSection) => (eachSubSection.id !== id))
         ))

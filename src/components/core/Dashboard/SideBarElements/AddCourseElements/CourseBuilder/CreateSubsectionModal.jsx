@@ -22,18 +22,15 @@ const CreateSubsectionModal = ({setViewSubsectionModal , setSubSectionData , sec
     formData.append("title" , currentValues.title);
     formData.append("description" , currentValues.description);
     formData.append('sectionId' , sectionId);
-    formData.append('timeDuration' , 0);
 
-    console.log('the subsection data to be sent is : ' , formData);
 
     await createSubSectionBackendRequest(formData , token)
     .then((result) => {
-      console.log('the result after creating the subsection is : ' , result);
+      const uuid = result.splice(-1)[0]._id;
+      setSubSectionData((prev) => [...prev , {id : uuid , ...currentValues}]);
+      setViewSubsectionModal(false);
     })
 
-    const uuid = Date.now();
-    setSubSectionData((prev) => [...prev , {id : uuid , ...currentValues}]);
-    setViewSubsectionModal(false);
   }
 
 
