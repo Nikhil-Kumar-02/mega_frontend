@@ -35,25 +35,25 @@ const CourseBuilder = (props) => {
 
     if((e.key === "Enter" || e?._reactName === "onClick" || e.target?.className ===   "courseBuilder_createSection") && value?.length>0){
       
-      // dispatch(createSectionBackendRequest({sectionName:value , courseId : course._id} , token))
-      // .then((result) => {
+      dispatch(createSectionBackendRequest({sectionName:value , courseId : course._id} , token))
+      .then((result) => {
 
-      //   setCourseData((prev) => (
-      //     [...prev , {id : result?.slice(-1)[0]?._id , sectionName: value}]
-      //   ));
+        setCourseData((prev) => (
+          [...prev , {id : result?.slice(-1)[0]?._id , sectionName: value}]
+        ));
   
-      //   inputRef.current.value = "";
-      //   setSectionName(null);
+        inputRef.current.value = "";
+        setSectionName(null);
 
-      // })
+      })
 
 
-      setCourseData((prev) => (
-        [...prev , {id : 0 , sectionName: value}]
-      ));
+      // setCourseData((prev) => (
+      //   [...prev , {id : 0 , sectionName: value}]
+      // ));
 
-      inputRef.current.value = "";
-      setSectionName(null);
+      // inputRef.current.value = "";
+      // setSectionName(null);
 
     }
   }

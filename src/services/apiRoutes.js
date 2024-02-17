@@ -20,6 +20,9 @@ export const courseAllRoutes = {
     update_section : `${courseBaseUrl}${dotenv.update_Section}`,
     delete_section : `${courseBaseUrl}${dotenv.delete_Section}`,
     get_full_course_details : `${courseBaseUrl}${dotenv.get_Full_Course_Details}`,
+    add_sub_section : `${courseBaseUrl}${dotenv.create_sub_section}`,
+    delete_sub_section : `${courseBaseUrl}${dotenv.delete_sub_section}`,
+    update_sub_section : `${courseBaseUrl}${dotenv.update_sub_section}`,
     
 }
 

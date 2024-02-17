@@ -28,5 +28,8 @@ export const dotenv = {
     add_Section : '/addSection',
     update_Section : '/updateSection',
     delete_Section : '/deleteSection',
-    get_Full_Course_Details : '/getFullCourseDetails'
+    get_Full_Course_Details : '/getFullCourseDetails',
+    create_sub_section : '/addSubSection',
+    update_sub_section : '/updateSubSection',
+    delete_sub_section : '/deleteSubSection',
 }

@@ -27,7 +27,7 @@ const CourseSection = ({eachSection , deleteHandler , nameEditSetupHandler , ind
 
     function deleteSubsectionHandler(id){
         setSubSectionData((prev) => (
-            prev.filter((eachSS) => (eachSS.id !== id))
+            prev.filter((eachSubSection) => (eachSubSection.id !== id))
         ))
     }
 
@@ -99,7 +99,7 @@ const CourseSection = ({eachSection , deleteHandler , nameEditSetupHandler , ind
 
         {
             viewSubsectionModal && 
-            <CreateSubsectionModal setViewSubsectionModal={setViewSubsectionModal} setSubSectionData={setSubSectionData}></CreateSubsectionModal>
+            <CreateSubsectionModal setViewSubsectionModal={setViewSubsectionModal} setSubSectionData={setSubSectionData} sectionId={eachSection.id}></CreateSubsectionModal>
         }
 
     </div>

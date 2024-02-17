@@ -126,3 +126,28 @@ export async function getcompleteCourseDetailsFromBackend(data){
     }
     return result;
 }
+
+
+export async function createSubSectionBackendRequest(data , token){
+    let result = [];
+    try {
+        const toastId = toast.loading("Uploading lecture ... ");
+        const responseFromapiConnector = await requestBackend("POST" , courseAllRoutes.add_sub_section , data , {Authorization : `Bearer ${token}`} , );
+
+        if(!responseFromapiConnector.data){
+            //means some error as if it was a ok response then .data will be available directly
+            toast.dismiss(toastId);
+            toast.error(responseFromapiConnector?.response?.data?.message);
+        }
+        else{
+            // dispatch(setCourse(responseFromapiConnector?.data?.));   
+            result = responseFromapiConnector?.data?.updatedSectionDetails?.subSection;     
+            toast.dismiss(toastId);
+            toast.success("Lecture Created");
+        }
+    } catch (error) {
+        console.log('error while updating a section in operation course : ' , error);
+        toast.error("Section not Updated");
+    }
+    return result;
+}
