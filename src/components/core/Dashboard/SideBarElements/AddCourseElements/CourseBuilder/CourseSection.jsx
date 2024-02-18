@@ -16,16 +16,21 @@ const CourseSection = ({eachSection , deleteHandler , nameEditSetupHandler , ind
 
     const token = useSelector((state) => state.auth.token);
     const [subSectionData , setSubSectionData] = useState([]);
-    const [subSectionVisibility ,  setSubSectionVisibility] = useState(false);
+    const [subSectionVisibility ,  setSubSectionVisibility] = useState(true);
     const [confirmationModalVisibility , setConfirmationModalVisibility] = useState(false);
+    const [addSubsectionModal , setAddSubsectionModal] = useState(false); 
     const [viewSubsectionModal , setViewSubsectionModal] = useState(false); 
+    const [editSubsectionModal , setEditSubsectionModal] = useState(false); 
     
     console.log('the subsection data is : ' , subSectionData)
 
     function deleteSectionHandler(){
         console.log("section to be deleted id : " , eachSection);
-        setConfirmationModalVisibility(false);
+        subSectionData.map((eachSubSection) => {
+            deleteSubsectionHandler(eachSubSection.id);
+        })
         deleteHandler(eachSection?.id);
+        setConfirmationModalVisibility(false);
     }
 
     function deleteSubsectionHandler(id){
@@ -35,10 +40,6 @@ const CourseSection = ({eachSection , deleteHandler , nameEditSetupHandler , ind
         setSubSectionData((prev) => (
             prev.filter((eachSubSection) => (eachSubSection.id !== id))
         ))
-    }
-
-    function editSubSectionHandler(){
-        
     }
 
 
@@ -74,15 +75,17 @@ const CourseSection = ({eachSection , deleteHandler , nameEditSetupHandler , ind
             <div>
                 <div className="courseSection_Subsection">
                     {
-                        subSectionData?.map((eachSubSection , index) => (
+                        subSectionData?.map((eachSubSection) => (
                             <div>
-                                <span>
+                                <span onClick={() => {
+                                    setViewSubsectionModal(eachSubSection)
+                                }}>
                                     <ImParagraphLeft></ImParagraphLeft>
                                     {eachSubSection.title}
                                 </span>
                                 <span>
                                     <span onClick={() => {
-                                        editSubSectionHandler()
+                                        setEditSubsectionModal(eachSubSection)
                                     }}><MdModeEdit></MdModeEdit></span>
                                     <span onClick={() => {
                                         deleteSubsectionHandler(eachSubSection.id)
@@ -92,7 +95,7 @@ const CourseSection = ({eachSection , deleteHandler , nameEditSetupHandler , ind
                         ))
                     }
                 </div>
-                <div className="courseSection_Subsection_addLecture" onClick={()=>setViewSubsectionModal(true)}><FaPlus></FaPlus>Add Lecture</div>
+                <div className="courseSection_Subsection_addLecture" onClick={()=>setAddSubsectionModal(eachSection)}><FaPlus></FaPlus>Add Lecture</div>
             </div>
         }
         </div>
@@ -104,8 +107,16 @@ const CourseSection = ({eachSection , deleteHandler , nameEditSetupHandler , ind
         }
 
         {
+            addSubsectionModal && 
+            <CreateSubsectionModal setSubsectionModal={setAddSubsectionModal} setSubSectionData={setSubSectionData} data={addSubsectionModal} add={true}></CreateSubsectionModal>
+        }
+        {
+            editSubsectionModal && 
+            <CreateSubsectionModal setSubsectionModal={setEditSubsectionModal} setSubSectionData={setSubSectionData} data={editSubsectionModal} edit={true}></CreateSubsectionModal>
+        }
+        {
             viewSubsectionModal && 
-            <CreateSubsectionModal setViewSubsectionModal={setViewSubsectionModal} setSubSectionData={setSubSectionData} sectionId={eachSection.id}></CreateSubsectionModal>
+            <CreateSubsectionModal setSubsectionModal={setViewSubsectionModal} setSubSectionData={setSubSectionData} data={viewSubsectionModal} view={true}></CreateSubsectionModal>
         }
 
     </div>

@@ -169,6 +169,26 @@ export async function deleteSubSectionBackendRequest(data , token){
         }
     } catch (error) {
         console.log('error while updating a section in operation course : ' , error);
+        toast.error("Section not Deleted");
+    }
+}
+
+export async function updateSubSectionBackendRequest(data , token){
+    try {
+        const toastId = toast.loading("Updating ... ");
+        const responseFromapiConnector = await requestBackend("POST" , courseAllRoutes.update_sub_section , data , {Authorization : `Bearer ${token}`} , );
+
+        if(!responseFromapiConnector.data){
+            //means some error as if it was a ok response then .data will be available directly
+            toast.dismiss(toastId);
+            toast.error(responseFromapiConnector?.response?.data?.message);
+        }
+        else{
+            toast.dismiss(toastId);
+            toast.success("Lecture updated");
+        }
+    } catch (error) {
+        console.log('error while updating a section in operation course : ' , error);
         toast.error("Section not Updated");
     }
 }

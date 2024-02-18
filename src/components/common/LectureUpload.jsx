@@ -1,9 +1,9 @@
-import React, { useRef, useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import './LectureUpload.css';
 import { PiCloudArrowUpBold } from "react-icons/pi";
 import { RxCross2 } from "react-icons/rx";
 
-const LectureUpload = ({setValue , attributeName}) => {
+const LectureUpload = ({setValue , attributeName , viewData , editData}) => {
 
     const inputRef = useRef(null);
     const [selectedFile , setSelectedFile] = useState(null);
@@ -14,6 +14,15 @@ const LectureUpload = ({setValue , attributeName}) => {
             inputRef.current.click();
         }
     }
+
+    useEffect(() => {
+        if(viewData ){
+            setSelectedFile(viewData);
+        }
+        if(editData){
+            setSelectedFile(editData);
+        }
+    } , [])
 
     function inputChangeHandler(e){
         const file = e.target.files[0];
@@ -44,7 +53,7 @@ const LectureUpload = ({setValue , attributeName}) => {
   return (
     <div className={`LectureUpload_wrapper ${isDraggedInside ? "Dragged_inside_Lecture_Upload" : ""}`}  onDrop={dropHandler} onDragOver={(e) => e.preventDefault()}
         onDragEnter={dragEnterHandler} onDragLeave={dragLeaveHandler}>
-        <input type="file" placeholder="Drag and Drop or Choose" ref={inputRef} onChange={inputChangeHandler}></input>
+        <input type="file" placeholder="Drag and Drop or Choose" ref={inputRef} onChange={inputChangeHandler} disabled={viewData ? true : false}></input>
 
         <div onClick={inputClickHandler}>
             <PiCloudArrowUpBold size={30} color="yellow"></PiCloudArrowUpBold>
@@ -53,13 +62,16 @@ const LectureUpload = ({setValue , attributeName}) => {
         {
             selectedFile && <div className="LectureUpload_file_wrapper">
             {selectedFile.name}
-            <span onClick={() => {
-                if(inputRef.current){
-                    inputRef.current.value = "";
-                }
-                setSelectedFile(null);
-                setValue(attributeName , null);
-            }}><RxCross2></RxCross2></span>
+            {
+                viewData ? (<span></span>) : 
+                <span onClick={() => {
+                    if(inputRef.current){
+                        inputRef.current.value = "";
+                    }
+                    setSelectedFile(null);
+                    setValue(attributeName , null);
+                }}><RxCross2></RxCross2></span>
+            }
             </div>
         }
 

@@ -1,5 +1,5 @@
 .addCourse_wrapper{
-    width: 80%;
+    width: 90%;
     padding: 2rem;
     display: flex;
     flex-wrap: wrap;
@@ -43,6 +43,8 @@
         } */
     }
     >:nth-child(2){
+        position: sticky;
+        top: 2.5rem;
         background-color: #161D29;
         border: 1px solid grey;
         border-radius: 1rem;
@@ -72,24 +74,24 @@
 }
 
 .addCourse_horizontal_linel1{
-    width: 4.9rem;
+    width: 5.1rem;
     height: 0rem;
 }
 .addCourse_horizontal_liner1{
-    width: 4.9rem;
+    width: 5.1rem;
     height: 0rem;
     border: 1px solid grey;
     border-style: dashed;
 }
 
 .addCourse_horizontal_linel2{
-    width: 4.9rem;
+    width: 5.1rem;
     height: 0rem;
     border: 1px solid grey;
     border-style: dashed;
 }
 .addCourse_horizontal_liner2{
-    width: 4.9rem;
+    width: 5.1rem;
     height: 0rem;
     border: 1px solid grey;
     border-style: dashed;
@@ -97,13 +99,13 @@
 
 
 .addCourse_horizontal_linel3{
-    width: 4.9rem;
+    width: 5.1rem;
     height: 0rem;
     border: 1px solid grey;
     border-style: dashed;
 }
 .addCourse_horizontal_liner3{
-    width: 4.9rem;
+    width: 5.1rem;
     height: 0rem;
 }
 
@@ -119,34 +121,34 @@
     }
 }
 .addCourse_passed_horizontal_linel1{
-    width: 4.8rem;
+    width: 5.1rem;
     height: 0rem;
 }
 .addCourse_passed_horizontal_liner1{
-    width: 4.8rem;
+    width: 5.1rem;
     height: 0rem;
     border: 1px solid #FFD60A;
     border-style: dashed;
 }
 .addCourse_passed_horizontal_linel2{
-    width: 4.8rem;
+    width: 5.1rem;
     height: 0rem;
     border: 1px solid #FFD60A;
     border-style: dashed;
 }
 .addCourse_passed_horizontal_liner2{
-    width: 4.8rem;
+    width: 5.1rem;
     height: 0rem;
     border: 1px solid #FFD60A;
     border-style: dashed;
 }
 .addCourse_passed_horizontal_linel3{
-    width: 4.8rem;
+    width: 5.1rem;
     height: 0rem;
     border: 1px solid #FFD60A;
     border-style: dashed;
 }
 .addCourse_passed_horizontal_liner3{
-    width: 4.8rem;
+    width: 5.1rem;
     height: 0rem;
 }
