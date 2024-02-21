@@ -32,4 +32,5 @@ export const dotenv = {
     create_sub_section : '/addSubSection',
     update_sub_section : '/updateSubSection',
     delete_sub_section : '/deleteSubSection',
+    instructor_user_Courses : '/instructor_user_Courses',
 }

@@ -13,9 +13,6 @@ const CreateSubsectionModal = ({setSubsectionModal , setSubSectionData , data ,
   const token = useSelector((state) => state.auth.token);
   const {register , getValues , setValue , formState : {errors} , handleSubmit} = useForm();
 
-  console.log("add" , add);
-  console.log("edit" , edit);
-  console.log("view" , view);
 
   useEffect(()=> {
     if(edit || view){

@@ -192,3 +192,26 @@ export async function updateSubSectionBackendRequest(data , token){
         toast.error("Section not Updated");
     }
 }
+
+export async function getUserCoursesFromBackend(token){
+    let result = [];
+    try {
+        const toastId = toast.loading("Loading ... ");
+
+        const responseFromapiConnector = await requestBackend("GET" , courseAllRoutes.instructor_user_Courses , null , {Authorization : `Bearer ${token}`} , );
+
+        toast.dismiss(toastId);
+        if(!responseFromapiConnector.data){
+            //means some error as if it was a ok response then .data will be available directly
+            toast.error(responseFromapiConnector?.response?.data?.message);
+        }
+        else{
+            result = responseFromapiConnector.data.userAllCourses;
+        }
+
+    } catch (error) {
+        console.log("error while fetching the user courses" , error);
+        toast.error("Cannot fetch courses");
+    }
+    return result;
+}
