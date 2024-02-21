@@ -24,6 +24,7 @@ export const courseAllRoutes = {
     delete_sub_section : `${courseBaseUrl}${dotenv.delete_sub_section}`,
     update_sub_section : `${courseBaseUrl}${dotenv.update_sub_section}`,
     instructor_user_Courses : `${courseBaseUrl}${dotenv.instructor_user_Courses}`,
+    delete_instructor_Course : `${courseBaseUrl}${dotenv.delete_instructor_Course}`,
     
 }
 

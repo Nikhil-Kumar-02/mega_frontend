@@ -78,7 +78,6 @@ export function deleteSectionBackendRequest(data , token){
     } 
 }
 
-
 export function updateSectionBackendRequest(data , token){
     return async (dispatch) => {
         try {
@@ -213,5 +212,29 @@ export async function getUserCoursesFromBackend(token){
         console.log("error while fetching the user courses" , error);
         toast.error("Cannot fetch courses");
     }
+    return result;
+}
+
+export async function deleteCoursesFromBackend(data , token){
+    let result = [];
+    try {
+        const toastId = toast.loading("Deleting ... ");
+
+        const responseFromapiConnector = await requestBackend("POST" , courseAllRoutes.delete_instructor_Course , data , {Authorization : `Bearer ${token}`} , );
+
+        if(!responseFromapiConnector.data){
+            //means some error as if it was a ok response then .data will be available directly
+            toast.error(responseFromapiConnector?.response?.data?.message);
+        }
+        else{
+            result = responseFromapiConnector.data.userUpdatedCourses;
+        }
+        toast.dismiss(toastId);
+
+    } catch (error) {
+        console.log("error while deleting the user courses" , error);
+        toast.error("Cannot delete course");
+    }
+    console.log("the data returning back to the mycourses is : " , result);
     return result;
 }
