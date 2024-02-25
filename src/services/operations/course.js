@@ -224,12 +224,14 @@ export async function deleteCoursesFromBackend(data , token){
 
         if(!responseFromapiConnector.data){
             //means some error as if it was a ok response then .data will be available directly
+            toast.dismiss(toastId);
             toast.error(responseFromapiConnector?.response?.data?.message);
         }
         else{
             result = responseFromapiConnector.data.userUpdatedCourses;
+            toast.dismiss(toastId);
+            toast.success("Course Deleted");
         }
-        toast.dismiss(toastId);
 
     } catch (error) {
         console.log("error while deleting the user courses" , error);
@@ -238,3 +240,30 @@ export async function deleteCoursesFromBackend(data , token){
     console.log("the data returning back to the mycourses is : " , result);
     return result;
 }
+
+export async function getCatelogCoursesFromBackend(categoryId , token , dispatch){
+    let result = [];
+    try {
+        const toastId = toast.loading("Loading ... ");
+        console.log('the url so created is : ' ,  `${courseAllRoutes.category_Page_Details}/${categoryId}`);
+        const responseFromapiConnector = await requestBackend("GET" , `${courseAllRoutes.category_Page_Details}/${categoryId}` , null , {Authorization : `Bearer ${token}`} , );
+
+        if(!responseFromapiConnector.data){
+            //means some error as if it was a ok response then .data will be available directly
+            toast.dismiss(toastId);
+            toast.error(responseFromapiConnector?.response?.data?.message);
+        }
+        else{
+            // result = responseFromapiConnector;
+            dispatch(setCourse(responseFromapiConnector.data))
+            result = responseFromapiConnector.data;
+            toast.dismiss(toastId);
+        }
+
+    } catch (error) {
+        console.log("error while getting a category courses" , error);
+        toast.error("Not able to fetch Details");
+    }
+    return result;
+}
+

@@ -1,0 +1,12 @@
+.catelog_each_course_wrapper{
+    min-width: 25%;
+    background-color: green;
+    margin-right: 0.5rem;
+    border-radius: 1rem;
+    >div{
+        margin: 0.5rem 0.5rem;
+    }
+    >:nth-child(1){
+
+    }
+}

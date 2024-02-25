@@ -25,6 +25,7 @@ import EnrolledCourses from './components/core/Dashboard/SideBarElements/Enrolle
 import Cart from './components/core/Dashboard/SideBarElements/Cart';
 import { ACCOUNT_TYPE } from './utils/constants';
 import { useSelector } from 'react-redux';
+import CourseCategory from './components/core/home/courseCatelogContainer/CourseCategory';
 
 function App() {
 
@@ -46,6 +47,7 @@ function App() {
           <Route path='/forgotPassword' element={<ForgotPassword></ForgotPassword>}></Route>
           <Route path='/about' element={<AboutUs></AboutUs>}></Route>
           <Route path='/contact' element={<ContactUs></ContactUs>}></Route>
+          <Route path='/catelog/:categoryId' element={<CourseCategory></CourseCategory>}></Route>
           <Route path='/dashboard' element={<Dashboard></Dashboard>}>
             <Route index element={<SideBar></SideBar>}></Route>
             <Route path='/dashboard/my-profile' element={<MyProfile></MyProfile>}></Route>

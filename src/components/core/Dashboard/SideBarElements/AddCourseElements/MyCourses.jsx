@@ -94,11 +94,11 @@ const MyCourses = (props) => {
                 <div className="mycourse_price">€{eachCourse.price}</div>
                 <div className="mycourse_actions">
                   <FiEdit2></FiEdit2>
-                  <span onClick={() => {
+                  <div onClick={() => {
                     setDeleteModal(eachCourse._id);
                   }}>
                     <RiDeleteBin6Line></RiDeleteBin6Line>
-                  </span>
+                  </div>
                 </div>
 
               </div>

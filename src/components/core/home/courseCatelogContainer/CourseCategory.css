@@ -1,0 +1,85 @@
+.CourseCategory_wrapper{
+    min-height: 93vh;
+    width: 100%;
+    color: white;
+    >:last-child{
+        background-color: #161D29;
+    }
+    >.CourseCategory_section1{
+        background-color: #161D29;
+        padding: 4rem 10rem;
+        font-size: 1.2rem;
+        >:nth-child(2){
+            color: yellow;
+        }
+        >:nth-child(3){
+            font-size: 2rem;
+            padding: 1rem 0;
+        }
+    }
+    >.CourseCategory_section2{
+        padding: 0 10rem;
+        margin: 2rem 0;
+        >h1{
+            margin: 1rem 0;
+            font-family: cursive;
+        }
+        >section{
+            background-color: pink;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            >.course_category_courses_container{
+                display: flex;
+                align-items: center;
+                padding: 0.3rem;
+                width: 90%;
+                background-color: red;
+            }  
+        }
+    }
+    >.CourseCategory_section3{
+        padding: 0rem 10rem;
+        margin: 2rem 0;
+        >h1{
+            margin: 1rem 0;
+            font-family: cursive;
+        }
+        >section{
+            background-color: pink;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            >.course_category_courses_container{
+                display: flex;
+                padding: 0.3rem;
+                background-color: red;
+            }
+        }
+    }
+    >.CourseCategory_section4{
+        padding: 0 10rem;
+        margin: 2rem 0;
+        >h1{
+            margin: 1rem 0;
+            font-family: cursive;
+        }
+
+    }
+}
+
+.courseCategoryNextClicker{
+    padding: 0.5rem;
+    background-color: rgba(128, 128, 128, 0.614);
+    width: max-content;
+    height: max-content;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.courseCategoryNextClicker:hover{
+    background-color: rgba(128, 128, 128, 0.342);
+    cursor: pointer;
+}

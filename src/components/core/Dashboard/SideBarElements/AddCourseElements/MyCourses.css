@@ -66,6 +66,9 @@
     width: 10%;
     display: flex;
     justify-content: space-evenly;
+    & *{
+        height: fit-content;
+    }
     >:nth-child(1):hover{
         cursor: pointer;
         color: blue;

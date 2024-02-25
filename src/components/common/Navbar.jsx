@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { Link, Outlet, matchPath, useLocation } from "react-router-dom";
+import { Link, Outlet, matchPath, useLocation, useNavigate } from "react-router-dom";
 import './Navbar.css'
 import { IoIosArrowDown } from "react-icons/io";
 import { NavbarLinks } from "../../data/NavbarLinks";
@@ -19,6 +19,7 @@ const Navbar = (props) => {
   const {token} = useSelector((state) => state.auth);
   const {totalItems} = useSelector((state) => state.cart);
   const user = useSelector((state) => state.profile.user);
+  const navigate = useNavigate();
 
   const [allCategories , setAllCategories] = useState([""]);
 
@@ -65,7 +66,8 @@ const Navbar = (props) => {
                         (
                           allCategories.length > 0 && 
                           allCategories.map((categories) => (
-                            <div>{categories.name}</div>
+                            <div onClick={() => {navigate(`/catelog/${categories._id}`)
+                            console.log("the passing category data : " , categories)}}>{categories.name}</div>
                           ))
                         )
                       }

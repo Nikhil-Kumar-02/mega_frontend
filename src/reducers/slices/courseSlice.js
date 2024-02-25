@@ -15,6 +15,7 @@ const courseSlice = createSlice({
             state.step = action.payload
         },
         setCourse : (state , action) => {
+            console.log("stored data in course redux store : " , action.payload)
             state.course = action.payload
         },
         setEditCourse : (state , action) => {
