@@ -24,17 +24,30 @@
             margin: 1rem 0;
             font-family: cursive;
         }
+        >hr{
+            border: 1px solid rgba(100, 99, 99, 0.772);
+            margin-bottom: 0.3rem;
+        }
+        >div{
+            cursor: pointer;
+            >span{
+                padding: 0rem 0.5rem;
+                margin-right: 0.5rem;
+            }
+            >.CourseCategory_section2_selectedTab{
+                border-bottom: 2px solid yellow;
+            }
+        }
         >section{
-            background-color: pink;
             display: flex;
             align-items: center;
             justify-content: space-between;
             >.course_category_courses_container{
                 display: flex;
                 align-items: center;
+                justify-content: space-evenly;
                 padding: 0.3rem;
                 width: 90%;
-                background-color: red;
             }  
         }
     }
@@ -46,14 +59,15 @@
             font-family: cursive;
         }
         >section{
-            background-color: pink;
             display: flex;
             align-items: center;
             justify-content: space-between;
             >.course_category_courses_container{
                 display: flex;
+                align-items: center;
+                justify-content: center;
                 padding: 0.3rem;
-                background-color: red;
+                width: 90%;
             }
         }
     }

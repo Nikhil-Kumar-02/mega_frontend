@@ -17,6 +17,7 @@ const CourseCategory = (props) => {
   const [otherCourses , setOtherCourses] = useState([]);
   const [categoryCourses , setCategoryCourses] = useState([]);
   const [topSellingCourses , setTopSellingCourses] = useState([]);
+  const [courseTab , setCourseTab] = useState(true);
 
   function trimRecievedCourses(setCourse , allCourse){
     let someCourse = [];
@@ -94,20 +95,28 @@ const CourseCategory = (props) => {
       <div className="CourseCategory_section2">
         <h1>Courses to get you started</h1>
         <div>
-          <span>Most Popular</span>
-          <span>New</span>
+          <span className={courseTab && "CourseCategory_section2_selectedTab"} onClick={() => {
+            setCourseTab(true)
+          // sort on the basis of rating and review not done
+          }}>Most Popular</span> 
+          <span className={!courseTab && "CourseCategory_section2_selectedTab"} onClick={() => { 
+          // sort on the basis of created at not done
+              setCourseTab(false);
+          }}>New</span>
         </div>
         <hr></hr>
         <section>
           <span className="courseCategoryNextClicker" onClick={() => {
             swipeCourseBuilder(course.otherCourses , otherCourses , setOtherCourses , -1)
           }}><MdOutlineArrowBackIos></MdOutlineArrowBackIos></span>
-          <div className="course_category_courses_container" onScroll={() => {console.log("scrolled")}}>
+
+          <div className="course_category_courses_container">
             {
               otherCourses.map((eachCourse,i) => (<RenderCatelogCourses eachCourse={eachCourse}></RenderCatelogCourses>
               ))
             }
           </div>
+
           <span className="courseCategoryNextClicker" onClick={() => {
             swipeCourseBuilder(course.otherCourses , otherCourses , setOtherCourses , 1)
           }}><MdOutlineArrowForwardIos></MdOutlineArrowForwardIos></span>
