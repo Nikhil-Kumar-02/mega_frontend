@@ -82,14 +82,13 @@ const CourseCategory = (props) => {
 
   }
 
-
   return (
     <div className="CourseCategory_wrapper">
       
       <div className="CourseCategory_section1">
         <span> Home / Catalog / </span><span>{course?.getCategoryCourses.name}</span>
         <p>{course?.getCategoryCourses.name}</p>
-        <p>Some random information about the catelog we are currently at</p>
+        <p>{course?.getCategoryCourses?.description}</p>
       </div>
 
       <div className="CourseCategory_section2">

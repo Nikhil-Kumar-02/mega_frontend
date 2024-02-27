@@ -1,0 +1,113 @@
+.CourseDetails_wrapper{
+    min-height: 93vh;
+    color: white;
+    
+}
+
+.CourseDetails_section1{
+    display: flex;
+    justify-content: space-between;
+    background-color: #161D29;
+    >:nth-child(1){
+        padding: 5rem;
+        >p{
+            margin: 1rem 0;
+            font-size: 1.1rem;
+        }
+    }
+    >:nth-child(2){
+        background-color: #2C333F;
+        position: relative;
+        top: 4rem;
+        right: 5rem;
+        padding: 0.5rem;
+        border-radius: 0.5rem;
+        >:nth-child(1){
+            >img{
+                height: 10rem;
+                border-top-left-radius: 0.5rem;
+                border-top-right-radius: 0.5rem;
+            }
+        }
+        >:nth-child(2){
+            margin: 0.6rem;
+            >p{
+                margin: 0.8rem 0;
+            }
+            >:nth-child(2){
+                margin: 0.8rem 0;
+            }
+            >:nth-child(3){
+                margin: 0.8rem 0;
+            }
+            >:last-child{
+                >div{
+                    margin: 0.3rem 0;
+                    >p{
+                        margin: 0.3rem 0;
+                        display: flex;
+                        align-items: center;
+                        & *{
+                            margin-right: 0.5rem;
+                        }
+                    }
+                }
+            }
+        }
+        >:last-child{
+            text-align: center;
+            font-size: 1.3rem;
+            color: yellow;
+            cursor: pointer;
+        }
+        >:last-child:hover{
+            text-decoration: underline;
+        }
+    }
+}
+
+.CourseDetails_section2{
+    margin: 2rem 0;
+    margin-left: 5rem;
+    border: 1px solid white;
+    width: 60%;
+    padding: 0.5rem;
+    >p{
+        margin: 1rem;
+    }
+}
+
+.CourseDetails_section3{
+    margin: 2rem 0;
+    margin-left: 5rem;
+    
+}
+
+.CourseDetails_section4{
+    margin: 2rem 0;
+    margin-left: 5rem;
+    >div{
+        margin: 1rem;
+        display: flex;
+        align-items: center;
+        font-size: 1.2rem;
+        font-size: 1.2rem;
+        >p{
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+        >img{
+            height: 5rem;
+            width: 5rem;
+            margin-right: 3rem;
+            border-radius: 50%;
+        }
+    }
+}
+
+.CourseDetails_section5{
+    margin: 3rem 0;
+    margin-left: 5rem;
+    text-align: center;
+    width: 80%;
+}

@@ -101,11 +101,11 @@ export function updateSectionBackendRequest(data , token){
     } 
 }
 
-export async function getcompleteCourseDetailsFromBackend(data){
+export async function getcompleteCourseDetailsFromBackend(courseId){
     let result = [];
     try {
         const toastId = toast.loading("Loading ... ");
-        const responseFromapiConnector = await requestBackend("GET" , courseAllRoutes.get_full_course_details , data , );
+        const responseFromapiConnector = await requestBackend("POST" , courseAllRoutes.get_full_course_details , {courseId} , );
 
         if(!responseFromapiConnector.data){
             //means some error as if it was a ok response then .data will be available directly
@@ -113,7 +113,6 @@ export async function getcompleteCourseDetailsFromBackend(data){
             toast.error(responseFromapiConnector?.response?.data?.message);
         }
         else{
-            console.log("fetched complete course details : " , responseFromapiConnector?.data);
             // dispatch(setCourse(responseFromapiConnector?.data?.updatedCourseDetails));        
             toast.dismiss(toastId);
             result =  responseFromapiConnector?.data?.detailedCourseResponse;

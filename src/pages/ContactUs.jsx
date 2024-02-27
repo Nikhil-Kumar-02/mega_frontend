@@ -104,7 +104,7 @@ const ContactUs = (props) => {
             </div>  
 
         </div>
-        <div className="contact_footer">
+        <div className="footer">
             <Footer></Footer>
         </div>
     </div>
