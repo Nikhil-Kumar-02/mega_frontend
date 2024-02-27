@@ -4,6 +4,7 @@
     >.CourseDetailsSection_eachSection{
         display: flex;
         flex-direction: column;
+        font-size: 1.2rem;
         >section{
             display: flex;
             justify-content: space-between;

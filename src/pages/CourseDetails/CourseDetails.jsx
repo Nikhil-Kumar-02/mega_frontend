@@ -14,6 +14,7 @@ const CourseDetails = (props) => {
     const {courseId} = useParams();
     const [courseDetails , setCourseDetails] = useState(null);
     const [loading , setLoading] = useState(false);
+    const [collapseAll , setCollaspeAll] = useState(false);
 
     useEffect(() => {
         const callFunction = async () => {
@@ -83,13 +84,13 @@ const CourseDetails = (props) => {
                         return totalLectures;
                     })()
                 } lectures . {courseDetails?.totalCourseDuration} min Total Length</p>
-                <p>Collapse all sections</p>
+                <p onClick={()=>{setCollaspeAll(true)}}>Collapse all sections</p>
             </div>
             {/* <CourseDetailsSection section={courseDetails?.courseContent}></CourseDetailsSection> */}
             <div className="CourseDetailsSection_wrapper">
             {
                 courseDetails?.courseContent?.map((eachSection) => (
-                    <CourseDetailsSection section={eachSection}></CourseDetailsSection>
+                    <CourseDetailsSection section={eachSection} collapseAll={collapseAll} setCollaspeAll={setCollaspeAll}></CourseDetailsSection>
                 ))
             }
             </div>
