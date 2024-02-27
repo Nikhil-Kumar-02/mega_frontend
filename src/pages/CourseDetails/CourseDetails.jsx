@@ -1,28 +1,36 @@
 import React, { useEffect, useState } from "react"
 import './CourseDetails.css';
 import { useParams } from "react-router-dom";
-import { getcompleteCourseDetailsFromBackend } from "../services/operations/course";
-import ButtonComponent from "../components/core/home/buttonComponent";
+import { getcompleteCourseDetailsFromBackend } from "../../services/operations/course";
+import ButtonComponent from "../../components/core/home/buttonComponent";
 import { LiaCertificateSolid } from "react-icons/lia";
 import { FcMultipleDevices } from "react-icons/fc";
 import { PiCursorFill } from "react-icons/pi";
 import { IoIosTimer } from "react-icons/io";
-import Footer from "../components/common/Footer";
+import Footer from "../../components/common/Footer";
+import CourseDetailsSection from "./CourseDetailsSection";
 
 const CourseDetails = (props) => {
     const {courseId} = useParams();
     const [courseDetails , setCourseDetails] = useState(null);
+    const [loading , setLoading] = useState(false);
 
     useEffect(() => {
         const callFunction = async () => {
-            console.log("course id in useeffect " , courseId);
+            setLoading(true);
             const result = await getcompleteCourseDetailsFromBackend(courseId);
             setCourseDetails(result);
+            setLoading(false);
         }
         callFunction();
     } , []);
 
-    console.log("the course is : " , courseDetails)
+    if(loading){
+        return(
+            <div className="custom-loader"></div>
+        )
+    }
+
 
   return (
     <div className="CourseDetails_wrapper">
@@ -66,8 +74,24 @@ const CourseDetails = (props) => {
         <div className="CourseDetails_section3">
             <h1>Course Content</h1>
             <div>
-                <p>10 sections . 41 lectures . 7hr 57min Total Length</p>
+                <p>{courseDetails?.courseContent.length} sections . {
+                    (() => {
+                        let totalLectures = 0;
+                        courseDetails?.courseContent.forEach((sec) => {
+                            totalLectures += parseInt(sec.subSection.length);
+                        });
+                        return totalLectures;
+                    })()
+                } lectures . {courseDetails?.totalCourseDuration} min Total Length</p>
                 <p>Collapse all sections</p>
+            </div>
+            {/* <CourseDetailsSection section={courseDetails?.courseContent}></CourseDetailsSection> */}
+            <div className="CourseDetailsSection_wrapper">
+            {
+                courseDetails?.courseContent?.map((eachSection) => (
+                    <CourseDetailsSection section={eachSection}></CourseDetailsSection>
+                ))
+            }
             </div>
         </div>
 

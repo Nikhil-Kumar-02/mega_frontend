@@ -80,12 +80,24 @@
 .CourseDetails_section3{
     margin: 2rem 0;
     margin-left: 5rem;
-    
+    width: 60%;
+    >:nth-child(2){
+        display: flex;
+        justify-content: space-between;
+        >:nth-child(2){
+            color: yellow;
+            cursor: pointer;
+        }
+        >:nth-child(2):hover{
+            text-decoration: underline;
+        }
+    }
 }
 
 .CourseDetails_section4{
     margin: 2rem 0;
     margin-left: 5rem;
+    width: 60%;
     >div{
         margin: 1rem;
         display: flex;

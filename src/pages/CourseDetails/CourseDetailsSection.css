@@ -1,0 +1,56 @@
+.CourseDetailsSection_wrapper{
+    border: 1px solid grey;
+    margin: 2rem 0;
+    >.CourseDetailsSection_eachSection{
+        display: flex;
+        flex-direction: column;
+        >section{
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem;
+            background-color: grey;
+            border: 1px solid whitesmoke;
+            >:nth-child(1){
+                display: flex;
+                align-items: center;
+                >p{
+                    margin-left: 0.5rem;
+                }
+            }
+            >:nth-child(2){
+                display: flex;
+                width: 40%;
+                justify-content: space-between;
+            }
+        }
+    }
+    >.CourseDetailsSection_eachSection>section:hover{
+        cursor: pointer;
+    }
+}
+
+.CourseDetailsSection_eachSubsection{
+    display: flex;
+    text-align: center;
+    margin: 0.5rem 0;
+    >:nth-child(1){
+        width: 10%;
+    }
+    >:nth-child(2){
+        text-align: left;
+        width: 80%;
+        >section{
+            display: flex;
+            cursor: pointer;
+            >div{
+                margin-left: 0.5rem;
+            }
+        }
+        >div{
+            margin: 0.3rem;
+        }
+    }
+    >:nth-child(3){
+        width: 10%;
+    }
+}

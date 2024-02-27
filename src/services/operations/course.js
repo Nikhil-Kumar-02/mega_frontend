@@ -115,7 +115,7 @@ export async function getcompleteCourseDetailsFromBackend(courseId){
         else{
             // dispatch(setCourse(responseFromapiConnector?.data?.updatedCourseDetails));        
             toast.dismiss(toastId);
-            result =  responseFromapiConnector?.data?.detailedCourseResponse;
+            result =  responseFromapiConnector?.data?.detailedCourseResponsecpy;
         }
         
     } catch (error) {

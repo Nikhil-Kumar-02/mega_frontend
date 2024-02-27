@@ -26,7 +26,7 @@ import Cart from './components/core/Dashboard/SideBarElements/Cart';
 import { ACCOUNT_TYPE } from './utils/constants';
 import { useSelector } from 'react-redux';
 import CourseCategory from './components/core/home/courseCatelogContainer/CourseCategory';
-import CourseDetails from './pages/CourseDetails';
+import CourseDetails from './pages/CourseDetails/CourseDetails';
 
 function App() {
 
