@@ -5,6 +5,7 @@ const courseRoute = dotenv.Courses_route;
 const userRoute = dotenv.User_route;
 const otherRoute = dotenv.other_Route;
 const profileRoute = dotenv.Profile_Route;
+const payment_Route = dotenv.payment_Route;
 
 
 
@@ -12,6 +13,7 @@ const courseBaseUrl = baseUrl + courseRoute;
 const userBaseUrl = baseUrl + userRoute;
 const otherRoutesBaseUrl = baseUrl + otherRoute;
 const profileRouteBaseUrl = baseUrl + profileRoute;
+const PaymentRouteBaseUrl = baseUrl + payment_Route;
 
 export const courseAllRoutes = {
     getAllCategories : `${courseBaseUrl}${dotenv.Show_All_Categories}`,
@@ -49,4 +51,9 @@ export const profileAllRoutes = {
     get_All_User_Details : `${profileRouteBaseUrl}${dotenv.get_All_User_Details}`,
     delete_User_Permanently : `${profileRouteBaseUrl}${dotenv.delete_User_Permanently}`,
     get_User_Enrolled_Courses : `${profileRouteBaseUrl}${dotenv.user_Enrolled_Courses}`
+}
+
+export const PaymentRoutes = {
+    Capture_payment : `${PaymentRouteBaseUrl}${dotenv.Capture_payment}`,
+    Verify_Payment : `${PaymentRouteBaseUrl}${dotenv.Verify_Payment}`,
 }

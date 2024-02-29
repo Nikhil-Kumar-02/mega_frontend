@@ -8,6 +8,8 @@
     display: flex;
     justify-content: space-between;
     background-color: #161D29;
+    position: relative;
+    height: max-content;
     >:nth-child(1){
         padding: 5rem;
         >p{
@@ -17,7 +19,7 @@
     }
     >:nth-child(2){
         background-color: #2C333F;
-        position: relative;
+        position: absolute;
         top: 4rem;
         right: 5rem;
         padding: 0.5rem;

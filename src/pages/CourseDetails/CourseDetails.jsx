@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import './CourseDetails.css';
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { getcompleteCourseDetailsFromBackend } from "../../services/operations/course";
 import ButtonComponent from "../../components/core/home/buttonComponent";
 import { LiaCertificateSolid } from "react-icons/lia";
@@ -9,12 +9,18 @@ import { PiCursorFill } from "react-icons/pi";
 import { IoIosTimer } from "react-icons/io";
 import Footer from "../../components/common/Footer";
 import CourseDetailsSection from "./CourseDetailsSection";
+import { buyCourse } from "../../services/operations/StudentFeaturesAPI";
+import { useDispatch, useSelector } from "react-redux";
 
 const CourseDetails = (props) => {
     const {courseId} = useParams();
     const [courseDetails , setCourseDetails] = useState(null);
     const [loading , setLoading] = useState(false);
     const [collapseAll , setCollaspeAll] = useState(false);
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const token = useSelector((state)=> state.auth.token);
+    const userDetails = useSelector((state) => state.profile.user);
 
     useEffect(() => {
         const callFunction = async () => {
@@ -30,6 +36,13 @@ const CourseDetails = (props) => {
         return(
             <div className="custom-loader"></div>
         )
+    }
+
+    async function buyCourseClickHandler(){
+        //here we are buying individual courses so we will the individual courseid in the array as a 
+        //list of all courses we want to buy
+        const responseFromServices = await buyCourse(token , [courseId] , userDetails , navigate , dispatch);
+        console.log('responseFromServices ' , responseFromServices);
     }
 
 
@@ -50,7 +63,9 @@ const CourseDetails = (props) => {
                 </div>
                 <div>
                     <p style={{fontSize:"1.5rem"}}>$ {courseDetails?.price}</p>
-                    <ButtonComponent active={true} linkTo={`/course/${courseId}`}>Buy Now</ButtonComponent>
+                    <div onClick={()=>{buyCourseClickHandler()}}>
+                        <ButtonComponent active={true} linkTo={`/course/${courseId}`}>Buy Now</ButtonComponent>
+                    </div>
                     <ButtonComponent active={false} linkTo={"/dashboard/cart"}>Add to Cart</ButtonComponent>
                     <p>30 - day Money-Back Guarantee</p>
                     <div>
