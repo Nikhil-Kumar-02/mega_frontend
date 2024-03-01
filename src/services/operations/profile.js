@@ -4,6 +4,7 @@ import { profileAllRoutes } from "../apiRoutes";
 import { userAllRoutes } from "../apiRoutes";
 import {setUser , setLoading} from '../../reducers/slices/profileSlice';
 import { userLogout } from "./auth";
+import { setCourse } from "../../reducers/slices/courseSlice";
 
 export function loadUserAdditionalDetailsFromBackend(navigate , token){
     const toastId = toast.loading("Loading ... ");
@@ -95,7 +96,7 @@ export function updateUserPasswordFromBackend(currentPassword , newPassword , to
     }
 }
 
-export async function getUserEnrolledCourses(token){
+export async function getUserEnrolledCourses(token , dispatch){
     try {
         const toastId = toast.loading("Loading Enrolled Courses ... ");
 
@@ -109,6 +110,7 @@ export async function getUserEnrolledCourses(token){
         else{
             //so set this course
             toast.dismiss(toastId);
+            dispatch(setCourse(responseFromapiConnector?.data?.userEnrolledCourses));
             return responseFromapiConnector?.data?.userEnrolledCourses;
         }
         

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { TiDeviceLaptop } from "react-icons/ti";
+import { FaVideo } from "react-icons/fa";
 import { IoIosArrowDown } from "react-icons/io";
 import { IoIosArrowUp } from "react-icons/io";
 
@@ -11,7 +11,7 @@ const SubSection = ({subSection}) => {
   return (
     <div className="CourseDetailsSection_eachSubsection">
         <div>
-            <TiDeviceLaptop></TiDeviceLaptop>
+            <FaVideo></FaVideo>
         </div>                    
         <div>
             <section>

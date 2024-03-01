@@ -27,6 +27,7 @@ import { ACCOUNT_TYPE } from './utils/constants';
 import { useSelector } from 'react-redux';
 import CourseCategory from './components/core/home/courseCatelogContainer/CourseCategory';
 import CourseDetails from './pages/CourseDetails/CourseDetails';
+import PlayCourseContainer from './components/core/Dashboard/PlayCoursesVideo/PlayCourseContainer';
 
 function App() {
 
@@ -50,6 +51,7 @@ function App() {
           <Route path='/contact' element={<ContactUs></ContactUs>}></Route>
           <Route path='/catelog/:categoryId' element={<CourseCategory></CourseCategory>}></Route>
           <Route path='/course/:courseId' element={<CourseDetails></CourseDetails>}></Route>
+          <Route path='/view-course/:courseId/:sectionId/:subSectionId'  element={<PlayCourseContainer></PlayCourseContainer>}></Route>
           <Route path='/dashboard' element={<Dashboard></Dashboard>}>
             <Route index element={<SideBar></SideBar>}></Route>
             <Route path='/dashboard/my-profile' element={<MyProfile></MyProfile>}></Route>

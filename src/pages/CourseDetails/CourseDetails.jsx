@@ -30,7 +30,7 @@ const CourseDetails = (props) => {
             setLoading(false);
         }
         callFunction();
-    } , []);
+    } , [courseId]);
 
     if(loading){
         return(
@@ -41,8 +41,14 @@ const CourseDetails = (props) => {
     async function buyCourseClickHandler(){
         //here we are buying individual courses so we will the individual courseid in the array as a 
         //list of all courses we want to buy
-        const responseFromServices = await buyCourse(token , [courseId] , userDetails , navigate , dispatch);
-        console.log('responseFromServices ' , responseFromServices);
+        if(token){
+            const responseFromServices = await buyCourse(token , [courseId] , userDetails , navigate , dispatch);
+            console.log('responseFromServices ' , responseFromServices);
+        }
+        else{
+            //person is not logged in and he is trying to buy the course
+            navigate("/logIn");
+        }
     }
 
 
@@ -55,7 +61,7 @@ const CourseDetails = (props) => {
                 <p>{courseDetails?.courseDescription}</p>
                 <p>stars , review count and students enrolled count</p>
                 <p>Created by : {courseDetails?.instructor?.firstName} {" "} {courseDetails?.instructor?.lastName}</p>
-                <p>Created At : {courseDetails?.createdAt}</p>
+                <p>Created At : {courseDetails?.createdAt.split('T')[0]}</p>
             </div>
             <div>
                 <div>

@@ -98,7 +98,7 @@ const MyProfile = (props) => {
                       </div>
                       <div>
                           <p>Date Of Birth</p>
-                          <h4>{userData?.additionalDetails.dob ? userData?.additionalDetails.dob : "Add Date of Birth"}</h4>
+                          <h4>{userData?.additionalDetails?.dob ? userData?.additionalDetails.dob : "Add Date of Birth"}</h4>
                       </div>
                   </div>
               </div>

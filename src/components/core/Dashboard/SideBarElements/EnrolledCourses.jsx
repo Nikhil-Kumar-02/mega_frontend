@@ -2,15 +2,18 @@ import React, { useEffect, useState } from "react";
 import './EnrolledCourses.css';
 import { useDispatch, useSelector } from "react-redux";
 import { getUserEnrolledCourses } from "../../../../services/operations/profile";
+import { useNavigate } from "react-router-dom";
 
 
 const EnrolledCourses = (props) => {
     const [userCourses , setUserCourses] = useState(null);
     const {token} = useSelector((state) => state.auth);
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const getEnrolledCourses = async () =>{
         try {
-            const courses = await getUserEnrolledCourses(token);
+            const courses = await getUserEnrolledCourses(token , dispatch);
             setUserCourses(courses);
         } catch (error) {
             console.log('error while fetching the courses')
@@ -59,7 +62,7 @@ const EnrolledCourses = (props) => {
                     {
                         userCourses.map((eachCourse) => {
                             return (
-                                <div className="eachCourse_wrapper">
+                                <div className="eachCourse_wrapper" onClick={()=>navigate(`/view-course/${eachCourse._id}/${eachCourse?.courseContent[0]?._id}/${eachCourse?.courseContent[0]?.subSection[0]?._id}`)}>
 
                                     <div>
                                         <div><img src={eachCourse?.thumbnail} height={40}></img></div>

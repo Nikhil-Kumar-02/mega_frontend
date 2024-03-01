@@ -1,0 +1,13 @@
+.PlayCourseContainer_wrapper{
+    min-height: 93vh;
+    width: 100%;
+    color: white;
+    display: flex;
+    >:nth-child(1){
+        background-color: red;
+        width: 15%;
+    }
+    >:nth-child(2){
+        background-color: green;
+    }
+}
