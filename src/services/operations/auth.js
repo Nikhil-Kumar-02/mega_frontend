@@ -3,6 +3,7 @@ import { setLoading , setToken , setSignupData } from "../../reducers/slices/aut
 import { requestBackend } from "../apiConnector";
 import { userAllRoutes } from "../apiRoutes";
 import {setUser} from '../../reducers/slices/profileSlice'
+import { setCourse } from "../../reducers/slices/courseSlice";
 
 
 
@@ -65,8 +66,10 @@ export function userLogout(navigate , navigateTo){
         //remove the instance from the user global store and local storage
         localStorage.removeItem("token");
         localStorage.removeItem("user");
+        localStorage.removeItem("course");
         dispatch(setToken(null));
         dispatch(setUser(null));
+        dispatch(setCourse(null));
         toast.dismiss(toastId);
         toast.success("User Logged Out Sucessfully");
         if(navigateTo){

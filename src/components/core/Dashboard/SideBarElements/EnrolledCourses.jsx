@@ -24,7 +24,6 @@ const EnrolledCourses = (props) => {
         getEnrolledCourses();
     } , [])
 
-    console.log('the user courses are ', userCourses)
 
     if(!userCourses){
         return (

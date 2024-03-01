@@ -110,8 +110,10 @@ export async function getUserEnrolledCourses(token , dispatch){
         else{
             //so set this course
             toast.dismiss(toastId);
-            dispatch(setCourse(responseFromapiConnector?.data?.userEnrolledCourses));
-            return responseFromapiConnector?.data?.userEnrolledCourses;
+            const result = responseFromapiConnector?.data?.userEnrolledCourses;
+            dispatch(setCourse(result));
+            // localStorage.setItem('course' , JSON.stringify(result));
+            return result;
         }
         
     } catch (error) {

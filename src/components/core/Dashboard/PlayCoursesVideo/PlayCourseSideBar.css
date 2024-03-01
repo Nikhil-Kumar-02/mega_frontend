@@ -1,0 +1,62 @@
+.PlayCourseSideBar_wrapper{
+    position: relative;
+    >.PlayCourseSideBar_close{
+        height: max-content;
+        position: absolute;
+    }
+    >.PlayCourseSideBar_Open{
+        background-color: #161D29;
+        min-height: 93vh;
+        padding: 0.5rem;
+        display: flex;
+        flex-direction: column;
+
+        >:nth-child(1){
+            display: flex;
+            >div{
+                margin-right: 1rem;
+            }
+            >button{
+                width: max-content;
+                padding: 0.2rem 0.5rem;
+                font-size: 1rem;
+                font-weight: 700;
+                border: none;
+                background-color: yellow;
+                border-radius: 0.3rem;
+            }
+        }
+
+        >:nth-child(2){
+            >p{
+                margin-top: 0.3rem;
+            }
+        }
+
+        >.PlayCourseSideBar_Section_SubSection{
+            >.PlayCourseSideBar_Section{
+                background-color: #2C333F;
+                margin: 0.2rem 0;
+                padding: 0.5rem 0;
+                >:nth-child(1){
+                    cursor: pointer;
+                    padding: 0 0.2rem;
+                    display: flex;
+                    justify-content: space-between;
+                }
+                >.PlayCourseSideBar_SubSection{
+                    display: flex;
+                    align-items: center;
+                    & *{
+                        margin: 0.4rem;
+                    }
+                }
+            }
+        }
+
+    }
+}
+
+.PlayCourseSideBar_arrow{
+    cursor: pointer;
+}
