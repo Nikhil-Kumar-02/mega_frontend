@@ -7,17 +7,11 @@ import { IoMdArrowDropup } from "react-icons/io";
 import { FaVideo } from "react-icons/fa";
 import CourseVideoPlayer from "./CourseVideoPlayer";
 
-const PlayCourseSideBar = ({courseDetails}) => {
+const PlayCourseSideBar = ({courseDetails , setRatingModal}) => {
 
   const [collaspeSidebar , setCollaspeSidebar] = useState(false);
   const [openSubSection , setOpenSubSection] = useState(null);
   const [currentVideo , setCurrentVideo] = useState(courseDetails?.courseContent[0]?.subSection[0]?.videoUrl);
-
-  
-
-  console.log("the course details in side bar " , courseDetails);
-  console.log("int the side bar " , currentVideo , courseDetails?.courseContent[0]?.subSection[0]?.videoUrl);
-
 
   function handleSubSectionAccordian(id){
     if(id === openSubSection){
@@ -49,7 +43,10 @@ const PlayCourseSideBar = ({courseDetails}) => {
             }}>
               <FaCircleArrowLeft size={30}></FaCircleArrowLeft>
             </div>
-            <button>Add Review</button>
+            <button onClick={()=>{
+              setRatingModal(true)
+              console.log("clicked the button")
+            }}>Add Review</button>
         </div>
 
         <div>
@@ -94,7 +91,6 @@ const PlayCourseSideBar = ({courseDetails}) => {
       )
     }
     </div>
-
     <CourseVideoPlayer video={currentVideo}></CourseVideoPlayer>
   </>
     

@@ -1,5 +1,6 @@
 .PlayCourseSideBar_wrapper{
     position: relative;
+    height: fit-content;
     >.PlayCourseSideBar_close{
         height: max-content;
         position: absolute;
@@ -8,7 +9,7 @@
     }
     >.PlayCourseSideBar_Open{
         background-color: #161D29;
-        min-height: 93vh;
+        min-height: 91.8vh;
         padding: 0.5rem;
         display: flex;
         flex-direction: column;
