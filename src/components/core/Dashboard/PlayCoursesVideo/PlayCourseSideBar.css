@@ -3,6 +3,8 @@
     >.PlayCourseSideBar_close{
         height: max-content;
         position: absolute;
+        z-index: 4;
+        cursor: pointer;
     }
     >.PlayCourseSideBar_Open{
         background-color: #161D29;
@@ -47,9 +49,13 @@
                 >.PlayCourseSideBar_SubSection{
                     display: flex;
                     align-items: center;
+                    cursor: pointer;
                     & *{
                         margin: 0.4rem;
                     }
+                }
+                >.PlayCourseSideBar_SubSection:hover{
+                    background-color: #505660c8;
                 }
             }
         }

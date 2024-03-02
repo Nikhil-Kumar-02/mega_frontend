@@ -1,33 +1,26 @@
-import React, { useEffect, useState } from "react"
+import React, { useState } from "react"
 import './PlayCourseSideBar.css';
 import { FaCircleArrowLeft } from "react-icons/fa6";
 import { FaBars } from "react-icons/fa";
-import { useParams } from "react-router-dom";
-import { getcompleteCourseDetailsFromBackend } from "../../../../services/operations/course";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { IoMdArrowDropup } from "react-icons/io";
 import { FaVideo } from "react-icons/fa";
+import CourseVideoPlayer from "./CourseVideoPlayer";
 
-const PlayCourseSideBar = (props) => {
+const PlayCourseSideBar = ({courseDetails}) => {
 
-  const params = useParams();
-  console.log("the params are : " , params);
-
-  const [courseDetails , setCourseDetails] = useState(null);
   const [collaspeSidebar , setCollaspeSidebar] = useState(false);
   const [openSubSection , setOpenSubSection] = useState(null);
+  const [currentVideo , setCurrentVideo] = useState(courseDetails?.courseContent[0]?.subSection[0]?.videoUrl);
 
-  useEffect(()=>{
-    (async () => {
-      const result = await getcompleteCourseDetailsFromBackend(params.courseId);
-      setCourseDetails(result);
-    })();
-  } , []);
+  
 
-  console.log("the course details are : " , courseDetails);
+  console.log("the course details in side bar " , courseDetails);
+  console.log("int the side bar " , currentVideo , courseDetails?.courseContent[0]?.subSection[0]?.videoUrl);
+
 
   function handleSubSectionAccordian(id){
-    if(id == openSubSection){
+    if(id === openSubSection){
       setOpenSubSection(null);
     }
     else{
@@ -36,6 +29,7 @@ const PlayCourseSideBar = (props) => {
   }
 
   return (
+  <>
     <div className="PlayCourseSideBar_wrapper">
     {
       collaspeSidebar ? 
@@ -44,7 +38,7 @@ const PlayCourseSideBar = (props) => {
             console.log("clicked");
             setCollaspeSidebar((prev) => !prev);
           }}>
-          <FaBars size={30}></FaBars>
+          <FaBars size={20}></FaBars>
         </div>) : (
         <div className="PlayCourseSideBar_Open">
           <div>
@@ -83,7 +77,10 @@ const PlayCourseSideBar = (props) => {
               </div>
               {
                 openSubSection === section._id && section?.subSection?.map((subSection) => (
-                  <div className="PlayCourseSideBar_SubSection" onClick={(e) => {e.stopPropagation()}}>
+                  <div className="PlayCourseSideBar_SubSection" onClick={(e) => {
+                    e.stopPropagation()
+                    setCurrentVideo(subSection?.videoUrl)
+                    }}>
                     <FaVideo></FaVideo>
                     {subSection?. title}
                   </div>
@@ -97,6 +94,10 @@ const PlayCourseSideBar = (props) => {
       )
     }
     </div>
+
+    <CourseVideoPlayer video={currentVideo}></CourseVideoPlayer>
+  </>
+    
   )
 };
 
