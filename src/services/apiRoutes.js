@@ -6,7 +6,7 @@ const userRoute = dotenv.User_route;
 const otherRoute = dotenv.other_Route;
 const profileRoute = dotenv.Profile_Route;
 const payment_Route = dotenv.payment_Route;
-
+const rating_Route = dotenv.rating_route;
 
 
 const courseBaseUrl = baseUrl + courseRoute;
@@ -14,6 +14,7 @@ const userBaseUrl = baseUrl + userRoute;
 const otherRoutesBaseUrl = baseUrl + otherRoute;
 const profileRouteBaseUrl = baseUrl + profileRoute;
 const PaymentRouteBaseUrl = baseUrl + payment_Route;
+const RatingRouteBaseUrl = baseUrl + rating_Route;
 
 export const courseAllRoutes = {
     getAllCategories : `${courseBaseUrl}${dotenv.Show_All_Categories}`,
@@ -56,4 +57,11 @@ export const profileAllRoutes = {
 export const PaymentRoutes = {
     Capture_payment : `${PaymentRouteBaseUrl}${dotenv.Capture_payment}`,
     Verify_Payment : `${PaymentRouteBaseUrl}${dotenv.Verify_Payment}`,
+}
+
+export const RatingRoutes = {
+    create_Rating : `${RatingRouteBaseUrl}${dotenv.create_Rating}`,
+    get_All_Rating : `${RatingRouteBaseUrl}${dotenv.all_Rating}`,
+    course_Rating : `${RatingRouteBaseUrl}${dotenv.course_Rating}`,
+    average_Rating : `${RatingRouteBaseUrl}${dotenv.average_Rating}`,
 }
