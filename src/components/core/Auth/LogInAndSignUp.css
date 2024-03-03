@@ -24,6 +24,9 @@ label>:nth-child(1){
     background-color: 000814;
     color: white;
     padding: auto auto;
+    >form>div{
+        margin: 0.7rem 0;
+    }
 }
 
 .teachingImage{

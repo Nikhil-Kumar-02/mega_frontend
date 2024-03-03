@@ -11,7 +11,7 @@ const PlayCourseSideBar = ({courseDetails , setRatingModal}) => {
 
   const [collaspeSidebar , setCollaspeSidebar] = useState(false);
   const [openSubSection , setOpenSubSection] = useState(null);
-  const [currentVideo , setCurrentVideo] = useState(courseDetails?.courseContent[0]?.subSection[0]?.videoUrl);
+  const [currentVideo , setCurrentVideo] = useState({cc : 0 , ss : 0});
 
   function handleSubSectionAccordian(id){
     if(id === openSubSection){
@@ -21,6 +21,36 @@ const PlayCourseSideBar = ({courseDetails , setRatingModal}) => {
       setOpenSubSection(id);
     }
   }
+
+  function nextVideoHandler(offset){
+    //now we have to play next video
+    //if in the currect section more subsection is present then play that
+    //else move to other section and play the first subsection
+    if(offset === 1){
+      const currSec = currentVideo.cc;
+      const currSubSec = currentVideo.ss;
+      console.log("the course is : " , courseDetails);
+      console.log(currentVideo);
+
+      if(courseDetails?.courseContent[currSec]?.subSection?.length > currSubSec+1){
+        setCurrentVideo((prev) => {
+          let data = {...prev};
+          data.ss = currSubSec+1;
+          return data;
+        })
+      }
+      else{
+        setCurrentVideo((prev) => {
+          let data = {...prev};
+          data.cc = currSec+1;
+          data.ss = 0;
+          return data;
+        })
+      }
+    }
+  }
+
+  // console.log("the current video is : " , currentVideo);
 
   return (
   <>
@@ -75,7 +105,7 @@ const PlayCourseSideBar = ({courseDetails , setRatingModal}) => {
                 openSubSection === section._id && section?.subSection?.map((subSection) => (
                   <div className="PlayCourseSideBar_SubSection" onClick={(e) => {
                     e.stopPropagation()
-                    setCurrentVideo(subSection?.videoUrl)
+                    // setCurrentVideo(subSection?.videoUrl)
                     }}>
                     <FaVideo></FaVideo>
                     {subSection?. title}
@@ -90,7 +120,7 @@ const PlayCourseSideBar = ({courseDetails , setRatingModal}) => {
       )
     }
     </div>
-    <CourseVideoPlayer video={currentVideo}></CourseVideoPlayer>
+    <CourseVideoPlayer video={courseDetails?.courseContent[currentVideo.cc]?.subSection[currentVideo.ss]?.videoUrl} nextVideoHandler={nextVideoHandler}></CourseVideoPlayer>
   </>
     
   )
