@@ -95,17 +95,17 @@ const PlayCourseSideBar = ({courseDetails , setRatingModal}) => {
 
         <div className="PlayCourseSideBar_Section_SubSection">
         {
-          courseDetails?.courseContent.map((section) => (
+          courseDetails?.courseContent.map((section , secIdx) => (
             <div onClick={()=>{handleSubSectionAccordian(section._id)}}className="PlayCourseSideBar_Section">
               <div>
                 {section?.sectionName}
                 { openSubSection === section._id ? <IoMdArrowDropup size={20}/> : <IoMdArrowDropdown size={20}/>}
               </div>
               {
-                openSubSection === section._id && section?.subSection?.map((subSection) => (
-                  <div className="PlayCourseSideBar_SubSection" onClick={(e) => {
+                openSubSection === section._id && section?.subSection?.map((subSection , subSecIdx) => (
+                  <div className={`PlayCourseSideBar_SubSection ${secIdx===currentVideo.cc&&subSecIdx===currentVideo.ss ? "CurrentPlayingVideo" : ""}`} onClick={(e) => {
                     e.stopPropagation()
-                    // setCurrentVideo(subSection?.videoUrl)
+                    setCurrentVideo({cc:secIdx , ss:subSecIdx});
                     }}>
                     <FaVideo></FaVideo>
                     {subSection?. title}

@@ -58,6 +58,9 @@
                 >.PlayCourseSideBar_SubSection:hover{
                     background-color: #505660c8;
                 }
+                >.CurrentPlayingVideo{
+                    background-color: #505660c8;
+                }
             }
         }
 
