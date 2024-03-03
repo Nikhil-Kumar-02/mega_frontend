@@ -19,8 +19,6 @@ const PlayCourseContainer = (props) => {
     })();
   } , [params.courseId]);
 
-  console.log("show rating modal status " , ratingModal)
-
   
   return (
     <div className="PlayCourseContainer_wrapper">
@@ -28,7 +26,7 @@ const PlayCourseContainer = (props) => {
       courseDetails && <PlayCourseSideBar setRatingModal={setRatingModal} courseDetails={courseDetails}></PlayCourseSideBar>
     }
     {
-      ratingModal && <RatingModal setRatingModal={setRatingModal}></RatingModal>
+      ratingModal && <RatingModal setRatingModal={setRatingModal} courseId={params.courseId}></RatingModal>
     }
     </div>
   )

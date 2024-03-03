@@ -45,7 +45,6 @@ const PlayCourseSideBar = ({courseDetails , setRatingModal}) => {
             </div>
             <button onClick={()=>{
               setRatingModal(true)
-              console.log("clicked the button")
             }}>Add Review</button>
         </div>
 

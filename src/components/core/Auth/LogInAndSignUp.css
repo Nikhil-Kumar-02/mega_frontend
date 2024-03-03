@@ -26,11 +26,6 @@ label>:nth-child(1){
     padding: auto auto;
 }
 
-form > div {
-    margin: 0.8rem 0;
-}
-
-
 .teachingImage{
     border-radius: 9px;
     border-right: 5px solid rgb(57, 55, 55);
@@ -117,6 +112,9 @@ button:hover{
     color: white;
     font-size: 0.8rem;
     font-weight: 700;
+    >div {
+        margin: 0.8rem 0;
+    }
 }
 
 .signup-text{

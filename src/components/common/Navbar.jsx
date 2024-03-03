@@ -25,7 +25,7 @@ const Navbar = (props) => {
 
   async function getCategories(){
     const responseInNavbar = await requestBackend('GET' , courseAllRoutes.getAllCategories);
-    console.log('the response in navbar is : ', responseInNavbar);
+    // console.log('the response in navbar is : ', responseInNavbar);
     setAllCategories(responseInNavbar?.data?.allCategories);
   }
 
