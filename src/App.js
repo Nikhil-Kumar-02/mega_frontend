@@ -51,7 +51,7 @@ function App() {
           <Route path='/contact' element={<ContactUs></ContactUs>}></Route>
           <Route path='/catelog/:categoryId' element={<CourseCategory></CourseCategory>}></Route>
           <Route path='/course/:courseId' element={<CourseDetails></CourseDetails>}></Route>
-          <Route path='/view-course/:courseId/:sectionId/:subSectionId'  element={<PlayCourseContainer></PlayCourseContainer>}></Route>
+          <Route path='/view-course/:courseId' element={<PlayCourseContainer></PlayCourseContainer>}></Route>
           <Route path='/dashboard' element={<Dashboard></Dashboard>}>
             <Route index element={<SideBar></SideBar>}></Route>
             <Route path='/dashboard/my-profile' element={<MyProfile></MyProfile>}></Route>

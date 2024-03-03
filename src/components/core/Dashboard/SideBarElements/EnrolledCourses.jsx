@@ -61,7 +61,7 @@ const EnrolledCourses = (props) => {
                     {
                         userCourses.map((eachCourse) => {
                             return (
-                                <div className="eachCourse_wrapper" onClick={()=>navigate(`/view-course/${eachCourse._id}/${eachCourse?.courseContent[0]?._id}/${eachCourse?.courseContent[0]?.subSection[0]?._id}`)}>
+                                <div className="eachCourse_wrapper" onClick={()=>navigate(`/view-course/${eachCourse._id}`)}>
 
                                     <div>
                                         <div><img src={eachCourse?.thumbnail} height={40}></img></div>
