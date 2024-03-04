@@ -26,27 +26,25 @@ const PlayCourseSideBar = ({courseDetails , setRatingModal}) => {
     //now we have to play next video
     //if in the currect section more subsection is present then play that
     //else move to other section and play the first subsection
-    if(offset === 1){
-      const currSec = currentVideo.cc;
-      const currSubSec = currentVideo.ss;
-      console.log("the course is : " , courseDetails);
-      console.log(currentVideo);
+    const currSec = currentVideo.cc;
+    const currSubSec = currentVideo.ss;
+    console.log("the course is : " , courseDetails);
+    console.log(currentVideo);
 
-      if(courseDetails?.courseContent[currSec]?.subSection?.length > currSubSec+1){
-        setCurrentVideo((prev) => {
-          let data = {...prev};
-          data.ss = currSubSec+1;
-          return data;
-        })
-      }
-      else{
-        setCurrentVideo((prev) => {
-          let data = {...prev};
-          data.cc = currSec+1;
-          data.ss = 0;
-          return data;
-        })
-      }
+    if(courseDetails?.courseContent[currSec]?.subSection?.length > currSubSec+offset){
+      setCurrentVideo((prev) => {
+        let data = {...prev};
+        data.ss = currSubSec+offset;
+        return data;
+      })
+    }
+    else{
+      setCurrentVideo((prev) => {
+        let data = {...prev};
+        data.cc = currSec+1;
+        data.ss = 0;
+        return data;
+      })
     }
   }
 
@@ -98,7 +96,7 @@ const PlayCourseSideBar = ({courseDetails , setRatingModal}) => {
           courseDetails?.courseContent.map((section , secIdx) => (
             <div onClick={()=>{handleSubSectionAccordian(section._id)}}className="PlayCourseSideBar_Section">
               <div>
-                {section?.sectionName}
+                <span>{section?.sectionName}</span>
                 { openSubSection === section._id ? <IoMdArrowDropup size={20}/> : <IoMdArrowDropdown size={20}/>}
               </div>
               {
@@ -107,8 +105,11 @@ const PlayCourseSideBar = ({courseDetails , setRatingModal}) => {
                     e.stopPropagation()
                     setCurrentVideo({cc:secIdx , ss:subSecIdx});
                     }}>
-                    <FaVideo></FaVideo>
-                    {subSection?. title}
+                    <span>
+                      <FaVideo size={15}></FaVideo>
+                      <span>{subSection?.title}</span>
+                    </span>
+                    <input type="checkBox" onClick={(e) => {e.stopPropagation()}} checked></input>
                   </div>
                 ))
               }

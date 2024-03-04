@@ -43,16 +43,40 @@
                 padding: 0.5rem 0;
                 >:nth-child(1){
                     cursor: pointer;
-                    padding: 0 0.2rem;
+                    padding: 0 0.4rem;
                     display: flex;
                     justify-content: space-between;
+                    max-width: 13rem;
+                    >span{
+                        width: 90%;
+                        word-wrap: break-word;
+                    }
                 }
                 >.PlayCourseSideBar_SubSection{
                     display: flex;
                     align-items: center;
+                    justify-content: space-between;
                     cursor: pointer;
-                    & *{
-                        margin: 0.4rem;
+                    padding: 0.3rem;
+                    font-size: 0.9rem;
+                    >span{
+                        display: flex;
+                        align-items: center;
+                        max-width: 13rem;
+                        width: 100%;
+                        >span{
+                            width: 75%;
+                            word-wrap: break-word;
+                        }
+                        & *{
+                            margin: 0rem 0.4rem;
+                        }
+                    }
+                    >input{
+                        width: fit-content;
+                        pointer-events: none;
+                        cursor: not-allowed;
+                        border: none;
                     }
                 }
                 >.PlayCourseSideBar_SubSection:hover{

@@ -86,8 +86,8 @@ const CourseCategory = (props) => {
     <div className="CourseCategory_wrapper">
       
       <div className="CourseCategory_section1">
-        <span> Home / Catalog / </span><span>{course?.getCategoryCourses.name}</span>
-        <p>{course?.getCategoryCourses.name}</p>
+        <span> Home / Catalog / </span><span>{course?.getCategoryCourses?.name}</span>
+        <p>{course?.getCategoryCourses?.name}</p>
         <p>{course?.getCategoryCourses?.description}</p>
       </div>
 
@@ -123,7 +123,7 @@ const CourseCategory = (props) => {
       </div>
 
       <div className="CourseCategory_section3">
-        <h1>Top courses in {course?.getCategoryCourses.name}</h1>
+        <h1>Top courses in {course?.getCategoryCourses?.name}</h1>
         <section>
           <span className="courseCategoryNextClicker" onClick={() => {
             swipeCourseBuilder(course.getCategoryCourses.courses,categoryCourses,setCategoryCourses,-1)

@@ -44,7 +44,13 @@ export async function buyCourse(token, courses, userDetails, navigate, dispatch)
                                 },)
 
         console.log("PRINTING orderResponse", orderResponse);
+        if(!orderResponse?.data?.success){
+            toast.dismiss(toastId);
+            toast.error(orderResponse?.data?.message);
+            return;
+        }
         if(!orderResponse.data) {
+            toast.dismiss(toastId);
             throw new Error(orderResponse.data.message);
         }
         //options

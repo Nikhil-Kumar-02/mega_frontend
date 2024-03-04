@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import './CourseVideoPlayer.css';
 
 const CourseVideoPlayer = ({video , nextVideoHandler}) => {
@@ -11,12 +11,11 @@ const CourseVideoPlayer = ({video , nextVideoHandler}) => {
 
   console.log("the current video url is :" , video);
 
-  const videoRef = useRef();
 
   return (
     <div className="CourseVideoPlayer_wrapper">
       {
-        video ? (<video src={video} controls onEnded={()=>{videoEndedHandler()}} ref={videoRef}></video>)
+        video ? (<video src={video} controls onEnded={()=>{videoEndedHandler()}} ></video>)
         :
         (<div className="courseVideoPlayer_completed_gif"><iframe src="https://giphy.com/embed/h2ORVK02QhsBrGMYaU" height="500rem" width="500rem" allowFullScreen></iframe></div>)
       }
@@ -24,7 +23,8 @@ const CourseVideoPlayer = ({video , nextVideoHandler}) => {
         videoEndFunc && <div className="video_end_functionalities">
           <button>Mark as Completed</button>
           <button  onClick={()=>{
-            console.log("the video ref " , videoRef)
+            setVideoEndFunc(false);
+            nextVideoHandler(0);
           }} >Replay</button>
           <button onClick={()=>{
             setVideoEndFunc(false);
