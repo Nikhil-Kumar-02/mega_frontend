@@ -20,3 +20,24 @@ export async function addCourseRandRFromBackend(token , data){
         toast.error("Rating not created ")
     }
 }
+
+
+export async function markSubsectionFromBackend(token , data){
+    const toastId = toast.loading("Loading ... ");
+    try {
+        const responseFromApiConnector = await requestBackend("POST" , RatingRoutes.mark_Subsection , data , {Authorization : `Bearer ${token}`} , );
+
+        if(!responseFromApiConnector.data){
+            toast.dismiss(toastId);
+            toast.error(responseFromApiConnector?.response?.data?.message);
+            return;
+        }
+        console.log("the updated course progress is : " , responseFromApiConnector);
+        toast.dismiss(toastId);
+        // toast.success("Marked");
+        return responseFromApiConnector?.data?.dataFound?.completedVideos;        
+    } catch (error) {
+        console.log("Error occured while marking a course subsection");
+        toast.error("Not Marked");
+    }
+}

@@ -64,4 +64,5 @@ export const RatingRoutes = {
     get_All_Rating : `${RatingRouteBaseUrl}${dotenv.all_Rating}`,
     course_Rating : `${RatingRouteBaseUrl}${dotenv.course_Rating}`,
     average_Rating : `${RatingRouteBaseUrl}${dotenv.average_Rating}`,
+    mark_Subsection : `${RatingRouteBaseUrl}${dotenv.markSubsection}`,
 }

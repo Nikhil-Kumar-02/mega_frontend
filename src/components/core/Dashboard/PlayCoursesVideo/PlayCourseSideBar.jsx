@@ -7,11 +7,12 @@ import { IoMdArrowDropup } from "react-icons/io";
 import { FaVideo } from "react-icons/fa";
 import CourseVideoPlayer from "./CourseVideoPlayer";
 
-const PlayCourseSideBar = ({courseDetails , setRatingModal}) => {
+const PlayCourseSideBar = ({courseDetails , setRatingModal , seenLectures , setSeenLectures}) => {
 
   const [collaspeSidebar , setCollaspeSidebar] = useState(false);
   const [openSubSection , setOpenSubSection] = useState(null);
   const [currentVideo , setCurrentVideo] = useState({cc : 0 , ss : 0});
+  
 
   function handleSubSectionAccordian(id){
     if(id === openSubSection){
@@ -22,13 +23,13 @@ const PlayCourseSideBar = ({courseDetails , setRatingModal}) => {
     }
   }
 
+  // console.log("the course is : " , courseDetails);
   function nextVideoHandler(offset){
     //now we have to play next video
     //if in the currect section more subsection is present then play that
     //else move to other section and play the first subsection
     const currSec = currentVideo.cc;
     const currSubSec = currentVideo.ss;
-    console.log("the course is : " , courseDetails);
     console.log(currentVideo);
 
     if(courseDetails?.courseContent[currSec]?.subSection?.length > currSubSec+offset){
@@ -47,8 +48,6 @@ const PlayCourseSideBar = ({courseDetails , setRatingModal}) => {
       })
     }
   }
-
-  // console.log("the current video is : " , currentVideo);
 
   return (
   <>
@@ -109,7 +108,7 @@ const PlayCourseSideBar = ({courseDetails , setRatingModal}) => {
                       <FaVideo size={15}></FaVideo>
                       <span>{subSection?.title}</span>
                     </span>
-                    <input type="checkBox" onClick={(e) => {e.stopPropagation()}} checked></input>
+                    <input type="checkBox" onClick={(e) => {e.stopPropagation()}} checked={seenLectures?.includes(subSection._id) ? true : false}></input>
                   </div>
                 ))
               }
@@ -121,7 +120,7 @@ const PlayCourseSideBar = ({courseDetails , setRatingModal}) => {
       )
     }
     </div>
-    <CourseVideoPlayer video={courseDetails?.courseContent[currentVideo.cc]?.subSection[currentVideo.ss]?.videoUrl} nextVideoHandler={nextVideoHandler}></CourseVideoPlayer>
+    <CourseVideoPlayer video={courseDetails?.courseContent[currentVideo.cc]?.subSection[currentVideo.ss]?.videoUrl} nextVideoHandler={nextVideoHandler} courseId={courseDetails?._id} subsectionId={courseDetails?.courseContent[currentVideo.cc]?.subSection[currentVideo.ss]?._id} setSeenLectures={setSeenLectures} seenLectures={seenLectures}></CourseVideoPlayer>
   </>
     
   )

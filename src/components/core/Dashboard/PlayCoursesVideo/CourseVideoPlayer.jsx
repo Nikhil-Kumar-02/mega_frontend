@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import './CourseVideoPlayer.css';
+import { markSubsectionFromBackend } from "../../../../services/operations/ratingAndReview";
+import { useSelector } from "react-redux";
 
-const CourseVideoPlayer = ({video , nextVideoHandler}) => {
+const CourseVideoPlayer = ({video , nextVideoHandler , courseId , subsectionId , setSeenLectures , seenLectures}) => {
 
   const [videoEndFunc , setVideoEndFunc] = useState(false);
 
@@ -9,7 +11,12 @@ const CourseVideoPlayer = ({video , nextVideoHandler}) => {
     setVideoEndFunc(true);
   }
 
-  console.log("the current video url is :" , video);
+  const token = useSelector((state)=>state.auth.token);
+
+  async function markSubsectionHandler(){
+    const result = await markSubsectionFromBackend(token,{courseId , subsectionId});
+    setSeenLectures(result);
+  }
 
 
   return (
@@ -21,7 +28,12 @@ const CourseVideoPlayer = ({video , nextVideoHandler}) => {
       }
       {
         videoEndFunc && <div className="video_end_functionalities">
-          <button>Mark as Completed</button>
+          {
+            seenLectures?.includes(subsectionId) ? <div></div> : 
+            <button onClick={() => {
+            markSubsectionHandler()
+            }}>Mark as Completed</button>
+          }
           <button  onClick={()=>{
             setVideoEndFunc(false);
             nextVideoHandler(0);
