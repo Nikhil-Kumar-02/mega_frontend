@@ -40,25 +40,37 @@ const EnrolledCourses = (props) => {
     }
 
     function totalSeenLecturesHandler(id){
-        return seenLectures?.map((lecture) => {
+        let result = 0;
+        seenLectures?.map((lecture) => {
             if(lecture.courseId === id){
-                return lecture.completedVideos.length;
+                result = lecture.completedVideos.length;
             }
         })
-        return 0;
+        return result;
     }
 
     function totalCourseLectures(id){
-        return userCourses?.map((eachCourse) => {
+        let result = 0;
+        userCourses?.map((eachCourse) => {
             if(eachCourse._id === id){
-                let totalLectures = 0;
                 eachCourse?.courseContent.map((section) => {
-                    totalLectures += parseInt(section.subSection.length)
+                    result += parseInt(section.subSection.length)
                 })
-                return totalLectures;
             }
         })
-        return 0;
+        return result;
+    }
+
+    function coursePercentage(id){
+        let seenLectures = totalSeenLecturesHandler(id)
+        let totalLectures = totalCourseLectures(id)
+
+        if(totalLectures === 0){
+            return 0;
+        }
+
+        let completePercentage = seenLectures/totalLectures
+        return parseInt(completePercentage*100);
     }
 
     console.log("the user progress is : " , seenLectures);
@@ -121,8 +133,10 @@ const EnrolledCourses = (props) => {
 
                                     <div>
                                         <div className="Enrolled_course_progress">
-                                            <div>Progress : x%</div>
-                                            <div>{totalSeenLecturesHandler(eachCourse._id)} / {totalCourseLectures(eachCourse._id)}</div>
+                                            <div>Progress % : {
+                                                coursePercentage(eachCourse._id)
+                                            }</div>
+                                            <div><span style={{backgroundColor : 'green', width : `${coursePercentage(eachCourse._id)}%`}}></span><span></span></div>
                                         </div>
                                         <div> ... </div>
                                     </div>

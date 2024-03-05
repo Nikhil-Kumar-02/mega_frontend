@@ -52,11 +52,31 @@
         display: flex;
         justify-content: space-between;
         padding-right: 2rem;
-        >:last-child{
+        width: 100%;
+        >:nth-child(1){
+            width: 80%;
+        }
+        >:nth-child(2){
+            width: 20%;
             cursor: pointer;
+            display: flex;
+            justify-content: right;
         }
         >.Enrolled_course_progress{
-            background-color: red;
+            >:nth-child(2){
+                width: 90%;
+                height: 0.5rem;
+                border-radius: 0.5rem;
+                margin-top: 0.5rem;
+                background-color: whitesmoke;
+                display: flex;
+                >:nth-child(1){
+                    border-radius: 0.5rem;
+                }
+                >:nth-child(2){
+                    border-radius: 0.5rem;
+                }
+            }
         }
     }
 }
