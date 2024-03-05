@@ -25,7 +25,7 @@ const PlayCourseContainer = (props) => {
       setCourseDetails(result);
       const alreadySeenLectures = await markSubsectionFromBackend(token , {courseId : params.courseId});
       // console.log('alreadySeenLectures' , alreadySeenLectures);
-      setSeenLectures(alreadySeenLectures);
+      setSeenLectures(alreadySeenLectures?.data?.dataFound?.completedVideos);
     })();
   } , [params.courseId]);
 

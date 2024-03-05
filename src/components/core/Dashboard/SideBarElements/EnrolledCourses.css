@@ -22,10 +22,10 @@
             width: 50%;
         }
         >:nth-child(2){
-            width: 15%;
+            width: 20%;
         }
         >:nth-child(3){
-            width: 35%;
+            width: 30%;
         }
     }
 }
@@ -54,6 +54,9 @@
         padding-right: 2rem;
         >:last-child{
             cursor: pointer;
+        }
+        >.Enrolled_course_progress{
+            background-color: red;
         }
     }
 }

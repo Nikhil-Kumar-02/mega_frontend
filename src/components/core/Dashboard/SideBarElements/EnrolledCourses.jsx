@@ -3,10 +3,13 @@ import './EnrolledCourses.css';
 import { useDispatch, useSelector } from "react-redux";
 import { getUserEnrolledCourses } from "../../../../services/operations/profile";
 import { useNavigate } from "react-router-dom";
+import { markSubsectionFromBackend } from "../../../../services/operations/ratingAndReview";
 
 
 const EnrolledCourses = (props) => {
     const [userCourses , setUserCourses] = useState(null);
+    const [seenLectures , setSeenLectures] = useState(null);
+
     const {token} = useSelector((state) => state.auth);
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -14,7 +17,12 @@ const EnrolledCourses = (props) => {
     const getEnrolledCourses = async () =>{
         try {
             const courses = await getUserEnrolledCourses(token , dispatch);
+            console.log("the recieved user courses are : " , courses);
             setUserCourses(courses);
+
+            const alreadySeenLectures = await markSubsectionFromBackend(token);
+            setSeenLectures(alreadySeenLectures?.data?.allProgress);
+
         } catch (error) {
             console.log('error while fetching the courses')
         }
@@ -30,6 +38,30 @@ const EnrolledCourses = (props) => {
             <div className="custom-loader"></div>
         )
     }
+
+    function totalSeenLecturesHandler(id){
+        return seenLectures?.map((lecture) => {
+            if(lecture.courseId === id){
+                return lecture.completedVideos.length;
+            }
+        })
+        return 0;
+    }
+
+    function totalCourseLectures(id){
+        return userCourses?.map((eachCourse) => {
+            if(eachCourse._id === id){
+                let totalLectures = 0;
+                eachCourse?.courseContent.map((section) => {
+                    totalLectures += parseInt(section.subSection.length)
+                })
+                return totalLectures;
+            }
+        })
+        return 0;
+    }
+
+    console.log("the user progress is : " , seenLectures);
 
   return (
     <div className="enrolled_courses_wrapper">
@@ -71,12 +103,26 @@ const EnrolledCourses = (props) => {
                                         </div>
                                     </div>
 
-                                    <div>2 hr 45 min</div>
+                                    <div>
+                                    {
+                                        (() => {
+                                            let totalTime = 0;
+                                            eachCourse?.courseContent?.map((section) => {
+                                                let sectionTime = 0;
+                                                section?.subSection?.map((subSection) => {
+                                                    sectionTime += parseFloat(subSection?.timeDuration);
+                                                })
+                                                totalTime += sectionTime;
+                                            })
+                                            return totalTime + "minutes";
+                                        })()
+                                    }
+                                    </div>
 
                                     <div>
-                                        <div>
-                                            <div>Progress</div>
-                                            <div>Progress bar</div>
+                                        <div className="Enrolled_course_progress">
+                                            <div>Progress : x%</div>
+                                            <div>{totalSeenLecturesHandler(eachCourse._id)} / {totalCourseLectures(eachCourse._id)}</div>
                                         </div>
                                         <div> ... </div>
                                     </div>

@@ -35,7 +35,7 @@ export async function markSubsectionFromBackend(token , data){
         console.log("the updated course progress is : " , responseFromApiConnector);
         toast.dismiss(toastId);
         // toast.success("Marked");
-        return responseFromApiConnector?.data?.dataFound?.completedVideos;        
+        return responseFromApiConnector;        
     } catch (error) {
         console.log("Error occured while marking a course subsection");
         toast.error("Not Marked");

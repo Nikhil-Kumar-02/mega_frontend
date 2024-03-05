@@ -15,7 +15,7 @@ const CourseVideoPlayer = ({video , nextVideoHandler , courseId , subsectionId ,
 
   async function markSubsectionHandler(){
     const result = await markSubsectionFromBackend(token,{courseId , subsectionId});
-    setSeenLectures(result);
+    setSeenLectures(result?.data?.dataFound?.completedVideos);
   }
 
 
