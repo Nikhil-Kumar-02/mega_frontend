@@ -24,6 +24,27 @@
                     margin: 0.3rem 0;
                 }
             }
+            >.InstructorChart_wrapper{
+                padding: 0.8rem;
+                font-size: 1.5rem;
+                >:nth-child(2){
+                    >button{
+                        border: none;
+                        margin: 0 0.2rem;
+                        border-radius: 0.2rem;
+                        padding: 0.2rem 0.5rem;
+                        background-color: none;
+                    }
+                    >.InstructorChart_currentTab{
+                        margin: 0.5rem 0;
+                        background-color: pink;
+                    }
+                }
+                >.chart-container{
+                    height: 25rem;
+                    margin: 0.5rem 0;
+                }
+            }
         }
 
         >.instructor_section_3{
@@ -56,3 +77,4 @@
         }
     }
 }
+

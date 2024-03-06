@@ -4,10 +4,11 @@ import { getInstructorStatsFromBackend } from "../../../../services/operations/p
 import { useSelector } from "react-redux";
 import { MdWavingHand } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
+import InstructorChart from "./InstructorChart";
 
 const Instructor = (props) => {
 
-  const [studentsTab , setStudentsTab] = useState(true);
+
   const [instructorData , setInstructorData] = useState(null);
   const {token} = useSelector((state) => state.auth);
   const {user} = useSelector((state) => state.profile);
@@ -47,7 +48,9 @@ const Instructor = (props) => {
         <h2>Hi {user?.firstName} <MdWavingHand color="yellow"></MdWavingHand></h2>
         <p>Let's start something new</p>
         <div className="instructor_section_2">
-          <div>hiiiii</div>
+          {
+            instructorData &&  <InstructorChart courses={instructorData} ></InstructorChart>
+          }
           <div>
             <p style={{fontSize : '1.5rem'}}>Statistics</p>
             <p>Total Course</p>
