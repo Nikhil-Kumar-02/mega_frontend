@@ -6,7 +6,8 @@ export const cartSlice = createSlice({
   name: 'cart',
   initialState: {
     totalItems: localStorage.getItem("totalItems") ? localStorage.getItem("totalItems") : 0,
-    cartItems : localStorage.getItem("cartItems") ? localStorage.getItem("cartItems") : [],
+    cartItems : localStorage.getItem("cartItems") ? JSON.parse(localStorage.getItem("cartItems")) : [],
+    totalPrice : localStorage.getItem("totalPrice") ? JSON.parse(localStorage.getItem("totalPrice")) : 0,
   },
   reducers: {
     setTotalItems(state , action){
@@ -14,20 +15,23 @@ export const cartSlice = createSlice({
     },
     //add to cart
     addToCart(state,action){
-        state.cartItems.push(action.payload)
+      state.cartItems.push(action.payload)
     },
     //remove from cart
     removeFromCart(state,action){
-        state.cartItems = state.cartItems.filter(item => item !== action.payload) 
+      state.cartItems = state.cartItems.filter(item => item !== action.payload) 
     },
     //resetcart
     resetCart(state,action){
-        state.cartItems = []
+      state.cartItems = []
+    },
+    setTotalPrice(state , action){
+      state.totalPrice = action.payload;
     }
   }
 })
 
 // Action creators are generated for each case reducer function
-export const { setTotalItems , addToCart , removeFromCart , resetCart } = cartSlice.actions
+export const { setTotalItems , addToCart , removeFromCart , resetCart , setTotalPrice} = cartSlice.actions
 
 export default cartSlice.reducer

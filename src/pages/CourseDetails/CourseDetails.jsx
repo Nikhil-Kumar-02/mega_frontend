@@ -21,6 +21,7 @@ const CourseDetails = (props) => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const token = useSelector((state)=> state.auth.token);
+    const totalPrice = useSelector((state)=> state.cart.totalPrice);
     const userDetails = useSelector((state) => state.profile.user);
 
     useEffect(() => {
@@ -53,7 +54,7 @@ const CourseDetails = (props) => {
     }
 
     function addItemsToCartHandler(id){
-        dispatch(addItemsToCartBackendRequest(token , id));
+        dispatch(addItemsToCartBackendRequest(token , id , totalPrice));
     }
 
 

@@ -1,0 +1,41 @@
+.CartCard_wrapper{
+    display: flex;
+    justify-content: space-between;
+    margin: 0.8rem 0;
+    background-color: #161D29;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    >:nth-child(1){
+        display: flex;
+        >img{
+            height: 7rem;
+            margin-right: 0.5rem;
+            border-radius: 0.5rem;
+        }
+        >div{
+            >h3{
+                cursor: pointer;
+                margin-bottom: 0.4rem;
+            }
+            >h3:hover{
+                text-decoration: underline;
+                color: yellow;
+            }
+        }
+    }
+
+    >:nth-child(2){
+        >:nth-child(1){
+            padding: 0.5rem 0.8rem;
+            display: flex;
+            background-color: grey;
+            height: fit-content;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+            cursor: pointer;
+            & *{
+                margin: 0rem 0.2rem;
+            }
+        }
+    }
+}

@@ -22,7 +22,7 @@ import Settings from './components/core/Dashboard/SideBarElements/Settings';
 import AddCourse from './components/core/Dashboard/SideBarElements/AddCourseElements/AddCourse';
 import Dashboard from './pages/DashBoard';
 import EnrolledCourses from './components/core/Dashboard/SideBarElements/EnrolledCourses';
-import Cart from './components/core/Dashboard/SideBarElements/Cart';
+import Cart from './components/core/Dashboard/SideBarElements/CourseCart/Cart';
 import { ACCOUNT_TYPE } from './utils/constants';
 import { useSelector } from 'react-redux';
 import CourseCategory from './components/core/home/courseCatelogContainer/CourseCategory';

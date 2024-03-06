@@ -1,0 +1,32 @@
+.cart_wrapper{
+    padding: 2rem;
+    width: 80%;
+}
+
+.Cart_course_wrapper{
+    display: flex;
+    justify-content: space-between;
+    >:nth-child(1){
+        width: 60%;
+    }
+    >:nth-child(2){
+        width: 25%;
+        background-color: #161D29;;
+        height: max-content;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        font-size: 1.5rem;
+        >div{
+            margin: 1rem 0rem;
+        }
+        >button{
+            width: 100%;
+            background-color: yellow;
+            border: none;
+            border-radius: 0.2rem;
+            padding: 0.5rem 0rem;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+    }
+}

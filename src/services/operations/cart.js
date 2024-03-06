@@ -1,17 +1,13 @@
 import toast from "react-hot-toast";
 import { requestBackend } from "../apiConnector";
-import {addToCart , removeFromCart , setTotalItems , resetCart} from '../../reducers/slices/cartSlice';
+import {addToCart , removeFromCart , setTotalItems , resetCart , setTotalPrice} from '../../reducers/slices/cartSlice';
 import { CartRoutes } from "../apiRoutes";
 
 
-export function addItemsToCartBackendRequest(token , courseId){
-    console.log('reached here1')
+export function addItemsToCartBackendRequest(token , courseId , totalPrice){
     return async (dispatch) => {
-        console.log('reached here2')
         const toastId = toast.loading("Loading ... ");
-        console.log('reached here3')
         try {
-            console.log("the cart backed route is  " , CartRoutes.addToCart);
             const responseFromApiConnector = await requestBackend("POST" , CartRoutes.addToCart , {courseId} , {Authorization : `Bearer ${token}` , });
             console.log("the response from backed after added item to cart " , responseFromApiConnector);
             toast.dismiss(toastId);
@@ -20,9 +16,12 @@ export function addItemsToCartBackendRequest(token , courseId){
             }
             else{
                 toast.success('Course Added');
-                localStorage.setItem('cartItems' , JSON.stringify(responseFromApiConnector?.data?.newCart?.cartItems));
-                localStorage.setItem('totalItems' , JSON.stringify(responseFromApiConnector?.data?.newCart?.cartItems?.length));
-                dispatch(addToCart(responseFromApiConnector?.data?.newCart?.cartItems));
+                let result = responseFromApiConnector?.data;
+                localStorage.setItem('cartItems' , JSON.stringify(result?.newCart?.cartItems));
+                localStorage.setItem('totalItems' , JSON.stringify(result?.newCart?.cartItems?.length));
+                localStorage.setItem('totalPrice' , JSON.stringify(totalPrice + parseInt(result?.courseFound?.price)));
+                dispatch(addToCart(result?.newCart?.cartItems));
+                dispatch(setTotalPrice(totalPrice + parseInt(result?.courseFound?.price)));
                 dispatch(setTotalItems(responseFromApiConnector?.data?.newCart?.cartItems?.length));
             }
         } catch (error) {
