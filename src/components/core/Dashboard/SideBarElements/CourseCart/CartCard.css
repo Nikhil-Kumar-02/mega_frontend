@@ -28,7 +28,7 @@
         >:nth-child(1){
             padding: 0.5rem 0.8rem;
             display: flex;
-            background-color: grey;
+            background-color: #2C333F;
             height: fit-content;
             border-radius: 0.5rem;
             margin-bottom: 1rem;

@@ -19,6 +19,8 @@ export const cartSlice = createSlice({
     },
     //remove from cart
     removeFromCart(state,action){
+      console.log('the current items in cart ' , state.cartItems);
+      console.log("item to be removed " , action.payload);
       state.cartItems = state.cartItems.filter(item => item !== action.payload) 
     },
     //resetcart

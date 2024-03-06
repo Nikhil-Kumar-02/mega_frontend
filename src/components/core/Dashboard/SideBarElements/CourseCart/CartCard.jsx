@@ -3,9 +3,14 @@ import './CartCard.css';
 import { getcompleteCourseDetailsFromBackend } from "../../../../../services/operations/course";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { removeItemsToCartBackendRequest } from "../../../../../services/operations/cart";
 
 const CartCard = ({courseId}) => {
     const [course , setCourse] = useState(null);
+    const dispatch = useDispatch();
+    const {totalPrice} = useSelector((state)=>state.cart);
+    const {token} = useSelector((state)=>state.auth);
 
     useEffect(()=>{
         (async () => {
@@ -16,6 +21,10 @@ const CartCard = ({courseId}) => {
     } , [courseId]);
 
     const navigate = useNavigate();
+
+    function removeCartItemHandler(){
+        dispatch(removeItemsToCartBackendRequest(token , courseId , totalPrice));
+    }
 
 
   return (
@@ -31,7 +40,7 @@ const CartCard = ({courseId}) => {
         </div>
 
         <div>
-            <div style={{color : 'red'}}>
+            <div style={{color : 'red'}} onClick={() => removeCartItemHandler()}>
                 <RiDeleteBin5Line></RiDeleteBin5Line>
                 Remove
             </div>
