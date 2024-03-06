@@ -145,3 +145,24 @@ export function updateUserProfilePhotoFromBackend(formData , token){
         }
     }
 }
+
+export async function getInstructorStatsFromBackend(token){
+    const toastId = toast.loading('Loading ... ');
+    try {
+        const responseFromapiConnector = await requestBackend("GET" , profileAllRoutes.instructor_Stats , null , {Authorization : `Bearer ${token}`} ,);
+
+        if(!responseFromapiConnector.data){
+            //means some error as if it was a ok response then .data will be available directly
+            toast.dismiss(toastId);
+            toast.error(responseFromapiConnector?.response?.data?.message);
+        }
+        else{
+            toast.dismiss(toastId);
+            return responseFromapiConnector?.data?.courseData;
+        }
+    } catch (error) {
+        console.log('error while fetching instructor stats ', error);
+        toast.error("Cannot Fetch Stats")
+    }
+    
+}

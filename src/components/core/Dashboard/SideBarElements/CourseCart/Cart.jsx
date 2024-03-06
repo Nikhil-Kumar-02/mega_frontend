@@ -1,11 +1,30 @@
 import React, { useState } from "react"
 import './Cart.css'
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import CartCard from "./CartCard";
+import { buyCourse } from "../../../../../services/operations/StudentFeaturesAPI";
+import { useNavigate } from "react-router-dom";
 
 const Cart = (props) => {
 
   const {cartItems , totalItems , totalPrice} = useSelector((state) => state.cart);
+  const userDetails = useSelector((state) => state.profile.user);
+  const token = useSelector((state)=> state.auth.token);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  async function buyCourseClickHandler(){
+    //here we are buying individual courses so we will the individual courseid in the array as a 
+    //list of all courses we want to buy
+    if(token){
+        const responseFromServices = await buyCourse(token , cartItems , userDetails , navigate , dispatch);
+        console.log('responseFromServices ' , responseFromServices);
+    }
+    else{
+        //person is not logged in and he is trying to buy the course
+        navigate("/logIn");
+    }
+}
 
   return (
     <div className="cart_wrapper">
@@ -34,7 +53,7 @@ const Cart = (props) => {
               <div>
                 <h2>Total</h2>
                 <div>₹ {totalPrice}</div>
-                <button>Buy Now</button>
+                <button onClick={() => {buyCourseClickHandler()}}>Buy Now</button>
               </div>
             </div>
           )

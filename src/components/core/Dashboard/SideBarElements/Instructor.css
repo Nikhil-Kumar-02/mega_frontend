@@ -1,0 +1,58 @@
+.Instructor_wrapper{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    >div{
+        width: 80%;
+        padding: 1rem 0rem;
+        >.instructor_section_2{
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            margin: 0.5rem 0;
+            >:nth-child(1){
+                width: 75%;
+                background-color: #161D29;
+                border-radius: 0.5rem;
+            }
+            >:nth-child(2){
+                width: 24%;
+                background-color: #161D29;
+                border-radius: 0.5rem;
+                padding: 1rem;
+                >p{
+                    margin: 0.3rem 0;
+                }
+            }
+        }
+
+        >.instructor_section_3{
+            background-color: #161D29;
+            padding: 0.5rem;
+            >:nth-child(1){
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                >p{
+                    cursor: pointer;
+                    color: rgb(245, 245, 43);
+                }
+                >p:hover{
+                    text-decoration: underline;
+                }
+            }
+            >:nth-child(2){
+                display: flex;
+                justify-content: space-between;
+                >div{
+                    width: 30%;
+                    cursor: pointer;
+                    >img{
+                        width: 100%;
+                        border-radius: 0.5rem;
+                    }
+                }
+            }
+        }
+    }
+}

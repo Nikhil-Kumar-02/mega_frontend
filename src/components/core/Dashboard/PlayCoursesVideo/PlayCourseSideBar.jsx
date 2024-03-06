@@ -77,7 +77,7 @@ const PlayCourseSideBar = ({courseDetails , setRatingModal , seenLectures , setS
 
         <div>
           <p>My Course</p>
-          <p> {seenLectures.length} / {(()=>{
+          <p> {seenLectures?.length} / {(()=>{
             let totalLectures = 0;
             courseDetails?.courseContent.forEach((section) => {
               totalLectures += parseInt(section?.subSection?.length)
