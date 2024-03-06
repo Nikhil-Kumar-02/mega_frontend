@@ -8,7 +8,6 @@ const CourseDetailsSection = ({section , collapseAll , setCollaspeAll}) => {
     const [subsectionVisibility , setSubsectionVisibility] = useState(false);
     
     useEffect(() => {
-        console.log("course details section page rendered");
         if (collapseAll) {
             setSubsectionVisibility(false);
             setCollaspeAll(false);

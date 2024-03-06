@@ -7,6 +7,7 @@ const otherRoute = dotenv.other_Route;
 const profileRoute = dotenv.Profile_Route;
 const payment_Route = dotenv.payment_Route;
 const rating_Route = dotenv.rating_route;
+const cart_route = dotenv.cart_route;
 
 
 const courseBaseUrl = baseUrl + courseRoute;
@@ -15,6 +16,7 @@ const otherRoutesBaseUrl = baseUrl + otherRoute;
 const profileRouteBaseUrl = baseUrl + profileRoute;
 const PaymentRouteBaseUrl = baseUrl + payment_Route;
 const RatingRouteBaseUrl = baseUrl + rating_Route;
+const cartRouteBaseUrl = baseUrl + cart_route;
 
 export const courseAllRoutes = {
     getAllCategories : `${courseBaseUrl}${dotenv.Show_All_Categories}`,
@@ -65,4 +67,9 @@ export const RatingRoutes = {
     course_Rating : `${RatingRouteBaseUrl}${dotenv.course_Rating}`,
     average_Rating : `${RatingRouteBaseUrl}${dotenv.average_Rating}`,
     mark_Subsection : `${RatingRouteBaseUrl}${dotenv.markSubsection}`,
+}
+
+export const CartRoutes = {
+    addToCart : `${cartRouteBaseUrl}${dotenv.addToCart}`,
+    removeFromCart : `${cartRouteBaseUrl}${dotenv.removeFromCart}`,
 }

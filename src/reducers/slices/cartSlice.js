@@ -5,8 +5,8 @@ import { createSlice } from '@reduxjs/toolkit'
 export const cartSlice = createSlice({
   name: 'cart',
   initialState: {
-    totalItems: localStorage.getItem("totalItems") ? JSON.parse(localStorage.getItem("totalItems")) : 0,
-    cartItems : [],
+    totalItems: localStorage.getItem("totalItems") ? localStorage.getItem("totalItems") : 0,
+    cartItems : localStorage.getItem("cartItems") ? localStorage.getItem("cartItems") : [],
   },
   reducers: {
     setTotalItems(state , action){

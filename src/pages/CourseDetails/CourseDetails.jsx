@@ -11,6 +11,7 @@ import Footer from "../../components/common/Footer";
 import CourseDetailsSection from "./CourseDetailsSection";
 import { buyCourse } from "../../services/operations/StudentFeaturesAPI";
 import { useDispatch, useSelector } from "react-redux";
+import { addItemsToCartBackendRequest } from "../../services/operations/cart";
 
 const CourseDetails = (props) => {
     const {courseId} = useParams();
@@ -51,6 +52,10 @@ const CourseDetails = (props) => {
         }
     }
 
+    function addItemsToCartHandler(id){
+        dispatch(addItemsToCartBackendRequest(token , id));
+    }
+
 
   return (
     <div className="CourseDetails_wrapper">
@@ -72,7 +77,9 @@ const CourseDetails = (props) => {
                     <div onClick={()=>{buyCourseClickHandler()}}>
                         <ButtonComponent active={true} linkTo={`/course/${courseId}`}>Buy Now</ButtonComponent>
                     </div>
-                    <ButtonComponent active={false} linkTo={"/dashboard/cart"}>Add to Cart</ButtonComponent>
+                    <div onClick={() => {addItemsToCartHandler(courseId)}}>
+                        <ButtonComponent active={false} >Add to Cart</ButtonComponent>
+                    </div>
                     <p>30 - day Money-Back Guarantee</p>
                     <div>
                         <h4>This course includes : </h4>
